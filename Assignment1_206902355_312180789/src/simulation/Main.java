@@ -9,10 +9,12 @@ public class Main {
 	public static void main(String[] args) { 
 
 		SimulationFile.writeTofile();
-		try {
+		try 
+		{
 			Map a=new Map(SimulationFile.readFromfile());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 		

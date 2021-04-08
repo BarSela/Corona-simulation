@@ -2,6 +2,7 @@ package IO;
 
 import java.io.*;
 import java.util.*;
+import country.Map;
 
 public class SimulationFile
 {
@@ -11,9 +12,9 @@ public class SimulationFile
 		try 
 		{
 			PrintWriter output=new PrintWriter(file);
-			output.println("City; Ashdod; 0;0; 90;50; 1000");
-			output.println("City; Beer-Sheva; 30;0; 80;80; 1200\r\n"
-					+ "Moshav; Gevim; 15;15 10;20; 100\r\n"
+			output.println("City; Ashdod; 0;0; 90;50; 1000\r\n"
+					+ "City; Beer-Sheva; 30;0; 80;80; 1200\r\n"
+					+ "Moshav; Gevim; 15;15; 10;20; 100\r\n"
 					+ "");
 			output.close();
 		}
@@ -30,18 +31,16 @@ public class SimulationFile
 		{
 			FileReader fr= new FileReader(file);
 			BufferedReader br= new BufferedReader(fr);
-			int counter=0;
 			Scanner in=new Scanner(file);
 			while (br.readLine() != null)
-				counter++;
-			System.out.println(counter);
-			temp=new String[counter];
+				Map.size++;
+			temp=new String[Map.size];
 			name=in.nextLine();
-			for (int i=0;i<counter;i++)
+			for (int i=0;i<Map.size;i++)
 			{
 				
 				temp[i]=name;
-				if (!(i==counter-1))
+				if (!(i==Map.size-1))
 					name=in.nextLine();
 			}
 		}
