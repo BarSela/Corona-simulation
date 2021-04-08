@@ -1,5 +1,7 @@
 package population;
 
+import java.util.Random;
+
 import country.City;
 import country.Kibbutz;
 import country.Moshav;
@@ -10,9 +12,9 @@ import simulation.Clock;
 import virus.IVirus;
 public abstract class Person 
 {
-	public Person(int age, Point p, Settlement s)
+	public Person(Point p, Settlement s)
 	{
-		this.age=age;
+		this.age=calcAge();
 		this.location=new Point(p.getPoint_x(),p.getPoint_y());
 		if (s instanceof City)
 			this.settlement=new City(s.getName(),s.getLocation(),s.getPopulation());
@@ -24,7 +26,7 @@ public abstract class Person
 	public abstract double contagionProbability();
 	public Person contagion(IVirus iv) 
 	{
-		Sick s=new Sick(this.getAge(),this.getLocation(),this.getSettlement(),Clock.now(),iv);
+		Sick s=new Sick(this.getLocation(),this.getSettlement(),Clock.now(),iv);
 		return s;
 	}
 	public String toString() {
@@ -44,7 +46,14 @@ public abstract class Person
 	}
 	public Settlement getSettlement() {return this.settlement;}
 	public abstract Person replicate();
-	
+	private int calcAge()
+	{
+		Random rand = new Random();
+		int y =rand.nextInt(5); //between 0 to 4
+		double x= rand.nextGaussian();
+		int age=(int) ((int) 5*x+y);
+		return age;
+	}
 	//data members
 	private int age;
 	private Point location;

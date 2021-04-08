@@ -10,7 +10,12 @@ public class ChineseVariant implements IVirus
 	/**
 	 * this class represent the Chinese virus variant
 	 */
-	
+	public ChineseVariant()
+	{
+		/**
+		 * No initialization information for constructor
+		 */
+	}
 	public double contagionProbability(Person p)
 	{
 		if(p.getAge()<=18)

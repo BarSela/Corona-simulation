@@ -6,8 +6,8 @@ import virus.IVirus;
 
 public class Convalescent extends Person 
 {
-	public Convalescent(int age, Point p, Settlement s,IVirus virus) {
-		super(age, p, s);
+	public Convalescent(Point p, Settlement s,IVirus virus) {
+		super(p, s);
 		this.virus=virus;
 	}
 	@Override
@@ -28,7 +28,7 @@ public class Convalescent extends Person
 	@Override
 	public Person replicate() {
 		// TODO Auto-generated method stub
-		return new Convalescent(this.getAge(),this.getLocation(),this.getSettlement(),this.getVirus());
+		return new Convalescent(this.getLocation(),this.getSettlement(),this.getVirus());
 	}
 	private IVirus virus;
 }

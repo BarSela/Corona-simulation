@@ -8,7 +8,12 @@ public class BritishVariant implements IVirus {
 	/**
 	 * this class represent the British virus variant
 	 */
-	
+	public BritishVariant()
+	{
+		/**
+		 * No initialization information for constructor
+		 */
+	}
 	public double contagionProbability(Person p)
 	{
 		return contagion*p.contagionProbability();

@@ -17,28 +17,39 @@ public class Map {
 			settlement=data[i].split(";");
 			if (settlement[0].contentEquals("City"))
 			{
+				//point-position of the settlement
 				int x=Integer.parseInt(settlement[2].replace(" ", ""));
 				int y=Integer.parseInt(settlement[3].replace(" ", ""));
 				Point p=new Point(x,y);
-				x=Integer.parseInt(settlement[4].replace(" ", ""));
-				y=Integer.parseInt(settlement[5].replace(" ", ""));
-				Size s1=new Size(x,y);
-				x=Integer.parseInt(settlement[6].replace(" ", ""));
+				
+				//size-size of the settlement
+				int height=Integer.parseInt(settlement[4].replace(" ", ""));
+				int width=Integer.parseInt(settlement[5].replace(" ", ""));
+				Size s1=new Size(height,width);
+				
+				//population-the number of people in the settlement
+				int numpeople=Integer.parseInt(settlement[6].replace(" ", ""));
 				Location location=new Location(p,s1);
-				City c=new City(data[1],location,x);
+				City c=new City(data[1],location,numpeople);
+				
 				this.settlements[i]=c;
 			}
 			else if (settlement[0].contentEquals("Kibbutz"))
 			{
+				//point-position of the settlement
 				int x=Integer.parseInt(settlement[2].replace(" ", ""));
 				int y=Integer.parseInt(settlement[3].replace(" ", ""));
 				Point p=new Point(x,y);
-				x=Integer.parseInt(settlement[4].replace(" ", ""));
-				y=Integer.parseInt(settlement[5].replace(" ", ""));
-				Size s1=new Size(x,y);
-				x=Integer.parseInt(settlement[6].replace(" ", ""));
+				
+				//size-size of the settlement
+				int height=Integer.parseInt(settlement[4].replace(" ", ""));
+				int width=Integer.parseInt(settlement[5].replace(" ", ""));
+				Size s1=new Size(height,width);
+				
+				//population-the number of people in the settlement
+				int numpeople=Integer.parseInt(settlement[6].replace(" ", ""));
 				Location location=new Location(p,s1);
-				Kibbutz c= new Kibbutz(settlement[1],location,x); 
+				Kibbutz c= new Kibbutz(settlement[1],location,numpeople); 
 				this.settlements[i]=c;
 				size++;
 			}
@@ -47,12 +58,16 @@ public class Map {
 				int x=Integer.parseInt(settlement[2].replace(" ", ""));
 				int y=Integer.parseInt(settlement[3].replace(" ", ""));
 				Point p=new Point(x,y);
-				x=Integer.parseInt(settlement[4].replace(" ", ""));
-				y=Integer.parseInt(settlement[5].replace(" ", ""));
-				Size s1=new Size(x,y);
-				x=Integer.parseInt(settlement[6].replace(" ", ""));
+				
+				//size-size of the settlement
+				int height=Integer.parseInt(settlement[4].replace(" ", ""));
+				int width=Integer.parseInt(settlement[5].replace(" ", ""));
+				Size s1=new Size(height,width);
+				
+				//population-the number of people in the settlement
+				int numpeople=Integer.parseInt(settlement[6].replace(" ", ""));
 				Location location=new Location(p,s1);
-				Moshav c= new Moshav(settlement[1],location,x); 
+				Moshav c= new Moshav(settlement[1],location,numpeople); 
 				this.settlements[i]=c;
 			}
 		}

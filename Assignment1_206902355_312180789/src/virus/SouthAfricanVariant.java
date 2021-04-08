@@ -8,7 +8,12 @@ public class SouthAfricanVariant implements IVirus {
 	/**
 	 * this class represent the South African virus variant
 	 */
-	
+	public SouthAfricanVariant()
+	{
+		/**
+		 * No initialization information for constructor
+		 */
+	}
 	public double contagionProbability(Person p)
 	{
 		if(p.getAge()<=18)

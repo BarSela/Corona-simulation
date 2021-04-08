@@ -6,9 +6,9 @@ import virus.IVirus;
 
 public class Sick extends Person
 {
-	public Sick(int age, Point p, Settlement s, long contTime, IVirus iv)
+	public Sick(Point p, Settlement s, long contTime, IVirus iv)
 	{
-		super(age,p,s);
+		super(p,s);
 		this.contagiousTime=contTime;
 		this.virus=iv;
 	}
@@ -25,7 +25,7 @@ public class Sick extends Person
 	}
 	private Person recover() 
 	{
-		Healthy h=new Healthy(this.getAge(),this.getLocation(),this.getSettlement());
+		Healthy h=new Healthy(this.getLocation(),this.getSettlement());
 		return h;
 	}
 	public boolean tryTODie() 
@@ -57,7 +57,7 @@ public class Sick extends Person
 	@Override
 	public Person replicate() {
 		// TODO Auto-generated method stub
-		return new Sick(this.getAge(),this.getLocation(),this.getSettlement(),this.getContagiousTime(),this.getVirus());
+		return new Sick(this.getLocation(),this.getSettlement(),this.getContagiousTime(),this.getVirus());
 	}
 	private long contagiousTime;
 	private IVirus virus;

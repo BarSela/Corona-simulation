@@ -6,8 +6,8 @@ import location.Point;
 public class Healthy extends Person 
 {
 
-	public Healthy(int age, Point p, Settlement s) {
-		super(age, p, s);
+	public Healthy(Point p, Settlement s) {
+		super(p, s);
 	}
 	@Override
 	public double contagionProbability() {
@@ -23,6 +23,6 @@ public class Healthy extends Person
 	@Override
 	public Person replicate() {
 		// TODO Auto-generated method stub
-		return new Healthy(this.getAge(),this.getLocation(),this.getSettlement());
+		return new Healthy(this.getLocation(),this.getSettlement());
 	}
 }

@@ -5,9 +5,9 @@ import location.Point;
 
 public class Vaccinated extends Person
 {
-	public Vaccinated(int age, Point p, Settlement s,long vaccinationTime) 
+	public Vaccinated(Point p, Settlement s,long vaccinationTime) 
 	{
-		super(age, p, s);
+		super(p, s);
 		this.vaccinationTime=vaccinationTime;
 	}
 	public String toString() 
@@ -36,7 +36,7 @@ public class Vaccinated extends Person
 	@Override
 	public Person replicate() {
 		// TODO Auto-generated method stub
-		return new Vaccinated(this.getAge(),this.getLocation(),this.getSettlement(),this.getVaccinationTime());
+		return new Vaccinated(this.getLocation(),this.getSettlement(),this.getVaccinationTime());
 	}
 	private long vaccinationTime;
 }
