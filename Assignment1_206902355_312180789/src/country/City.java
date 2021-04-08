@@ -9,10 +9,9 @@ public class City extends Settlement {
 	 * @param name
 	 * @param location
 	 */
-	public City(String name, Location location) {
-		super(name, location);
+	public City(String name, Location location,int population) {
+		super(name, location,population);
 	}
-
 	@Override
 	public RamzorColor calculateramzorgrade() {
 		// calculate ramzor color by the growth of  in the city

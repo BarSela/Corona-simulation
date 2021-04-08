@@ -8,8 +8,8 @@ public class Moshav extends Settlement {
 	 * @param name
 	 * @param location
 	 */
-	public Moshav(String name, Location location) {
-		super(name, location);
+	public Moshav(String name, Location location,int population) {
+		super(name, location,population);
 	}
 
 	@Override

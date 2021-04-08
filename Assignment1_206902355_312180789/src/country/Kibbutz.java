@@ -8,8 +8,8 @@ public class Kibbutz extends Settlement {
 	 * @param name
 	 * @param location
 	 */
-	public Kibbutz(String name, Location location) {
-		super(name, location);
+	public Kibbutz(String name, Location location,int population) {
+		super(name, location, population);
 	}
 
 	@Override

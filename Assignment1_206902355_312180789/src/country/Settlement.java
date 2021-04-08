@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import location.Location;
 import location.Point;
+import population.Healthy;
 import population.Person;
 import population.Sick;
 
@@ -11,10 +12,11 @@ import population.Sick;
 
 public abstract class Settlement {
 	
-	public Settlement(String name, Location location){
+	public Settlement(String name, Location location,int population){
 		this.name=name;
 		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
+		this.people=new Healthy[population];
 	}
 	public abstract RamzorColor calculateramzorgrade();
 	public abstract boolean equals(Object o);
@@ -86,8 +88,7 @@ public abstract class Settlement {
 	{
 		return (Location)location.replicate();
 	}
-	
-	
+	public int getPopulation() {return people.length;}
 	
 	private String name;
 	private Location location;
