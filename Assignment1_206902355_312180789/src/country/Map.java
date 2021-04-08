@@ -11,7 +11,7 @@ public class Map {
 		/**
 		 * @return string representation
 		 */
-		return 
+		return null;
 	}
 	public boolean equals(Object o)
 	{

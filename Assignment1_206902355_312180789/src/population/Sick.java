@@ -44,7 +44,7 @@ public class Sick extends Person
 	@Override
 	public double contagionProbability()
 	{
-		//???
+		return 0.0;
 	}
 	public IVirus getVirus() 
 	{

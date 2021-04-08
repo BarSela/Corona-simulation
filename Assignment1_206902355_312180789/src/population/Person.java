@@ -15,11 +15,11 @@ public abstract class Person
 		this.age=age;
 		this.location=new Point(p.getPoint_x(),p.getPoint_y());
 		if (s instanceof City)
-			this.settlement=new City();
+			this.settlement=new City(s.getName(),s.getLocation());
 		else if (s instanceof Kibbutz)
-			this.settlement=new Kibbutz();
+			this.settlement=new Kibbutz(s.getName(),s.getLocation());
 		else if (s instanceof Moshav)
-			this.settlement=new Moshav();
+			this.settlement=new Moshav(s.getName(),s.getLocation());
 	}
 	public abstract double contagionProbability();
 	public Person contagion(IVirus iv) 

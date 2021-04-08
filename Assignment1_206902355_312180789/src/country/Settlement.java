@@ -13,7 +13,7 @@ public abstract class Settlement {
 	
 	public Settlement(String name, Location location){
 		this.name=name;
-		this.location=location;//not sure
+		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
 	}
 	public abstract RamzorColor calculateramzorgrade();

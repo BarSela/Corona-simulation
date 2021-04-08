@@ -1,9 +1,12 @@
 package IO;
 
+import java.io.*;
+import java.util.*;
+
 public class SimulationFile
 {
 	public static File file= new File("data.txt");
-	public static void writeTofile()
+	public static void writeTofile(Map a)
 	{
 		try 
 		{
@@ -22,7 +25,9 @@ public class SimulationFile
 		{
 			Scanner in= new Scanner(file);
 			String name = in.nextLine();
-			System.out.printf("%s\n", name);
+			String[] temp=name.split("; ");
+			for (int i=0;i<temp.length;i++)
+				System.out.printf("%s\n",temp[i]);
 		}
 		catch (FileNotFoundException ex) 
 		{
