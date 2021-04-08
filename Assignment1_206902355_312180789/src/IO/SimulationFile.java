@@ -6,7 +6,7 @@ import java.util.*;
 public class SimulationFile
 {
 	public static File file= new File("data.txt");
-	public static void writeTofile(Map a)
+	public static void writeTofile()
 	{
 		try 
 		{

@@ -32,7 +32,7 @@ public class ChineseVariant implements IVirus
 		
 		double distance=Math.sqrt(Math.pow(p_sick.getLocation().getPoint_y()-p_check.getLocation().getPoint_y(),2)+Math.pow(p_sick.getLocation().getPoint_x()-p_check.getLocation().getPoint_x(),2));
 		double result = contagionProbability(p_check)*Math.min(0,0.14*Math.exp(2-0.25*distance));
-		return result >=Math.random();
+		return result <=Math.random();
 		
 	}
 	public boolean tryToKill(Sick s)
@@ -49,7 +49,7 @@ public class ChineseVariant implements IVirus
 		{
 			result=Math.max(0,death_18_55-0.01*death_18_55*Math.pow(time-15,2));
 		}
-		return result>=Math.random();
+		return result<=Math.random();
 	}
 	public String toString()
 	{

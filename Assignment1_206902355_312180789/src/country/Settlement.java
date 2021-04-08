@@ -34,7 +34,7 @@ public abstract class Settlement {
 		Random rand = new Random();
 		// Generate random integers in range x to 999
         int rand_x = rand.nextInt(this.getLocation().getsize().getWidth())+this.getLocation().getPosition().getPoint_x();
-        int rand_y = rand.nextInt(this.getLocation().getsize().getWidth())+this.getLocation().getPosition().getPoint_y();
+        int rand_y = rand.nextInt(this.getLocation().getsize().getHeight())+this.getLocation().getPosition().getPoint_y();
         Point p=new Point(rand_x,rand_y);
         return p;
 	}
