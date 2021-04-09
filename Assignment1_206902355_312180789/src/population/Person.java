@@ -6,7 +6,6 @@ import country.City;
 import country.Kibbutz;
 import country.Moshav;
 import country.Settlement;
-import location.Location;
 import location.Point;
 import simulation.Clock;
 import virus.IVirus;
@@ -50,7 +49,7 @@ public abstract class Person
 	{
 		Random rand = new Random();
 		int y =rand.nextInt(5); //between 0 to 4
-		double x= rand.nextGaussian();
+		double x= rand.nextGaussian()*standardDeviation+expectation;
 		int age=(int) ((int) 5*x+y);
 		return age;
 	}
@@ -58,5 +57,8 @@ public abstract class Person
 	private int age;
 	private Point location;
 	private Settlement settlement;
+	private final int standardDeviation=6;
+	private final int expectation=9;
+	
 
 }

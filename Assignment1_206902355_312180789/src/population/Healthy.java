@@ -2,6 +2,7 @@ package population;
 
 import country.Settlement;
 import location.Point;
+import simulation.Clock;
 
 public class Healthy extends Person 
 {
@@ -25,4 +26,10 @@ public class Healthy extends Person
 		// TODO Auto-generated method stub
 		return new Healthy(this.getLocation(),this.getSettlement());
 	}
+	public Person vaccinate()
+	{
+		Vaccinated v=new Vaccinated(this.getLocation(),this.getSettlement(),Clock.now());
+		return v;
+	}
+
 }

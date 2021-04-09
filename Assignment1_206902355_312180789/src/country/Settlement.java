@@ -20,7 +20,6 @@ public abstract class Settlement {
 	}
 	public abstract RamzorColor calculateramzorgrade();
 	public abstract boolean equals(Object o);
-	
 	protected double contagiousPercent()
 	{
 		int sick_people=0;
