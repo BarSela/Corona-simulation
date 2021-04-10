@@ -1,10 +1,17 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package location;
 
 import simulation.Replicable;
-
+/*
+ * Size Class
+ */
 public class Size implements Replicable
 { 	/**
  	* this represent a size
+ 	* implement Replicable
  	* @param height 
  	* 
  	* @param width
@@ -25,10 +32,11 @@ public class Size implements Replicable
 		*/
 		return "height: "+this.getHeight()+" width: "+this.getWidth();
 	}
+	@Override
 	public boolean equals(Object o)
 	{
 		/**
-		 * @param s  Size to compare the value of height and width
+		 * @param o  object to compare the value of height and width
 		 * @return true if the values of height and width is equals, else false
 		 */
 		if(!(o instanceof Size))

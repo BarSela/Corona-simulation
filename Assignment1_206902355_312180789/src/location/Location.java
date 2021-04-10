@@ -1,14 +1,22 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package location;
 
 import simulation.Replicable;
 
+/*
+ * Location Class
+ */
 public class Location implements Replicable
 {
 	  /**
 	   * the class represent the location of the person
-	   * @param positon  the point
+	   * implement Replicable
+	   * @param positon  =>left top point
 	   *                 
-	   * @param size  the size
+	   * @param size  the size => height and width
 	   */
 	public Location(Point p,Size s)
 	{
@@ -26,12 +34,12 @@ public class Location implements Replicable
 		/**
 		 * @return string representation
 		 */
-		return "location is:"+this.getPosition().toString()+this.getsize().toString();
+		return "location:  Point:"+this.getPosition().toString()+"Size: "+this.getsize().toString();
 	}
 	@Override
 	public boolean equals(Object o)
 	{	/**
-		*@param l  location to compare the values of position and size
+		*@param o  object to compare the values of position and size
 		*@return true if the values of position and size of the two locations is equals, else false
 		*/
 		if(!(o instanceof Location))
@@ -42,6 +50,9 @@ public class Location implements Replicable
 	}
 	public Location getLocation()
 	{
+		/**
+		 * @return location 
+		 */
 		Location l=(Location) this.replicate();
 		return l;
 	}
@@ -57,17 +68,27 @@ public class Location implements Replicable
 
 	public Point getPosition()
 	{
+		/**
+		 * @return the position (Point) of the Location
+		 */
 		Point p=(Point) this.position.replicate();
 		return p;
 	}
 	public Size getsize()
 	{
+		/**
+		 * @return the size of the Location
+		 */
 		Size s=(Size) this.size.replicate();
 		return s;
 	}
 	@Override
 	public Object replicate() {
-		// replicate location
+		/**
+		 * replicate location
+		 * @return object 
+		 */
+		
 		return new Location(this.getPosition(),this.getsize());
 	}
 	

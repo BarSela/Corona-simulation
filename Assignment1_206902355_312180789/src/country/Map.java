@@ -1,15 +1,25 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package country;
 
 import location.Point;
 import location.Size;
 import location.Location;
-
+/*
+ * Map class
+ */
 public class Map {
 	/**
 	 * this class represent the map of Settlements
 	 */
 	public Map(String[] data) 
 	{
+		/**
+		 * load map-constructor
+		 * @param data array of strings. evry string is a settlement
+		 */
 		this.settlements=new Settlement[size];
 		String[] settlement=null; 
 		for(int i=0;i<size-1;i++)
@@ -83,6 +93,7 @@ public class Map {
 	{
 		/**
 		 * check if the maps is similar
+		 * @param o the object to compare with
 		 */
 		if (!(o instanceof Map))
 			return false;
@@ -90,6 +101,7 @@ public class Map {
 		return settlements==m.settlements;
 
 	}
+	//data members
 	private Settlement settlements[];
 	public static int size=0;
 }

@@ -1,9 +1,15 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package virus;
 
 import population.Person;
 import population.Sick;
 import simulation.Clock;
-
+/*
+ * Chinese variant virus class
+ */
 
 public class ChineseVariant implements IVirus 
 {
@@ -18,6 +24,11 @@ public class ChineseVariant implements IVirus
 	}
 	public double contagionProbability(Person p)
 	{
+		/**
+		 * Calculates the probability that the transmitted person will be infected with the virus
+		 * @param p the person we want to check his propabillity to get contage
+		 * @return the propabillity of the person to get contage
+		 */
 		if(p.getAge()<=18)
 		{
 			return con_18*p.contagionProbability();
@@ -30,18 +41,31 @@ public class ChineseVariant implements IVirus
 	}
 	public boolean tryToContagion(Person p_sick, Person p_check) throws Exception
 	{
+		/**
+		 * Check if the  second person will be infected by the sick person.
+		 * the function check the health condition of the second person. if he is allready sick he cant get infected again.
+		 * @param p_sick the sick person
+		 * @param p_check the person that was next to the sick person.
+		 * @return truth if the second person got infected by the sick person,else false
+		 * @throws Exception 
+		 */
 		if(p_check instanceof Sick )
 		{
 			throw new Exception("Both person's are sick! A sick person cannot get sick again");
 		}
 		
 		double distance=Math.sqrt(Math.pow(p_sick.getLocation().getPoint_y()-p_check.getLocation().getPoint_y(),2)+Math.pow(p_sick.getLocation().getPoint_x()-p_check.getLocation().getPoint_x(),2));
-		double result = contagionProbability(p_check)*Math.min(0,0.14*Math.exp(2-0.25*distance));
-		return result <=Math.random();
+		double result = contagionProbability(p_check)*Math.min(1,0.14*Math.exp(2-0.25*distance));
+		return result >=Math.random();
 		
 	}
 	public boolean tryToKill(Sick s)
 	{
+		/**
+		 * check if the sick person will be killed by the virus
+		 * @param s  sick person
+		 * @return true if the person will be killed by the virus,else false
+		 */
 		long time=s.getContagiousTime()-Clock.now();
 		//if the age of the person is 55 and up ,if not it will change properly
 		double result=Math.max(0,death_up55-0.01*death_up55*Math.pow(time-15,2));
@@ -54,7 +78,7 @@ public class ChineseVariant implements IVirus
 		{
 			result=Math.max(0,death_18_55-0.01*death_18_55*Math.pow(time-15,2));
 		}
-		return result<=Math.random();
+		return result>=Math.random();
 	}
 	public String toString()
 	{
@@ -68,6 +92,8 @@ public class ChineseVariant implements IVirus
 		/**
 		 * check if it is the same virus variant
 		 * there is no difference between two viruses from the same class
+		 * @param o the object we want to compare with
+		 * @return true if equals,else false
 		 */
 		if(!(o instanceof ChineseVariant))
 			return false;
@@ -75,14 +101,15 @@ public class ChineseVariant implements IVirus
 		
 	}
 	
-	
+	//conation propabillity
 	private final static double con_18=0.2;
 	private final static double con_18_55=0.5;
 	private final static double con_up55=0.7;
 
+	//death propabillity
 	private final static double death_18=0.001;
 	private final static double death_18_55=0.05;
-	private final static double death_up55=10;
+	private final static double death_up55=0.1;
 
 
 }

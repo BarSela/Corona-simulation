@@ -1,21 +1,36 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package country;
 
 import location.Location;
-
+/*
+ * Kibbutz class
+ */
 public class Kibbutz extends Settlement {
 	/**
 	 * this class represent the sttlement kibbutz
-	 * @param name
-	 * @param location
+	 * extend settlement class
+
 	 */
 	public Kibbutz(String name, Location location,int population) {
+		/**
+		 * consturctor
+		 * @param name          the name of the settlement
+		 * @param location      position and size
+		 * @param population    amount of peole in the kibbutz
+		 */
 		super(name, location, population);
 	}
 
 	@Override
-	public RamzorColor calculateramzorgrade() {
-		// calculate ramzor color by the growth of  in the city
-		double p =this.contagiousPercent();
+	protected RamzorColor calculateramzorgrade() {
+		 /**
+		  * calculate ramzor color by the growth of  in the kibbutz
+		  * @return the new ramzor color
+		  */
+		double p =super.contagiousPercent();
 		double c=0;
 		switch(super.getRamzorColor())
 		{
@@ -46,7 +61,11 @@ public class Kibbutz extends Settlement {
 	@Override
 	public boolean equals(Object o) 
 	{
-		// comapre between two kibbutzs
+		/**
+		 * comapre between two kibbutz
+		 * @param o the object we want to compare with
+		 * @return true if equals,else false
+		 */
 		if(!(o instanceof Kibbutz))
 			return false;
 		Kibbutz k=(Kibbutz)o;

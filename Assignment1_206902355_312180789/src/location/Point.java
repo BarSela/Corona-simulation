@@ -1,15 +1,23 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package location;
 
 import simulation.Replicable;
 
+/*
+ * Point class
+ */
 public class Point implements Replicable
 {
 	  /**
 	   * the class represent a point 
-   * @param x  the x-coordinate 
-   *                 
-   * @param y  the y-coordinate 
-   */
+	   * implement Replicable
+	   * @param x  the x-coordinate 
+	   *                 
+	   * @param y  the y-coordinate 
+	   */
 
 	public Point(int x,int y)
 	{		/**
@@ -29,7 +37,7 @@ public class Point implements Replicable
 	@Override
 	public boolean equals(Object o)
 	{	/**
-		*@param p  point to compare the values of x-coordinate and y-coordinate
+		*@param o  object to compare the values of x-coordinate and y-coordinate
 		*@return true if the values of x-coordinate and y-coordinate is equals, else false
 		*/
 		if (!(o instanceof Point))
@@ -60,14 +68,22 @@ public class Point implements Replicable
 	}
 	public Point getPoint()
 	{
+		/**
+		 * return point object
+		 */
 		Point p=(Point) this.replicate();
 		return p;
 	}
 
 	@Override
 	public Object replicate() {
+		/**
+		 * replicate the Point
+		 * @return Point object
+		 */
 		return new Point(this.getPoint_x(),this.getPoint_y());
 	}
+	
 	//data members
 	private int x;
 	private int y;
