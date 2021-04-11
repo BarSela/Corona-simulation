@@ -140,6 +140,7 @@ public class SimulationFile
 		double x= (int)rand.nextGaussian()*standardDeviation+expectation;
 		int age=(int) Math.abs(5*x+y);
 		return Math.abs(age);
+		
 	}
 	private final static int standardDeviation=6;
 	private final static int expectation=9;
