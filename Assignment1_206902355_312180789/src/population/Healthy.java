@@ -3,32 +3,41 @@ package population;
 import country.Settlement;
 import location.Point;
 import simulation.Clock;
-
+/**
+* Helthy class
+*/
 public class Healthy extends Person 
 {
-	/**
-	 * helthy class
-	 */
-
-	public Healthy(Point p, Settlement s) {
+	
+	public Healthy(Point p, Settlement s,int age) {
 		/**
-		 * constructor 
-		 */
-		super(p, s);
+		 * Constractor
+		 * @param p the point, s Settlement info
+		 */		super(p, s,age);
 	}
 	public Healthy(Healthy h_p)
 	{
+		/**
+		 *  Copy Constractor
+		 * @param h_p the person 
+		 */
 		super(h_p);
 	}
 	@Override
 	public double contagionProbability() {
 		/**
-		 * return contagion probability
+		 * contaion probabilty 
+		 * @return the probabilty to get sick
 		 */
 		return 1;
 	}
 	@Override
 	public boolean equals(Object o) {
+		/**
+		 * chek if the instance is equals
+		 * @param o the instance
+		 * @return true or false
+		 */
 		if(!(o instanceof Healthy))
 			return false;
 		Healthy h=(Healthy)o;
@@ -36,15 +45,18 @@ public class Healthy extends Person
 	}
 	@Override
 	public Object replicate() {
-		// return replicate instance
+		/**
+		 * @return replicate instance
+		 */
 		return new Healthy(this);
 	}
 	public Person vaccinate()
 	{
 		/**
-		 * return a instence vaccinated
+		 * make a healthy person vaccinate
+		 * @return new instance
 		 */
-		Vaccinated v=new Vaccinated(this.getLocation(),this.getSettlement(),Clock.now());
+		Vaccinated v=new Vaccinated(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now());
 		return v;
 	}
 

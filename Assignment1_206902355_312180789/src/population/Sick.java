@@ -9,12 +9,12 @@ public class Sick extends Person
 	/*
 	 * Sick class
 	 */
-	public Sick(Point p, Settlement s, long contTime, IVirus iv)
+	public Sick(Point p, Settlement s, int age,long contTime, IVirus iv)
 	{
 		/**
 		 * constractor 
 		 */
-		super(p,s);
+		super(p,s,age);
 		this.contagiousTime=contTime;
 		this.virus=iv;
 	}
@@ -46,7 +46,7 @@ public class Sick extends Person
 		/**
 		 * return a recover person
 		 */
-		Healthy h=new Healthy(this.getLocation(),this.getSettlement());
+		Healthy h=new Healthy(this.getLocation(),this.getSettlement(),this.getAge());
 		return h;
 	}
 	public boolean tryTODie() 

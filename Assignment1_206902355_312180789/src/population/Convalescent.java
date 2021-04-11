@@ -9,15 +9,20 @@ public class Convalescent extends Person
 	/*
 	 * Convalescent class
 	 */
-	public Convalescent(Point p, Settlement s,IVirus virus) {
+	public Convalescent(Point p, Settlement s,int age,IVirus virus) {
 		/**
-		 * constructor to Convalescent
+		 * Constractor
+		 * @param p the point, s Settlement info
 		 */
-		super(p, s);
+		super(p, s,age);
 		this.virus=virus;
 	}
 	public Convalescent(Convalescent c_p)
 	{
+		/**
+		 * copy Constractor
+		 * @param c_p the instance to copy
+		 */
 		super(c_p);
 		this.virus=c_p.getVirus();
 
@@ -25,12 +30,18 @@ public class Convalescent extends Person
 	@Override
 	public double contagionProbability() {
 		/**
-		 * return tha contagion probability
+		 * return the probabilitye
+		 * @return the propabillity of the person to get contage
 		 */
 		return 0.2;
 	}
 	@Override
 	public boolean equals(Object o) {
+		/**
+		 * chek if the instance is equals
+		 * @param o the instance
+		 * @return true or false
+		 */
 		if(!(o instanceof Convalescent))
 			return false;
 		Convalescent c=(Convalescent)o;
@@ -39,14 +50,14 @@ public class Convalescent extends Person
 	public IVirus getVirus()
 	{
 		/**
-		 * return the virus
+		 * @return the virus that the person is sick
 		 */
 		return this.virus;
 	}
 	@Override
 	public Person replicate() {
 		/**
-		 * return a replicate instence
+		 * @return new instance with the copy constructor
 		 */
 		return new Convalescent(this);
 	}

@@ -14,12 +14,12 @@ public abstract class Person
 	/*
 	 * Person abstract class
 	 */
-	public Person(Point p, Settlement s)
+	public Person(Point p, Settlement s,int age)
 	{
 		/*
 		 * Person constructor
 		 */
-		this.age=calcAge();
+		this.age=age;
 		this.location=new Point(p.getPoint_x(),p.getPoint_y());
 		if (s instanceof City)
 			this.settlement=new City(s.getName(),s.getLocation(),s.getPopulation());
@@ -42,11 +42,11 @@ public abstract class Person
 		 * @param iv the virus that the man is sick
 		 * @return a sick person
 		 */
-		Sick s=new Sick(this.getLocation(),this.getSettlement(),Clock.now(),iv);
+		Sick s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 		return s;
 	}
 	public String toString() {
-		return "age: "+this.getAge()+" location:"+location.toString()+"Health condition: "+this.getClass()+" Settlment:"+settlement.toString();
+		return "age: "+this.getAge()+" location:"+location.toString()+" Settlment:"+settlement.toString();
 	}
 	public  abstract boolean equals(Object o);
 	public int getAge()
@@ -65,24 +65,12 @@ public abstract class Person
 	}
 	public Settlement getSettlement() {return this.settlement;}
 	public abstract Object replicate();
-	private int calcAge()
-	{
-		/**
-		 * calc the age in random
-		 * @return age
-		 */
-		Random rand = new Random();
-		int y =rand.nextInt(5); //between 0 to 4
-		double x= rand.nextGaussian()*standardDeviation+expectation;
-		int age=(int) ((int) 5*x+y);
-		return Math.abs(age);
-	}
+	
 	//data members
 	private int age;
 	private Point location;
 	private Settlement settlement;
-	private final int standardDeviation=6;
-	private final int expectation=9;
+	
 	
 
 }

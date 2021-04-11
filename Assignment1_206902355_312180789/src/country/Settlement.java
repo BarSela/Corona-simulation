@@ -32,13 +32,10 @@ public abstract class Settlement {
 		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
 		this.people=new ArrayList<Person>(population);
-		this.population=population;
 	}
 	// abstract 
 	protected abstract RamzorColor calculateramzorgrade();
 	public abstract boolean equals(Object o);
-	
-	
 	protected double contagiousPercent()
 	{
 		/**
@@ -115,7 +112,7 @@ public abstract class Settlement {
 		/**
 		 * @return the name of the settlement
 		 */
-		return name;
+		return this.name;
 	}
 	public Location getLocation()
 	{
@@ -128,7 +125,7 @@ public abstract class Settlement {
 		/**
 		 * @return amount of people in the settlemnet
 		 */
-		return this.population;
+		return this.people.size();
 		} 
 	public List<Person> getPeople(){return this.people;}
 	//data members
@@ -136,7 +133,7 @@ public abstract class Settlement {
 	private Location location;
 	private List<Person> people;
 	private RamzorColor ramzorColor;
-	private int population;
+
 	
 	
 	

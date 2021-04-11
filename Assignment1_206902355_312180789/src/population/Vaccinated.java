@@ -8,12 +8,12 @@ public class Vaccinated extends Person
 	/*
 	 * vaccinated class
 	 */
-	public Vaccinated(Point p, Settlement s,long vaccinationTime) 
+	public Vaccinated(Point p, Settlement s,int age,long vaccinationTime) 
 	{
 		/**
 		 * constractor
 		 */
-		super(p, s);
+		super(p, s,age);
 		this.vaccinationTime=vaccinationTime;
 	}
 	public Vaccinated(Vaccinated v_p) 

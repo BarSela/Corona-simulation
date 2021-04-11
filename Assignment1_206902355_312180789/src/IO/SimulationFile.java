@@ -11,6 +11,7 @@ import country.Settlement;
 import location.Location;
 import location.Point;
 import location.Size;
+import population.Healthy;
 
 public class SimulationFile
 {
@@ -41,6 +42,8 @@ public class SimulationFile
 	{
 		Settlement[] settlement=null;
 		String name = null;
+		String[] line=null;
+		int[] numPeopole=null;
 		try 
 		{
 			FileReader fr= new FileReader(file);
@@ -49,16 +52,28 @@ public class SimulationFile
 			while (br.readLine() != null)
 				Map.setSize();
 			settlement=new Settlement[Map.getSize()];
+			numPeopole=new int[Map.getSize()];
 			name=in.nextLine();
 			for (int i=0;i<Map.getSize();i++)
 			{
-				
-				if (parseSettlement(name)!=null)
-					settlement[i]=parseSettlement(name);
+				line=name.split(";");
+				if (parseSettlement(line)!=null)
+					{
+						settlement[i]=parseSettlement(line);
+						numPeopole[i]=Integer.parseInt(line[6].replace(" ", ""));
+					}
 				else
 					throw new Exception("Error with the Settlement type");
 				if (!(i==Map.getSize()-1))
 					name=in.nextLine();
+			}
+			for(int i=0;i<Map.getSize();i++)
+			{
+				for(int j=0;j<numPeopole[i];j++) 
+				{
+					Healthy new_person=new Healthy(settlement[i].randomLocation(),settlement[i],calcAge());
+					settlement[i].AddPerson(new_person);
+				}
 			}
 			in.close();
 			br.close();
@@ -70,63 +85,76 @@ public class SimulationFile
 		}
 		return settlement;
 	}
-	private static Settlement parseSettlement(String line)
+	private static Settlement parseSettlement(String[] line)
 	{
-		String[] settlement=line.split(";");
-			if (settlement[0].contentEquals("City"))
+			if (line[0].contentEquals("City"))
 			{
 				//point-position of the settlement
-				int x=Integer.parseInt(settlement[2].replace(" ", ""));
-				int y=Integer.parseInt(settlement[3].replace(" ", ""));
+				int x=Integer.parseInt(line[2].replace(" ", ""));
+				int y=Integer.parseInt(line[3].replace(" ", ""));
 				Point p=new Point(x,y);
 				
 				//size-size of the settlement
-				int height=Integer.parseInt(settlement[4].replace(" ", ""));
-				int width=Integer.parseInt(settlement[5].replace(" ", ""));
+				int height=Integer.parseInt(line[4].replace(" ", ""));
+				int width=Integer.parseInt(line[5].replace(" ", ""));
 				Size s1=new Size(height,width);
 				
 				//population-the number of people in the settlement
-				int numpeople=Integer.parseInt(settlement[6].replace(" ", ""));
+				int numpeople=Integer.parseInt(line[6].replace(" ", ""));
 				Location location=new Location(p,s1);
-				City c=new City(settlement[1],location,numpeople);
+				City c=new City(line[1],location,numpeople);
 				return c;
 			}
-			else if (settlement[0].contentEquals("Kibbutz"))
+			else if (line[0].contentEquals("Kibbutz"))
 			{
 				//point-position of the settlement
-				int x=Integer.parseInt(settlement[2].replace(" ", ""));
-				int y=Integer.parseInt(settlement[3].replace(" ", ""));
+				int x=Integer.parseInt(line[2].replace(" ", ""));
+				int y=Integer.parseInt(line[3].replace(" ", ""));
 				Point p=new Point(x,y);
 				
 				//size-size of the settlement
-				int height=Integer.parseInt(settlement[4].replace(" ", ""));
-				int width=Integer.parseInt(settlement[5].replace(" ", ""));
+				int height=Integer.parseInt(line[4].replace(" ", ""));
+				int width=Integer.parseInt(line[5].replace(" ", ""));
 				Size s1=new Size(height,width);
 				
 				//population-the number of people in the settlement
-				int numpeople=Integer.parseInt(settlement[6].replace(" ", ""));
+				int numpeople=Integer.parseInt(line[6].replace(" ", ""));
 				Location location=new Location(p,s1);
-				Kibbutz k= new Kibbutz(settlement[1],location,numpeople); 
+				Kibbutz k= new Kibbutz(line[1],location,numpeople); 
 				return k;
 			}
-			else if (settlement[0].contentEquals("Moshav"))
+			else if (line[0].contentEquals("Moshav"))
 			{
-				int x=Integer.parseInt(settlement[2].replace(" ", ""));
-				int y=Integer.parseInt(settlement[3].replace(" ", ""));
+				int x=Integer.parseInt(line[2].replace(" ", ""));
+				int y=Integer.parseInt(line[3].replace(" ", ""));
 				Point p=new Point(x,y);
 				
 				//size-size of the settlement
-				int height=Integer.parseInt(settlement[4].replace(" ", ""));
-				int width=Integer.parseInt(settlement[5].replace(" ", ""));
+				int height=Integer.parseInt(line[4].replace(" ", ""));
+				int width=Integer.parseInt(line[5].replace(" ", ""));
 				Size s1=new Size(height,width);
 				
 				//population-the number of people in the settlement
-				int numpeople=Integer.parseInt(settlement[6].replace(" ", ""));
+				int numpeople=Integer.parseInt(line[6].replace(" ", ""));
 				Location location=new Location(p,s1);
-				Moshav m= new Moshav(settlement[1],location,numpeople);
+				Moshav m= new Moshav(line[1],location,numpeople);
 				return m;
 		
 			}
 			return null;
 		}
+	private static int calcAge()
+	{
+		/**
+		 * calc the age in random
+		 * @return age
+		 */
+		Random rand = new Random();
+		int y =rand.nextInt(5); //between 0 to 4
+		double x= rand.nextGaussian()*standardDeviation+expectation;
+		int age=(int) ((int) 5*x+y);
+		return Math.abs(age);
+	}
+	private final static int standardDeviation=6;
+	private final static int expectation=9;
 }
