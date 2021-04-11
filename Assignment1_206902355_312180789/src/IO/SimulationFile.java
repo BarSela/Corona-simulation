@@ -16,7 +16,7 @@ import population.Healthy;
 public class SimulationFile
 {
 	public static File file= new File("data.txt");
-	public static Map loadMap(File file) throws Exception
+	public static Map loadMap() throws Exception
 	{
 		SimulationFile.writeTofile(file);
 		return new Map(SimulationFile.parse());
@@ -26,12 +26,12 @@ public class SimulationFile
 		try 
 		{
 			PrintWriter output=new PrintWriter(file);
-			output.println("City; Ashdod; 0;0; 90;50; 100");
+			output.println("City; Ashdod; 0;0; 90;50; 1000");
 			output.println("City; Beer-Sheva; 30;0; 80;80; 1200");
 			output.println("Moshav; Gevim; 15;9; 15;20; 700");
 			output.println("City; Rehovot; 7;18; 40;30; 9000");
 			output.println("Kibbutz; ruhama; 10;10; 20;10; 500");
-			output.println("City; Eilat; 70;30; 80;80; 10000");
+			output.println("City; Eilat; 70;30; 80;80; 1000");
 			output.println("Moshav; Shtulim; 47;23; 90;25; 600");
 			output.println("City; Tel-Aviv; 50;50; 80;80; 9000");
 			output.println("Kibbutz; Beeri; 12;15; 60;60; 400");
@@ -72,11 +72,12 @@ public class SimulationFile
 				if (!(i==Map.getSize()-1))
 					name=in.nextLine();
 			}
+			Healthy new_person;
 			for(int i=0;i<Map.getSize();i++)
 			{
 				for(int j=0;j<numPeopole[i];j++) 
 				{
-					Healthy new_person=new Healthy(settlement[i].randomLocation(),settlement[i],randomAge());
+					new_person=new Healthy(settlement[i].randomLocation(),settlement[i],randomAge());
 					settlement[i].AddPerson(new_person);
 				}
 			}
@@ -126,9 +127,7 @@ public class SimulationFile
 			return m;
 		}
 		return null;
-		
-
-		}
+	}
 	private static int randomAge()
 	{
 		/**

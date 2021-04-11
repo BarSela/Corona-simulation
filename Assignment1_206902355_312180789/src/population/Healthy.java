@@ -13,7 +13,7 @@ public class Healthy extends Person
 		/**
 		 * Constractor
 		 * @param p the point, s Settlement info
-		 */		super(p, s,age);
+		 */		super(p,s,age);
 	}
 	public Healthy(Healthy h_p)
 	{

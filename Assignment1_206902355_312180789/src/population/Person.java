@@ -1,7 +1,5 @@
 package population;
 
-import java.util.Random;
-
 import country.City;
 import country.Kibbutz;
 import country.Moshav;
@@ -20,13 +18,13 @@ public abstract class Person
 		 * Person constructor
 		 */
 		this.age=age;
-		this.location=new Point(p.getPoint_x(),p.getPoint_y());
+		this.location=p;
 		if (s instanceof City)
-			this.settlement=new City(s.getName(),s.getLocation(),s.getPopulation());
+			this.settlement=s;
 		else if (s instanceof Kibbutz)
-			this.settlement=new Kibbutz(s.getName(),s.getLocation(),s.getPopulation());
+			this.settlement=s;
 		else if (s instanceof Moshav)
-			this.settlement=new Moshav(s.getName(),s.getLocation(),s.getPopulation());
+			this.settlement=s;
 	}
 	public Person(Person p)
 	{
@@ -46,7 +44,7 @@ public abstract class Person
 		return s;
 	}
 	public String toString() {
-		return "age: "+this.getAge()+" location:"+location.toString()+" Settlment:"+settlement.toString();
+		return "age: "+this.getAge()+" location:"+this.getLocation().toString()+" Settlment:"+this.getSettlement().toString();
 	}
 	public  abstract boolean equals(Object o);
 	public int getAge()
