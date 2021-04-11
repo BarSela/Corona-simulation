@@ -1,4 +1,5 @@
 package simulation;
+import java.io.File;
 import java.io.IOException;
 import IO.SimulationFile;
 import country.Map;
@@ -7,18 +8,14 @@ import virus.IVirus;
 
 public class Main {
 
-	public static void main(String[] args) throws Exception { 
-
-		SimulationFile.writeTofile();
+	public static void main(String[] args) throws Exception 
+	{ 
+		File file= new File("data.txt");
 		try 
 		{
-			/**
-			 * step 1 load map
-			 */
-			Map world=new Map(SimulationFile.parse());
-			/**
-			 * step 2
-			 */
+			Map world=SimulationFile.loadMap(file);
+			
+
 			IVirus virus=new BritishVariant();
 			for(int i=0;i<Map.getSize();i++)
 			{

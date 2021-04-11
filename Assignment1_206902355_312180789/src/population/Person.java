@@ -65,12 +65,11 @@ public abstract class Person
 	}
 	public Settlement getSettlement() {return this.settlement;}
 	public abstract Object replicate();
-	
+
 	//data members
 	private int age;
 	private Point location;
 	private Settlement settlement;
-	
 	
 
 }

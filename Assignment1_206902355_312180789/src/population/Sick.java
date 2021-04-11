@@ -39,7 +39,7 @@ public class Sick extends Person
 	@Override
 	public String toString()
 	{
-		return super.toString()+"contagious Time:"+this.getContagiousTime()+"virus: "+this.getVirus();
+		return super.toString()+" contagious Time:"+this.getContagiousTime()+" virus: "+this.getVirus();
 	}
 	private Person recover() 
 	{

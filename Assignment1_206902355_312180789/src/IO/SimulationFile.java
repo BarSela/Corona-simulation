@@ -16,7 +16,12 @@ import population.Healthy;
 public class SimulationFile
 {
 	public static File file= new File("data.txt");
-	public static void writeTofile()
+	public static Map loadMap(File file) throws Exception
+	{
+		SimulationFile.writeTofile(file);
+		return new Map(SimulationFile.parse());
+	}
+	public static void writeTofile(File file)
 	{
 		try 
 		{
@@ -71,7 +76,7 @@ public class SimulationFile
 			{
 				for(int j=0;j<numPeopole[i];j++) 
 				{
-					Healthy new_person=new Healthy(settlement[i].randomLocation(),settlement[i],calcAge());
+					Healthy new_person=new Healthy(settlement[i].randomLocation(),settlement[i],randomAge());
 					settlement[i].AddPerson(new_person);
 				}
 			}
@@ -87,63 +92,44 @@ public class SimulationFile
 	}
 	private static Settlement parseSettlement(String[] line)
 	{
-			if (line[0].contentEquals("City"))
-			{
-				//point-position of the settlement
-				int x=Integer.parseInt(line[2].replace(" ", ""));
-				int y=Integer.parseInt(line[3].replace(" ", ""));
-				Point p=new Point(x,y);
-				
-				//size-size of the settlement
-				int height=Integer.parseInt(line[4].replace(" ", ""));
-				int width=Integer.parseInt(line[5].replace(" ", ""));
-				Size s1=new Size(height,width);
-				
-				//population-the number of people in the settlement
-				int numpeople=Integer.parseInt(line[6].replace(" ", ""));
-				Location location=new Location(p,s1);
-				City c=new City(line[1],location,numpeople);
-				return c;
-			}
-			else if (line[0].contentEquals("Kibbutz"))
-			{
-				//point-position of the settlement
-				int x=Integer.parseInt(line[2].replace(" ", ""));
-				int y=Integer.parseInt(line[3].replace(" ", ""));
-				Point p=new Point(x,y);
-				
-				//size-size of the settlement
-				int height=Integer.parseInt(line[4].replace(" ", ""));
-				int width=Integer.parseInt(line[5].replace(" ", ""));
-				Size s1=new Size(height,width);
-				
-				//population-the number of people in the settlement
-				int numpeople=Integer.parseInt(line[6].replace(" ", ""));
-				Location location=new Location(p,s1);
-				Kibbutz k= new Kibbutz(line[1],location,numpeople); 
-				return k;
-			}
-			else if (line[0].contentEquals("Moshav"))
-			{
-				int x=Integer.parseInt(line[2].replace(" ", ""));
-				int y=Integer.parseInt(line[3].replace(" ", ""));
-				Point p=new Point(x,y);
-				
-				//size-size of the settlement
-				int height=Integer.parseInt(line[4].replace(" ", ""));
-				int width=Integer.parseInt(line[5].replace(" ", ""));
-				Size s1=new Size(height,width);
-				
-				//population-the number of people in the settlement
-				int numpeople=Integer.parseInt(line[6].replace(" ", ""));
-				Location location=new Location(p,s1);
-				Moshav m= new Moshav(line[1],location,numpeople);
-				return m;
 		
-			}
-			return null;
+		//point-position of the settlement
+		int x=Integer.parseInt(line[2].replace(" ", ""));
+		int y=Integer.parseInt(line[3].replace(" ", ""));
+		Point p=new Point(x,y);
+		
+		//size-size of the settlement
+		int height=Integer.parseInt(line[4].replace(" ", ""));
+		int width=Integer.parseInt(line[5].replace(" ", ""));
+		Size s1=new Size(height,width);
+		
+		//population-the number of people in the settlement
+		int numpeople=Integer.parseInt(line[6].replace(" ", ""));
+		Location location=new Location(p,s1);
+		
+		
+		//Settlement type
+		if (line[0].contentEquals("City"))
+		{
+
+			City c=new City(line[1],location,numpeople);
+			return c;
 		}
-	private static int calcAge()
+		else if (line[0].contentEquals("Kibbutz"))
+		{
+			Kibbutz k= new Kibbutz(line[1],location,numpeople); 
+			return k;
+		}
+		else if (line[0].contentEquals("Moshav"))
+		{
+			Moshav m= new Moshav(line[1],location,numpeople);
+			return m;
+		}
+		return null;
+		
+
+		}
+	private static int randomAge()
 	{
 		/**
 		 * calc the age in random
@@ -151,8 +137,8 @@ public class SimulationFile
 		 */
 		Random rand = new Random();
 		int y =rand.nextInt(5); //between 0 to 4
-		double x= rand.nextGaussian()*standardDeviation+expectation;
-		int age=(int) ((int) 5*x+y);
+		double x= (int)rand.nextGaussian()*standardDeviation+expectation;
+		int age=(int) Math.abs(5*x+y);
 		return Math.abs(age);
 	}
 	private final static int standardDeviation=6;
