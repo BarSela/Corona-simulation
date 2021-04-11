@@ -30,7 +30,7 @@ public class Size implements Replicable
 	{	/**
 		*@return string representation
 		*/
-		return "height: "+this.getHeight()+" width: "+this.getWidth();
+		return "Size: ("+this.getHeight()+","+this.getWidth()+")";
 	}
 	@Override
 	public boolean equals(Object o)

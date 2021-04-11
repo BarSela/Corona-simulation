@@ -46,7 +46,7 @@ public abstract class Person
 		return s;
 	}
 	public String toString() {
-		return "age:"+this.getAge()+"location:"+location.toString()+"Settlment:"+settlement.toString();
+		return "age: "+this.getAge()+" location:"+location.toString()+"Health condition: "+this.getClass()+" Settlment:"+settlement.toString();
 	}
 	public  abstract boolean equals(Object o);
 	public int getAge()
@@ -75,7 +75,7 @@ public abstract class Person
 		int y =rand.nextInt(5); //between 0 to 4
 		double x= rand.nextGaussian()*standardDeviation+expectation;
 		int age=(int) ((int) 5*x+y);
-		return age;
+		return Math.abs(age);
 	}
 	//data members
 	private int age;

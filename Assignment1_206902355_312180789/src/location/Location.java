@@ -34,7 +34,7 @@ public class Location implements Replicable
 		/**
 		 * @return string representation
 		 */
-		return "location:  Point:"+this.getPosition().toString()+"Size: "+this.getsize().toString();
+		return "location: "+this.getPosition().toString()+" "+this.getsize().toString();
 	}
 	@Override
 	public boolean equals(Object o)
