@@ -28,6 +28,12 @@ public abstract class Person
 		else if (s instanceof Moshav)
 			this.settlement=new Moshav(s.getName(),s.getLocation(),s.getPopulation());
 	}
+	public Person(Person p)
+	{
+		this.age=p.getAge();
+		this.location=p.getLocation();
+		this.settlement=p.getSettlement();
+	}
 	public abstract double contagionProbability();
 	public Person contagion(IVirus iv) 
 	{
@@ -58,7 +64,7 @@ public abstract class Person
 		return this.location.getPoint();
 	}
 	public Settlement getSettlement() {return this.settlement;}
-	public abstract Person replicate();
+	public abstract Object replicate();
 	private int calcAge()
 	{
 		/**

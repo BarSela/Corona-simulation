@@ -16,6 +16,10 @@ public class Healthy extends Person
 		 */
 		super(p, s);
 	}
+	public Healthy(Healthy h_p)
+	{
+		super(h_p);
+	}
 	@Override
 	public double contagionProbability() {
 		/**
@@ -31,9 +35,9 @@ public class Healthy extends Person
 		return (this.getAge()==h.getAge()&&this.getLocation().equals(h.getLocation())&&this.getSettlement().equals(h.getSettlement()));	
 	}
 	@Override
-	public Person replicate() {
+	public Object replicate() {
 		// return replicate instance
-		return new Healthy(this.getLocation(),this.getSettlement());
+		return new Healthy(this);
 	}
 	public Person vaccinate()
 	{

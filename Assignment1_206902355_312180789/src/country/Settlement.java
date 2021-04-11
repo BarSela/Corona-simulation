@@ -4,11 +4,11 @@
  */
 package country;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import location.Location;
 import location.Point;
-import population.Healthy;
 import population.Person;
 import population.Sick;
 
@@ -31,7 +31,7 @@ public abstract class Settlement {
 		this.name=name;
 		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
-		this.people=new Healthy[population];
+		this.people=new ArrayList<Person>(population);
 	}
 	// abstract 
 	protected abstract RamzorColor calculateramzorgrade();
@@ -44,12 +44,12 @@ public abstract class Settlement {
 		 * @return the contagious percent in the settlement
 		 */
 		int sick_people=0;
-		for(int i=0;i<people.length;i++)
+		for(int i=0;i<people.size();i++)
 		{
-			if(people[i] instanceof Sick)
+			if(people.get(i) instanceof Sick)
 				sick_people++;
 		}
-		return sick_people/people.length;
+		return sick_people/people.size();
 	}
 	public Point randomLocation()
 	{
@@ -70,15 +70,7 @@ public abstract class Settlement {
 		 * @param p the person that added
 		 * @return true if the addition succeeded
 		 */
-		if(people.length == 0)
-		{
-			people=new Person[1];
-			people[0]=p.replicate();
-			return true;
-		}
-		people= Arrays.copyOf(people, people.length + 1);
-		people[people.length]=p.replicate();
-		
+		people.add(p);
 		return true;
 		
 	}
@@ -91,16 +83,7 @@ public abstract class Settlement {
 		 * @return true if the transfer succeeded
 		 */
 		settl.AddPerson(p);
-		Person[] temp_arr=new Person[people.length-1];
-		for(int i=0,j=0;i<people.length;i++)
-		{
-			if (!(people[i].equals(p)))
-			{
-				temp_arr[j]=people[i];
-				j++;
-			}
-		}
-		people= Arrays.copyOf(temp_arr, temp_arr.length);
+		people.remove(p);
 		return true;
 		
 	}
@@ -110,7 +93,7 @@ public abstract class Settlement {
 		/**
 		 * @return string representation
 		 */
-		return this.getName()+": location- "+this.getLocation().toString()+" population- "+this.people.length+" ramzor color- "+this.getRamzorColor();
+		return this.getName()+": location- "+this.getLocation().toString()+" population- "+this.people.size()+" ramzor color- "+this.getRamzorColor();
 	}
 	public RamzorColor getRamzorColor()
 	{
@@ -119,7 +102,7 @@ public abstract class Settlement {
 		 */
 		return this.ramzorColor;
 	}
-	private void setRamzorColor(RamzorColor new_color)
+	public void setRamzorColor(RamzorColor new_color)
 	{
 		/**
 		 * set ramzor color of the city
@@ -144,13 +127,13 @@ public abstract class Settlement {
 		/**
 		 * @return amount of people in the settlemnet
 		 */
-		return people.length;
+		return people.size();
 		} 
 	
 	//data members
 	private String name;
 	private Location location;
-	private Person people[];
+	private List<Person> people;
 	private RamzorColor ramzorColor;
 	
 	

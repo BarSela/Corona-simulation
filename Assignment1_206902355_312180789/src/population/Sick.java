@@ -18,6 +18,15 @@ public class Sick extends Person
 		this.contagiousTime=contTime;
 		this.virus=iv;
 	}
+	public Sick(Sick s_p)
+	{
+		/**
+		 * copy constractor 
+		 */
+		super(s_p);
+		this.contagiousTime=s_p.getContagiousTime();
+		this.virus=s_p.getVirus();
+	}
 	@Override
 	public Person contagion(IVirus iv) 
 	{
@@ -82,7 +91,7 @@ public class Sick extends Person
 	@Override
 	public Person replicate() {
 		// replicate the instance
-		return new Sick(this.getLocation(),this.getSettlement(),this.getContagiousTime(),this.getVirus());
+		return new Sick(this);
 	}
 	private long contagiousTime;
 	private IVirus virus;

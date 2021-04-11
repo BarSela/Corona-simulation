@@ -16,6 +16,14 @@ public class Vaccinated extends Person
 		super(p, s);
 		this.vaccinationTime=vaccinationTime;
 	}
+	public Vaccinated(Vaccinated v_p) 
+	{
+		/**
+		 * constractor
+		 */
+		super(v_p);
+		this.vaccinationTime=v_p.getVaccinationTime();
+	}
 	public String toString() 
 	{
 		return  super.toString()+"vaccination time"+this.getVaccinationTime();
@@ -23,7 +31,7 @@ public class Vaccinated extends Person
 	@Override
 	public double contagionProbability() {
 		/**
-		 * return contagion probability
+		 * @return contagion probability
 		 */
 		int t=(int) Math.abs(21-vaccinationTime);
 		if (vaccinationTime<21)
@@ -48,7 +56,7 @@ public class Vaccinated extends Person
 	@Override
 	public Person replicate() {
 		// replicate the instance
-		return new Vaccinated(this.getLocation(),this.getSettlement(),this.getVaccinationTime());
+		return new Vaccinated(this);
 	}
 	private long vaccinationTime;
 }

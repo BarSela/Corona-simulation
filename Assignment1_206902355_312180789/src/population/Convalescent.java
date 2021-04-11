@@ -16,6 +16,12 @@ public class Convalescent extends Person
 		super(p, s);
 		this.virus=virus;
 	}
+	public Convalescent(Convalescent c_p)
+	{
+		super(c_p);
+		this.virus=c_p.getVirus();
+
+	}
 	@Override
 	public double contagionProbability() {
 		/**
@@ -42,7 +48,7 @@ public class Convalescent extends Person
 		/**
 		 * return a replicate instence
 		 */
-		return new Convalescent(this.getLocation(),this.getSettlement(),this.getVirus());
+		return new Convalescent(this);
 	}
 	private IVirus virus;
 }

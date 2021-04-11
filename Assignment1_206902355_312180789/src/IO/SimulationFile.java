@@ -12,10 +12,16 @@ public class SimulationFile
 		try 
 		{
 			PrintWriter output=new PrintWriter(file);
-			output.println("City; Ashdod; 0;0; 90;50; 1000\r\n"
-					+ "City; Beer-Sheva; 30;0; 80;80; 1200\r\n"
-					+ "Moshav; Gevim; 15;15; 10;20; 100\r\n"
-					+ "");
+			output.println("City; Ashdod; 0;0; 90;50; 10");
+			output.println("City; Beer-Sheva; 30;0; 80;80; 12");
+			output.println("Moshav; Gevim; 15;9 15;20; 7");
+			output.println("City; Rehovot; 7;18; 40;30; 9");
+			output.println("kibbutz; ruhama; 10;10; 20;10; 5");
+			output.println("City; Eilat; 70;30; 80;80; 10");
+			output.println("Moshav; Shtulim; 47;23; 90;25; 6");
+			output.println("City; Tel-Aviv; 50;50; 80;80; 9");
+			output.println("Kibbutz; Beeri; 12;15; 60;60; 4");
+			output.println("City; Jerusalem; 9;6; 80;80; 10");
 			output.close();
 		}
 		catch (IOException ex) 

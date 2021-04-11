@@ -3,8 +3,17 @@ package simulation;
 
 public class Clock 
 {
-	public static long time;
-	public Clock(long time) {Clock.time=time;}
+	private static long time;
+	public Clock()
+	{
+		time=0;
+	}
+	public Clock(long time) 
+	{
+		
+		Clock.time=time;
+	}
+	
 	public static long now() 
 	 {
 		return time;
