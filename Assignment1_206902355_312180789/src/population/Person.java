@@ -11,8 +11,14 @@ import simulation.Clock;
 import virus.IVirus;
 public abstract class Person 
 {
+	/*
+	 * Person abstract class
+	 */
 	public Person(Point p, Settlement s)
 	{
+		/*
+		 * Person constructor
+		 */
 		this.age=calcAge();
 		this.location=new Point(p.getPoint_x(),p.getPoint_y());
 		if (s instanceof City)
@@ -25,6 +31,11 @@ public abstract class Person
 	public abstract double contagionProbability();
 	public Person contagion(IVirus iv) 
 	{
+		/**
+		 * contagion a healthy person
+		 * @param iv the virus that the man is sick
+		 * @return a sick person
+		 */
 		Sick s=new Sick(this.getLocation(),this.getSettlement(),Clock.now(),iv);
 		return s;
 	}
@@ -41,12 +52,19 @@ public abstract class Person
 	}
 	public Point getLocation()
 	{
+		/**
+		 * return the location of the person
+		 */
 		return this.location.getPoint();
 	}
 	public Settlement getSettlement() {return this.settlement;}
 	public abstract Person replicate();
 	private int calcAge()
 	{
+		/**
+		 * calc the age in random
+		 * @return age
+		 */
 		Random rand = new Random();
 		int y =rand.nextInt(5); //between 0 to 4
 		double x= rand.nextGaussian()*standardDeviation+expectation;

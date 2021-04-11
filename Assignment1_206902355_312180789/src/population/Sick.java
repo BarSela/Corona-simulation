@@ -6,8 +6,14 @@ import virus.IVirus;
 
 public class Sick extends Person
 {
+	/*
+	 * Sick class
+	 */
 	public Sick(Point p, Settlement s, long contTime, IVirus iv)
 	{
+		/**
+		 * constractor 
+		 */
 		super(p,s);
 		this.contagiousTime=contTime;
 		this.virus=iv;
@@ -15,6 +21,9 @@ public class Sick extends Person
 	@Override
 	public Person contagion(IVirus iv) 
 	{
+		/**
+		 * sick person cant sick again
+		 */
 		return null;
 	}
 
@@ -25,11 +34,18 @@ public class Sick extends Person
 	}
 	private Person recover() 
 	{
+		/**
+		 * return a recover person
+		 */
 		Healthy h=new Healthy(this.getLocation(),this.getSettlement());
 		return h;
 	}
 	public boolean tryTODie() 
 	{
+		/**
+		 * chek if the instance will die
+		 */
+		
 		if(this.virus.tryToKill(this))
 			return true;
 		return false;
@@ -44,19 +60,28 @@ public class Sick extends Person
 	@Override
 	public double contagionProbability()
 	{
+		/**
+		 * sick person cant sick again
+		 */
 		return 0.0;
 	}
 	public IVirus getVirus() 
 	{
+		/**
+		 * return virus
+		 */
 		return this.virus;
 	}
 	public long getContagiousTime()
 	{
-		return contagiousTime;
+		/**
+		 * return contagious time
+		 */
+		return this.contagiousTime;
 	}
 	@Override
 	public Person replicate() {
-		// TODO Auto-generated method stub
+		// replicate the instance
 		return new Sick(this.getLocation(),this.getSettlement(),this.getContagiousTime(),this.getVirus());
 	}
 	private long contagiousTime;

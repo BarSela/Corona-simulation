@@ -6,12 +6,21 @@ import virus.IVirus;
 
 public class Convalescent extends Person 
 {
+	/*
+	 * Convalescent class
+	 */
 	public Convalescent(Point p, Settlement s,IVirus virus) {
+		/**
+		 * constructor to Convalescent
+		 */
 		super(p, s);
 		this.virus=virus;
 	}
 	@Override
 	public double contagionProbability() {
+		/**
+		 * return tha contagion probability
+		 */
 		return 0.2;
 	}
 	@Override
@@ -23,11 +32,16 @@ public class Convalescent extends Person
 	}
 	public IVirus getVirus()
 	{
+		/**
+		 * return the virus
+		 */
 		return this.virus;
 	}
 	@Override
 	public Person replicate() {
-		// TODO Auto-generated method stub
+		/**
+		 * return a replicate instence
+		 */
 		return new Convalescent(this.getLocation(),this.getSettlement(),this.getVirus());
 	}
 	private IVirus virus;

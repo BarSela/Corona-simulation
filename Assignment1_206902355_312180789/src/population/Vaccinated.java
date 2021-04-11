@@ -5,8 +5,14 @@ import location.Point;
 
 public class Vaccinated extends Person
 {
+	/*
+	 * vaccinated class
+	 */
 	public Vaccinated(Point p, Settlement s,long vaccinationTime) 
 	{
+		/**
+		 * constractor
+		 */
 		super(p, s);
 		this.vaccinationTime=vaccinationTime;
 	}
@@ -16,6 +22,9 @@ public class Vaccinated extends Person
 	}
 	@Override
 	public double contagionProbability() {
+		/**
+		 * return contagion probability
+		 */
 		int t=(int) Math.abs(21-vaccinationTime);
 		if (vaccinationTime<21)
 			return Math.min(1, (0.56 + 0.15*Math.sqrt(t)));
@@ -31,11 +40,14 @@ public class Vaccinated extends Person
 	}
 	public long getVaccinationTime()
 	{
+		/**
+		 * return the vaccinated time
+		 */
 		return this.vaccinationTime;
 	}
 	@Override
 	public Person replicate() {
-		// TODO Auto-generated method stub
+		// replicate the instance
 		return new Vaccinated(this.getLocation(),this.getSettlement(),this.getVaccinationTime());
 	}
 	private long vaccinationTime;

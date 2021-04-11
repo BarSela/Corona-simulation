@@ -6,12 +6,21 @@ import simulation.Clock;
 
 public class Healthy extends Person 
 {
+	/**
+	 * helthy class
+	 */
 
 	public Healthy(Point p, Settlement s) {
+		/**
+		 * constructor 
+		 */
 		super(p, s);
 	}
 	@Override
 	public double contagionProbability() {
+		/**
+		 * return contagion probability
+		 */
 		return 1;
 	}
 	@Override
@@ -23,11 +32,14 @@ public class Healthy extends Person
 	}
 	@Override
 	public Person replicate() {
-		// TODO Auto-generated method stub
+		// return replicate instance
 		return new Healthy(this.getLocation(),this.getSettlement());
 	}
 	public Person vaccinate()
 	{
+		/**
+		 * return a instence vaccinated
+		 */
 		Vaccinated v=new Vaccinated(this.getLocation(),this.getSettlement(),Clock.now());
 		return v;
 	}
