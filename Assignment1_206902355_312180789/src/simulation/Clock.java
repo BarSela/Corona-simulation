@@ -12,24 +12,7 @@ public class Clock
 	/**
 	 * time is the Current time in simulation
 	 */
-	private static long time;
-	
-	public Clock()
-	{
-		/**
-		 * defult constructor
-		 */
-		time=0;
-	}
-	public Clock(long time) 
-	{
-		/**
-		 * constructor
-		 * @param time 
-		 */
-		
-		Clock.time=time;
-	}
+	private static long time=0;
 	
 	public static long now() 
 	 {

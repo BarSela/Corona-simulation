@@ -34,9 +34,9 @@ public class City extends Settlement {
 		double new_color= 0.2*Math.pow(4,1.25*p);
 		if(new_color<=0.4)
 			return RamzorColor.GREEN;
-		else if (new_color<=0.6)
+		if (new_color> 0.4 && new_color<=0.6)
 			return  RamzorColor.YELLOW;
-		else if (new_color<=0.8)
+		if (new_color>0.6 && new_color<=0.8)
 			return  RamzorColor.ORANGE;
 		else
 			return RamzorColor.RED;

@@ -40,12 +40,14 @@ public abstract class Settlement {
 		 * @return the contagious percent in the settlement
 		 */
 		int sick_people=0;
-		for(int i=0;i<people.size();i++)
+		int population=this.getPopulation();
+		for(int i=0;i<this.getPopulation();i++)
 		{
-			if(people.get(i) instanceof Sick)
+			if(this.getPeople().get(i) instanceof Sick)
 				sick_people++;
 		}
-		return sick_people/people.size();
+		double percent=(double)sick_people/population;
+		return percent;
 	}
 	public void setRamzorColor(RamzorColor new_color)
 	{

@@ -46,11 +46,11 @@ public class SimulationFile
 			output.println("City; Beer-Sheva; 30;0; 80;80; 1200");
 			output.println("Moshav; Gevim; 15;9; 15;20; 700");
 			output.println("City; Rehovot; 7;18; 40;30; 9000");
-			output.println("Kibbutz; ruhama; 10;10; 20;10; 500");
-			output.println("City; Eilat; 70;30; 80;80; 1000");
-			output.println("Moshav; Shtulim; 47;23; 90;25; 600");
+			output.println("Kibbutz; ruhama; 10;10; 20;10; 1500");
+			output.println("City; Eilat; 70;30; 80;80; 7000");
+			output.println("Moshav; Shtulim; 47;23; 90;25; 2000");
 			output.println("City; Tel-Aviv; 50;50; 80;80; 9000");
-			output.println("Kibbutz; Beeri; 12;15; 60;60; 400");
+			output.println("Kibbutz; Beeri; 12;15; 60;60; 1400");
 			output.println("City; Jerusalem; 9;6; 80;80; 10000");
 			output.close();
 		}
@@ -162,8 +162,14 @@ public class SimulationFile
 		 */
 		Random rand = new Random();
 		int y =rand.nextInt(5); //between 0 to 4
-		double x= (int)rand.nextGaussian()*standardDeviation+expectation;
-		int age=(int) Math.abs(5*x+y);
+		int g=(int) rand.nextGaussian();
+		
+		while(g>1 || g<-1)
+		{
+			g=(int) rand.nextGaussian();
+		}
+		double x= (int)g*standardDeviation+expectation;
+		int age= (int) Math.abs(5*x+y);
 		return Math.abs(age);
 		
 	}

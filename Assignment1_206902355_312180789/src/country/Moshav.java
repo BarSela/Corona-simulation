@@ -46,7 +46,7 @@ public class Moshav extends Settlement {
 			c=1.0;
 			break;
 		}
-		double new_color= 0.45+Math.pow(Math.pow(1.2, c)*(p-0.35),5);
+		double new_color= 0.3+3*Math.pow(Math.pow(1.2, c)*(p-0.35),5);
 		if(new_color<=0.4)
 			return RamzorColor.GREEN;
 		else if (new_color<=0.6)
