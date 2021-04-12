@@ -67,7 +67,9 @@ public class Size implements Replicable
 	}
 	@Override
 	public Object replicate() {
-		// replicate size
+		/**
+		 * @return replicate of Size
+		 */
 		return new Size(this.getHeight(),this.getWidth());
 	}
 	//data members

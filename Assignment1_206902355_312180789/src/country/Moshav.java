@@ -24,7 +24,7 @@ public class Moshav extends Settlement {
 	}
 
 	@Override
-	protected RamzorColor calculateramzorgrade() {
+	public RamzorColor calculateramzorgrade() {
 		 /**
 		  * calculate ramzor color by the growth of  in the moshav
 		  * @return the new ramzor color

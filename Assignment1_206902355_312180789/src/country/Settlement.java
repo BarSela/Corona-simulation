@@ -33,9 +33,7 @@ public abstract class Settlement {
 		this.ramzorColor=RamzorColor.GREEN;
 		this.people=new ArrayList<Person>(population);
 	}
-	// abstract 
-	protected abstract RamzorColor calculateramzorgrade();
-	public abstract boolean equals(Object o);
+
 	protected double contagiousPercent()
 	{
 		/**
@@ -49,10 +47,18 @@ public abstract class Settlement {
 		}
 		return sick_people/people.size();
 	}
+	public void setRamzorColor(RamzorColor new_color)
+	{
+		/**
+		 * set the ramzor color of the settlement
+		 * @param new_color the new color of the settlement
+		 */
+		this.ramzorColor=new_color;
+	}
 	public Point randomLocation()
 	{
 		/**
-		 * @return random location
+		 * @return random location (point) in the boundry of the settlement
 		 */
 		Random rand = new Random();
 		// Generate random integers in range x to 999
@@ -100,13 +106,6 @@ public abstract class Settlement {
 		 */
 		return this.ramzorColor;
 	}
-	public void setRamzorColor(RamzorColor new_color)
-	{
-		/**
-		 * set ramzor color of the city
-		 */
-		this.ramzorColor=new_color;
-	}
 	public String getName()
 	{
 		/**
@@ -127,7 +126,19 @@ public abstract class Settlement {
 		 */
 		return this.people.size();
 		} 
-	public List<Person> getPeople(){return this.people;}
+	public List<Person> getPeople()
+	{
+		/**
+		 * #return the list of the people in the settlement
+		 */
+		return this.people;
+	}
+	
+	
+	// abstract 
+	public abstract RamzorColor calculateramzorgrade();
+	public abstract boolean equals(Object o);
+	
 	//data members
 	private String name;
 	private Location location;

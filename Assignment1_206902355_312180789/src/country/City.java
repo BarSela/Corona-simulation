@@ -25,7 +25,7 @@ public class City extends Settlement {
 		super(name, location,population);
 	}
 	@Override
-	protected RamzorColor calculateramzorgrade() {
+	public RamzorColor calculateramzorgrade() {
 		 /**
 		  * calculate ramzor color by the growth of  in the city
 		  * @return the new ramzor color

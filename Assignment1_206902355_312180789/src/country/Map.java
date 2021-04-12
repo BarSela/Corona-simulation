@@ -38,9 +38,27 @@ public class Map {
 		return settlements==m.settlements;
 
 	}
-	public static int getSize() {return size;}
-	public static void setSize() {size++;}
-	public Settlement[] getSettlement() {return this.settlements;} 
+	public static int getSize() {
+		/**
+		 *@return size of the map
+		 */
+		return size;
+		}
+	public static void setSize() 
+	{
+		/**
+		 * set size to size+1
+		 */
+		size++;
+	}
+	public Settlement[] getSettlement() 
+	{
+		/**
+		 * @return array of settlement
+		 */
+		return this.settlements;
+	} 
+	
 	//data members
 	private Settlement settlements[];
 	private static int size=0;

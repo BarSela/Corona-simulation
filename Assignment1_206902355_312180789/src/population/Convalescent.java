@@ -1,18 +1,27 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package population;
 
 import country.Settlement;
 import location.Point;
 import virus.IVirus;
-
+/*
+ * Convalescent class
+ */
 public class Convalescent extends Person 
 {
 	/*
-	 * Convalescent class
+	 * Convalescent class represent a person who recovered from a virus
 	 */
 	public Convalescent(Point p, Settlement s,int age,IVirus virus) {
 		/**
 		 * Constractor
-		 * @param p the point, s Settlement info
+		 * @param p the point
+		 * @param s Settlement info
+		 * @param age 
+		 * @param virus the virus he got infected
 		 */
 		super(p, s,age);
 		this.virus=virus;
@@ -38,9 +47,9 @@ public class Convalescent extends Person
 	@Override
 	public boolean equals(Object o) {
 		/**
-		 * chek if the instance is equals
+		 * check if the instance is equals
 		 * @param o the instance
-		 * @return true or false
+		 * @return true if the instance is equal to another else false
 		 */
 		if(!(o instanceof Convalescent))
 			return false;
@@ -61,5 +70,7 @@ public class Convalescent extends Person
 		 */
 		return new Convalescent(this);
 	}
+	
+	//data member
 	private IVirus virus;
 }

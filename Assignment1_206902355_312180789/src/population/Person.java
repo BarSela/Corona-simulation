@@ -1,3 +1,7 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package population;
 
 import country.City;
@@ -16,6 +20,9 @@ public abstract class Person
 	{
 		/*
 		 * Person constructor
+		 * @param p the point
+		 * @param s Settlement info
+		 * @param age 
 		 */
 		this.age=age;
 		this.location=p;
@@ -28,11 +35,15 @@ public abstract class Person
 	}
 	public Person(Person p)
 	{
+		/**
+		 * copy constructor
+		 * @param p the person to copy his details
+		 */
 		this.age=p.getAge();
 		this.location=p.getLocation();
 		this.settlement=p.getSettlement();
 	}
-	public abstract double contagionProbability();
+	
 	public Person contagion(IVirus iv) 
 	{
 		/**
@@ -43,10 +54,14 @@ public abstract class Person
 		Sick s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 		return s;
 	}
-	public String toString() {
+	public String toString() 
+	{
+		/**
+		 * @return the String representation of the person
+		 */
 		return "age: "+this.getAge()+" location:"+this.getLocation().toString()+" Settlment:"+this.getSettlement().toString();
 	}
-	public  abstract boolean equals(Object o);
+
 	public int getAge()
 	{
 		/**
@@ -57,12 +72,22 @@ public abstract class Person
 	public Point getLocation()
 	{
 		/**
-		 * return the location of the person
+		 * @return the location of the person
 		 */
 		return this.location.getPoint();
 	}
-	public Settlement getSettlement() {return this.settlement;}
+	public Settlement getSettlement() 
+	{
+		/**
+		 * @return the settlement that the person lives in
+		 */
+		return this.settlement;
+	}
+	
+	//abstract
 	public abstract Object replicate();
+	public  abstract boolean equals(Object o);
+	public abstract double contagionProbability();
 
 	//data members
 	private int age;

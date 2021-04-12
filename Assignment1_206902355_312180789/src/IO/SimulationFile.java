@@ -1,8 +1,11 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package IO;
 
 import java.io.*;
 import java.util.*;
-
 import country.City;
 import country.Kibbutz;
 import country.Map;
@@ -13,15 +16,29 @@ import location.Point;
 import location.Size;
 import population.Healthy;
 
+/**
+ * simulation file class
+ * the class responsible for loading instances of the simulation from a file.
+ */
+
 public class SimulationFile
 {
 	public Map loadMap(File file) throws Exception
 	{
+		/**
+		 * the function responsible for load the map
+		 * @param file the file that contain all the settlement
+		 * @return the map object
+		 */
 		SimulationFile.writeTofile(file);
 		return new Map(SimulationFile.parse(file));
 	}
 	public static void writeTofile(File file)
 	{
+		/**
+		 * the function write all the settlements to the file object
+		 * @param file the file to write 
+		 */
 		try 
 		{
 			PrintWriter output=new PrintWriter(file);
@@ -44,6 +61,11 @@ public class SimulationFile
 	}
 	public static Settlement[] parse(File file) throws Exception
 	{
+		/**
+		 * the function read the file and split the settlement and parse them to the array of settlement
+		 * @param file to read the settlements 
+		 * @return the function return array of settlements
+		 */
 		Settlement[] settlement=null;
 		String name = null;
 		String[] line=null;
@@ -92,6 +114,11 @@ public class SimulationFile
 	}
 	private static Settlement parseSettlement(String[] line)
 	{
+		/**
+		 * the function create a settlemnt from string
+		 * @param line string array 
+		 * @return Settlement 
+		 */
 		
 		//point-position of the settlement
 		int x=Integer.parseInt(line[2].replace(" ", ""));
@@ -130,7 +157,7 @@ public class SimulationFile
 	private static int randomAge()
 	{
 		/**
-		 * calc the age in random
+		 * calc random age
 		 * @return age
 		 */
 		Random rand = new Random();

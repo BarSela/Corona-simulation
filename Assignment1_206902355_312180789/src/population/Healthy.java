@@ -1,3 +1,7 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package population;
 
 import country.Settlement;
@@ -12,7 +16,9 @@ public class Healthy extends Person
 	public Healthy(Point p, Settlement s,int age) {
 		/**
 		 * Constractor
-		 * @param p the point, s Settlement info
+		 * @param p the point
+		 * @param s Settlement info
+		 * @param age
 		 */		super(p,s,age);
 	}
 	public Healthy(Healthy h_p)

@@ -69,7 +69,7 @@ public class Point implements Replicable
 	public Point getPoint()
 	{
 		/**
-		 * return point object
+		 * @return point object
 		 */
 		Point p=(Point) this.replicate();
 		return p;

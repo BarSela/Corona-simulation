@@ -25,7 +25,7 @@ public class Kibbutz extends Settlement {
 	}
 
 	@Override
-	protected RamzorColor calculateramzorgrade() {
+	public RamzorColor calculateramzorgrade() {
 		 /**
 		  * calculate ramzor color by the growth of  in the kibbutz
 		  * @return the new ramzor color
