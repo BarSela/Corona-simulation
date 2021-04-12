@@ -1,5 +1,4 @@
 package simulation;
-import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -19,7 +18,8 @@ public class Main {
 			/**
 			 * step 1
 			 */
-			Map world=SimulationFile.loadMap();
+			SimulationFile simulationFile=new SimulationFile();
+			Map world=simulationFile.loadMap();
 			/**
 			 * step 2
 			 */
@@ -38,18 +38,22 @@ public class Main {
 			for (int i=0;i<numOfSimulation;i++)
 			{
 				for (int j=0;j<Map.getSize();j++)
-				{
-					for (int k=0;k<world.getSettlement()[i].getPopulation();k++)
+				{	
+					for (int k=0;k<world.getSettlement()[j].getPopulation();k++)
 					{
-						if (world.getSettlement()[i].getPeople().get(k) instanceof Sick)
+						if (world.getSettlement()[j].getPeople().get(k) instanceof Sick)
 							for (int t=0;t<6;t++)
 							{
+								boolean flag=false;
 								Random rand=new Random();
-								int x=rand.nextInt(world.getSettlement()[i].getPopulation());
-								boolean flag=virus.tryToContagion(world.getSettlement()[i].getPeople().get(k), world.getSettlement()[i].getPeople().get(x));
+								int x=rand.nextInt(world.getSettlement()[j].getPopulation());
+								if (!(world.getSettlement()[j].getPeople().get(x) instanceof Sick))
+									flag=virus.tryToContagion(world.getSettlement()[j].getPeople().get(k), world.getSettlement()[j].getPeople().get(x));
 								if (flag==true)
-									world.getSettlement()[i].getPeople().get(x).contagion(virus);
-									
+									{
+										world.getSettlement()[j].getPeople().remove(x);
+										world.getSettlement()[j].getPeople().set(x,world.getSettlement()[j].getPeople().get(x).contagion(virus));
+									}
 							}
 					}
 				}

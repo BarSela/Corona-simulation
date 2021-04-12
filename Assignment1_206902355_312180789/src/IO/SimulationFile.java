@@ -16,7 +16,7 @@ import population.Healthy;
 public class SimulationFile
 {
 	public static File file= new File("data.txt");
-	public static Map loadMap() throws Exception
+	public Map loadMap() throws Exception
 	{
 		SimulationFile.writeTofile(file);
 		return new Map(SimulationFile.parse());
