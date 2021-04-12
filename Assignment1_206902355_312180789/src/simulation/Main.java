@@ -46,12 +46,11 @@ public class Main {
 							{
 								boolean flag=false;
 								Random rand=new Random();
-								int x=rand.nextInt(world.getSettlement()[j].getPopulation());
+								int x=rand.nextInt(world.getSettlement()[j].getPopulation()-1);
 								if (!(world.getSettlement()[j].getPeople().get(x) instanceof Sick))
 									flag=virus.tryToContagion(world.getSettlement()[j].getPeople().get(k), world.getSettlement()[j].getPeople().get(x));
 								if (flag==true)
 									{
-										world.getSettlement()[j].getPeople().remove(x);
 										world.getSettlement()[j].getPeople().set(x,world.getSettlement()[j].getPeople().get(x).contagion(virus));
 									}
 							}
