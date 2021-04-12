@@ -15,11 +15,10 @@ import population.Healthy;
 
 public class SimulationFile
 {
-	public static File file= new File("data.txt");
-	public Map loadMap() throws Exception
+	public Map loadMap(File file) throws Exception
 	{
 		SimulationFile.writeTofile(file);
-		return new Map(SimulationFile.parse());
+		return new Map(SimulationFile.parse(file));
 	}
 	public static void writeTofile(File file)
 	{
@@ -43,7 +42,7 @@ public class SimulationFile
 			System.out.printf("Error %s\n",ex);
 		}
 	}
-	public static Settlement[] parse() throws Exception
+	public static Settlement[] parse(File file) throws Exception
 	{
 		Settlement[] settlement=null;
 		String name = null;

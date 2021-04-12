@@ -1,4 +1,5 @@
 package simulation;
+import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
@@ -13,13 +14,14 @@ public class Main {
 	public static void main(String[] args) throws Exception 
 	{ 
 		final int numOfSimulation=5;
+		File file= new File("data.txt");
 		try 
 		{
 			/**
 			 * step 1
 			 */
 			SimulationFile simulationFile=new SimulationFile();
-			Map world=simulationFile.loadMap();
+			Map world=simulationFile.loadMap(file);
 			/**
 			 * step 2
 			 */
