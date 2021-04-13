@@ -4,6 +4,8 @@
  */
 package simulation;
 
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
@@ -21,7 +23,7 @@ public class Main {
 	public static void main(String[] args) throws Exception 
 	{ 
 		final int numOfSimulation=5;
-		File file= new File("data.txt");
+		File file=loadFileFunc();
 		try 
 		{
 			/**
@@ -72,6 +74,9 @@ public class Main {
 				
 				Clock.nextTick();
 			}
+			
+			
+			//just for check...
 			for (int i=0;i<Map.getSize();i++)
 				for(int j=0;j<world.getSettlement()[i].getPopulation();j++)
 					if (world.getSettlement()[i].getPeople().get(j) instanceof Sick)
@@ -82,6 +87,16 @@ public class Main {
 			e.printStackTrace();
 		}
 		
+	}
+	private static File loadFileFunc() 
+	{
+        FileDialog fd = new FileDialog((Frame) null, "Please choose a file:", FileDialog.LOAD);
+        fd.setVisible(true);
+        if (fd.getFile() == null)
+            return null;
+        File f = new File(fd.getDirectory(), fd.getFile());
+        System.out.println(f.getPath());
+        return f;
 	}
 
 }

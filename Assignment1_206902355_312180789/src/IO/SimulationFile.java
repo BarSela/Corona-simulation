@@ -30,34 +30,8 @@ public class SimulationFile
 		 * @param file the file that contain all the settlement
 		 * @return the map object
 		 */
-		SimulationFile.writeTofile(file);
+		
 		return new Map(SimulationFile.parse(file));
-	}
-	public static void writeTofile(File file)
-	{
-		/**
-		 * the function write all the settlements to the file object
-		 * @param file the file to write 
-		 */
-		try 
-		{
-			PrintWriter output=new PrintWriter(file);
-			output.println("City; Ashdod; 0;0; 90;50; 1000");
-			output.println("City; Beer-Sheva; 30;0; 80;80; 1200");
-			output.println("Moshav; Gevim; 15;9; 15;20; 700");
-			output.println("City; Rehovot; 7;18; 40;30; 9000");
-			output.println("Kibbutz; ruhama; 10;10; 20;10; 1500");
-			output.println("City; Eilat; 70;30; 80;80; 7000");
-			output.println("Moshav; Shtulim; 47;23; 90;25; 2000");
-			output.println("City; Tel-Aviv; 50;50; 80;80; 9000");
-			output.println("Kibbutz; Beeri; 12;15; 60;60; 1400");
-			output.println("City; Jerusalem; 9;6; 80;80; 10000");
-			output.close();
-		}
-		catch (IOException ex) 
-		{
-			System.out.printf("Error %s\n",ex);
-		}
 	}
 	public static Settlement[] parse(File file) throws Exception
 	{
@@ -173,6 +147,11 @@ public class SimulationFile
 		return Math.abs(age);
 		
 	}
+	
+	//data members
+	private Map map;
+	private static int Size;
+	
 	private final static int standardDeviation=6;
 	private final static int expectation=9;
 }
