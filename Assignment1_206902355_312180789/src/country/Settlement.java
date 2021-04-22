@@ -31,7 +31,7 @@ public abstract class Settlement {
 		this.name=name;
 		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
-		this.people=new ArrayList<Person>(population);
+		this.healthy_people=new ArrayList<Person>(population);
 	}
 
 	protected double contagiousPercent()
@@ -39,13 +39,8 @@ public abstract class Settlement {
 		/**
 		 * @return the contagious percent in the settlement
 		 */
-		int sick_people=0;
+		int sick_people=this.getsick_people().size();
 		int population=this.getPopulation();
-		for(int i=0;i<this.getPopulation();i++)
-		{
-			if(this.getPeople().get(i) instanceof Sick)
-				sick_people++;
-		}
 		double percent=(double)sick_people/population;
 		return percent;
 	}
@@ -76,8 +71,22 @@ public abstract class Settlement {
 		 * @param p the person that added
 		 * @return true if the addition succeeded
 		 */
-		people.add(p);
-		return true;
+		
+		if(this.getPopulation() < this.getCapacity())
+		{
+			if(p instanceof Sick)
+			{
+				this.healthy_people.add(p);
+			}
+			else
+			{
+				this.sick_people.add(p);
+			}
+			return true;
+		}
+		return false;
+
+		
 		
 	}
 	public boolean transferPerson(Person p, Settlement settl)
@@ -88,9 +97,26 @@ public abstract class Settlement {
 		 * @param settl the settlement the person is transferd to
 		 * @return true if the transfer succeeded
 		 */
-		settl.AddPerson(p);
-		people.remove(p);
-		return true;
+		double p1=this.getRamzorColor().getP();
+		double p2=settl.getRamzorColor().getP();
+		
+		if(transferPropabillity(p1,p2))
+		{
+			if(settl.AddPerson(p))
+			{
+				if(p instanceof Sick)
+				{
+					this.healthy_people.remove(p);
+				}
+				else
+				{
+					this.sick_people.remove(p);
+				}
+				return true;
+			}
+		}
+		return false;
+
 		
 	}
 	@Override
@@ -126,16 +152,56 @@ public abstract class Settlement {
 		/**
 		 * @return amount of people in the settlemnet
 		 */
-		return this.people.size();
+		int population =this.healthy_people.size()+this.sick_people.size();
+		return population;
 		} 
-	public List<Person> getPeople()
+	public List<Person> gethealthy_people()
 	{
 		/**
-		 * #return the list of the people in the settlement
+		 * @return the list of the healthy people in the settlement
 		 */
-		return this.people;
+		return this.healthy_people;
 	}
-	
+	public List<Person> getsick_people()
+	{
+		/**
+		 * @return the list of the sick people in the settlement
+		 */
+		return this.sick_people;
+	}
+	public List<Settlement> getneighbors()
+	{
+		/**
+		 * @return the list neighbor settlements
+		 */
+		return neighbors;
+	}
+	public int getCapacity()
+	{
+		/**
+		 * @return the max capacity of the settlement
+		 */
+		return capacity;
+	}
+	public int getVaccine_doses()
+	{
+		/**
+		 * @return the number of vaccine_doses
+		 */
+		return vaccine_doses;
+	}
+	private boolean transferPropabillity(double p1, double p2)
+	{
+		/**
+		 * @param p1 propabillity of the origin settlement ramzorcolor
+		 * @param p2 propabillity of the target settlement ramzorcolor
+		 * @return true if the transfer successed else false
+		 */
+		
+		 double chance =p1*p2;
+		 return chance >=Math.random();
+		 
+	}
 	
 	// abstract 
 	public abstract RamzorColor calculateramzorgrade();
@@ -147,7 +213,7 @@ public abstract class Settlement {
 	private List<Person> healthy_people;
 	private List<Person> sick_people;
 	private RamzorColor ramzorColor;
-	private int Capacity;
-	private int Vaccine_doses;
-	private List<Settlement> Neighbors;
+	private int capacity;
+	private int vaccine_doses;
+	private List<Settlement> neighbors;
 }

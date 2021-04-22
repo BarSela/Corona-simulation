@@ -31,22 +31,7 @@ public class Kibbutz extends Settlement {
 		  * @return the new ramzor color
 		  */
 		double p =super.contagiousPercent();
-		double c=0;
-		switch(super.getRamzorColor())
-		{
-		case GREEN:
-			c=0.4;
-			break;
-		case YELLOW:
-			c=0.6;
-			break;
-		case ORANGE:
-			c=0.8;
-			break;
-		case RED:
-			c=1.0;
-			break;
-		}
+		double c=super.getRamzorColor().getVal();
 		double new_color= 0.45+Math.pow(Math.pow(1.5, c)*(p-0.4),3);
 		if(new_color<=0.4)
 			return RamzorColor.GREEN;
