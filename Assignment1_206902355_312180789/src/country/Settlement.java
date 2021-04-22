@@ -144,11 +144,10 @@ public abstract class Settlement {
 	//data members
 	private String name;
 	private Location location;
-	private List<Person> people;
+	private List<Person> healthy_people;
+	private List<Person> sick_people;
 	private RamzorColor ramzorColor;
-
-	
-	
-	
-
+	private int Capacity;
+	private int Vaccine_doses;
+	private List<Settlement> Neighbors;
 }
