@@ -113,17 +113,17 @@ public class SimulationFile
 		if (line[0].contentEquals("City"))
 		{
 
-			City c=new City(line[1],location,numpeople);
+			City c=new City(line[1],location,numpeople,(int) (capcity*numpeople));
 			return c;
 		}
 		else if (line[0].contentEquals("Kibbutz"))
 		{
-			Kibbutz k= new Kibbutz(line[1],location,numpeople); 
+			Kibbutz k= new Kibbutz(line[1],location,numpeople,(int) (capcity*numpeople)); 
 			return k;
 		}
 		else if (line[0].contentEquals("Moshav"))
 		{
-			Moshav m= new Moshav(line[1],location,numpeople);
+			Moshav m= new Moshav(line[1],location,numpeople,(int) (capcity*numpeople));
 			return m;
 		}
 		return null;
@@ -151,7 +151,7 @@ public class SimulationFile
 	//data members
 	private Map map;
 	private static int Size;
-	
+	private final static double capcity=1.3;
 	private final static int standardDeviation=6;
 	private final static int expectation=9;
 }

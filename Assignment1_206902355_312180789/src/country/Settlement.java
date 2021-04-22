@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Random;
 import location.Location;
 import location.Point;
+import population.Healthy;
 import population.Person;
 import population.Sick;
 
@@ -21,7 +22,7 @@ public abstract class Settlement {
 	 * this class represent a settlement on the map
 	 */
 	
-	public Settlement(String name, Location location,int population){
+	public Settlement(String name, Location location,int population,int capacity){
 		/**
 		 * consturctor
 		 * @param name          the name of the settlement
@@ -32,6 +33,8 @@ public abstract class Settlement {
 		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
 		this.healthy_people=new ArrayList<Person>(population);
+		this.sick_people=new ArrayList<Person>(population);
+		this.capacity=capacity;
 	}
 
 	protected double contagiousPercent()
@@ -74,7 +77,7 @@ public abstract class Settlement {
 		
 		if(this.getPopulation() < this.getCapacity())
 		{
-			if(p instanceof Sick)
+			if(p instanceof Healthy)
 			{
 				this.healthy_people.add(p);
 			}

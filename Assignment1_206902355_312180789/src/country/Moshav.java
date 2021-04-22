@@ -13,14 +13,14 @@ public class Moshav extends Settlement {
 	 * this class represent the sttlement moshav
 	 * extend settlement class
 	 */
-	public Moshav(String name, Location location,int population) {
+	public Moshav(String name, Location location,int population,int capacity) {
 		/**
 		 * consturctor
 		 * @param name          the name of the settlement
 		 * @param location      position and size
 		 * @param population    amount of peole in the moshav
 		 */
-		super(name, location,population);
+		super(name, location,population,capacity);
 	}
 
 	@Override

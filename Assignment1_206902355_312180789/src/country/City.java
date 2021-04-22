@@ -15,14 +15,14 @@ public class City extends Settlement {
 	 * this class represent the sttlement city
 	 * extend settlement class
 	 */
-	public City(String name, Location location,int population) {
+	public City(String name, Location location,int population,int capacity) {
 		/**
 		 * consturctor
 		 * @param name          the name of the settlement
 		 * @param location      position and size
 		 * @param population    amount of peole in the city
 		 */
-		super(name, location,population);
+		super(name, location,population,capacity);
 	}
 	@Override
 	public RamzorColor calculateramzorgrade() {

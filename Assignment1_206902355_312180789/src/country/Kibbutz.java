@@ -14,14 +14,14 @@ public class Kibbutz extends Settlement {
 	 * extend settlement class
 
 	 */
-	public Kibbutz(String name, Location location,int population) {
+	public Kibbutz(String name, Location location,int population,int capacity) {
 		/**
 		 * consturctor
 		 * @param name          the name of the settlement
 		 * @param location      position and size
 		 * @param population    amount of peole in the kibbutz
 		 */
-		super(name, location, population);
+		super(name, location, population,capacity);
 	}
 
 	@Override

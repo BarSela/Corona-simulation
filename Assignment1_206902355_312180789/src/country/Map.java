@@ -10,7 +10,7 @@ public class Map {
 	/**
 	 * this class represent the map of Settlements
 	 */
-	public Map(Settlement[] settlement) 
+	public Map(Settlement[] settlement)
 	{
 		/**
 		 * load map-constructor

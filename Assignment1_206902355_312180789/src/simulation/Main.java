@@ -8,9 +8,11 @@ import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 import IO.SimulationFile;
 import country.Map;
+import population.Person;
 import population.Sick;
 import virus.BritishVariant;
 import virus.IVirus;
@@ -41,7 +43,7 @@ public class Main {
 				numContagion[i]=world.getSettlement()[i].getPopulation()*0.01;
 				for (int j=0;j<numContagion[i];j++)
 				{
-					world.getSettlement()[i].getPeople().set(j,world.getSettlement()[i].getPeople().get(j).contagion(virus));
+					world.getSettlement()[i].getsick_people().set(j,world.getSettlement()[i].gethealthy_people().get(j).contagion(virus));
 				}
 			}
 			/**
@@ -55,17 +57,17 @@ public class Main {
 				{	
 					for (int k=0;k<numContagion[j];k++)
 					{
-						if (world.getSettlement()[j].getPeople().get(k) instanceof Sick)
+						if (world.getSettlement()[j].getsick_people().get(k) instanceof Sick)
 							for (int t=0;t<6;t++)
 							{
 								boolean flag=false;
 								Random rand=new Random();
 								int x=rand.nextInt(world.getSettlement()[j].getPopulation()-1);
-								if (!(world.getSettlement()[j].getPeople().get(x) instanceof Sick))
-									flag=virus.tryToContagion(world.getSettlement()[j].getPeople().get(k), world.getSettlement()[j].getPeople().get(x));
+								if (!(world.getSettlement()[j].getsick_people().get(x) instanceof Sick))
+									flag=virus.tryToContagion(world.getSettlement()[j].gethealthy_people().get(k), world.getSettlement()[j].getsick_people().get(x));
 								if (flag==true)
 									{
-										world.getSettlement()[j].getPeople().set(x,world.getSettlement()[j].getPeople().get(x).contagion(virus));
+										world.getSettlement()[j].getsick_people().set(x,world.getSettlement()[j].gethealthy_people().get(x).contagion(virus));
 									}
 							}
 					}
@@ -79,8 +81,8 @@ public class Main {
 			//just for check...
 			for (int i=0;i<Map.getSize();i++)
 				for(int j=0;j<world.getSettlement()[i].getPopulation();j++)
-					if (world.getSettlement()[i].getPeople().get(j) instanceof Sick)
-						System.out.println(world.getSettlement()[i].getPeople().get(j).toString());
+					if (world.getSettlement()[i].getsick_people().get(j) instanceof Sick)
+						System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());
 		}
 		catch (IOException e) 
 		{
