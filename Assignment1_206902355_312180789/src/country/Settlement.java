@@ -217,6 +217,6 @@ public abstract class Settlement {
 	private List<Person> sick_people;
 	private RamzorColor ramzorColor;
 	private int capacity;
-	private int vaccine_doses;
+	private int vaccine_doses=0;
 	private List<Settlement> neighbors;
 }
