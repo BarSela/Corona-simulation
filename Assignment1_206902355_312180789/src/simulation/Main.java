@@ -43,7 +43,8 @@ public class Main {
 				numContagion[i]=world.getSettlement()[i].getPopulation()*0.01;
 				for (int j=0;j<numContagion[i];j++)
 				{
-					world.getSettlement()[i].getsick_people().set(j,world.getSettlement()[i].gethealthy_people().get(j).contagion(virus));
+					world.getSettlement()[i].getsick_people().add(j,world.getSettlement()[i].gethealthy_people().get(j).contagion(virus));
+					world.getSettlement()[i].gethealthy_people().remove(j);
 				}
 			}
 			/**
@@ -62,12 +63,12 @@ public class Main {
 							{
 								boolean flag=false;
 								Random rand=new Random();
-								int x=rand.nextInt(world.getSettlement()[j].getPopulation()-1);
-								if (!(world.getSettlement()[j].getsick_people().get(x) instanceof Sick))
-									flag=virus.tryToContagion(world.getSettlement()[j].gethealthy_people().get(k), world.getSettlement()[j].getsick_people().get(x));
+								int x=rand.nextInt(world.getSettlement()[j].getsick_people().size()-1);
+								flag=virus.tryToContagion(world.getSettlement()[j].getsick_people().get(k), world.getSettlement()[j].gethealthy_people().get(x));
 								if (flag==true)
 									{
-										world.getSettlement()[j].getsick_people().set(x,world.getSettlement()[j].gethealthy_people().get(x).contagion(virus));
+										world.getSettlement()[j].getsick_people().add(x,world.getSettlement()[j].gethealthy_people().get(x).contagion(virus));;
+										world.getSettlement()[j].gethealthy_people().remove(x);
 									}
 							}
 					}
@@ -77,12 +78,12 @@ public class Main {
 				Clock.nextTick();
 			}
 			
-			
 			//just for check...
 			for (int i=0;i<Map.getSize();i++)
-				for(int j=0;j<world.getSettlement()[i].getPopulation();j++)
+				for(int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
 					if (world.getSettlement()[i].getsick_people().get(j) instanceof Sick)
 						System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());
+			
 		}
 		catch (IOException e) 
 		{
