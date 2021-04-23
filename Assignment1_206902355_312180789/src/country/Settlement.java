@@ -33,7 +33,7 @@ public abstract class Settlement {
 		this.location=new Location(location.getPosition(),location.getsize());
 		this.ramzorColor=RamzorColor.GREEN;
 		this.healthy_people=new ArrayList<Person>(population);
-		this.sick_people=new ArrayList<Person>(population);
+		this.sick_people=new ArrayList<Person>();
 		this.capacity=capacity;
 	}
 

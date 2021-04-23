@@ -56,7 +56,6 @@ public abstract class Person
 		 * @param iv the virus that the man is sick
 		 * @return a sick person
 		 */
-		
 		Sick s;
 		Random rand = new Random();
 		int x1=rand.nextInt(10);

@@ -84,6 +84,7 @@ public class SimulationFile
 		{
 			System.out.printf("Error %s\n",ex);
 		}
+		
 		return settlement;
 	}
 	private static Settlement parseSettlement(String[] line)
@@ -94,37 +95,40 @@ public class SimulationFile
 		 * @return Settlement 
 		 */
 		
-		//point-position of the settlement
-		int x=Integer.parseInt(line[2].replace(" ", ""));
-		int y=Integer.parseInt(line[3].replace(" ", ""));
-		Point p=new Point(x,y);
-		
-		//size-size of the settlement
-		int height=Integer.parseInt(line[4].replace(" ", ""));
-		int width=Integer.parseInt(line[5].replace(" ", ""));
-		Size s1=new Size(height,width);
-		
-		//population-the number of people in the settlement
-		int numpeople=Integer.parseInt(line[6].replace(" ", ""));
-		Location location=new Location(p,s1);
-		
-		
-		//Settlement type
-		if (line[0].contentEquals("City"))
+		if(!(line[0].equals('#')))
 		{
+			//point-position of the settlement
+			int x=Integer.parseInt(line[2].replace(" ", ""));
+			int y=Integer.parseInt(line[3].replace(" ", ""));
+			Point p=new Point(x,y);
+			
+			//size-size of the settlement
+			int height=Integer.parseInt(line[4].replace(" ", ""));
+			int width=Integer.parseInt(line[5].replace(" ", ""));
+			Size s1=new Size(height,width);
+			
+			//population-the number of people in the settlement
+			int numpeople=Integer.parseInt(line[6].replace(" ", ""));
+			Location location=new Location(p,s1);
+			
+			
+			//Settlement type
+			if (line[0].contentEquals("City"))
+			{
 
-			City c=new City(line[1],location,numpeople,(int) (capcity*numpeople));
-			return c;
-		}
-		else if (line[0].contentEquals("Kibbutz"))
-		{
-			Kibbutz k= new Kibbutz(line[1],location,numpeople,(int) (capcity*numpeople)); 
-			return k;
-		}
-		else if (line[0].contentEquals("Moshav"))
-		{
-			Moshav m= new Moshav(line[1],location,numpeople,(int) (capcity*numpeople));
-			return m;
+				City c=new City(line[1],location,numpeople,(int) (capcity*numpeople));
+				return c;
+			}
+			else if (line[0].contentEquals("Kibbutz"))
+			{
+				Kibbutz k= new Kibbutz(line[1],location,numpeople,(int) (capcity*numpeople)); 
+				return k;
+			}
+			else if (line[0].contentEquals("Moshav"))
+			{
+				Moshav m= new Moshav(line[1],location,numpeople,(int) (capcity*numpeople));
+				return m;
+			}	
 		}
 		return null;
 	}

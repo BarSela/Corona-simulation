@@ -43,8 +43,8 @@ public class Main {
 				numContagion[i]=world.getSettlement()[i].getPopulation()*0.01;
 				for (int j=0;j<numContagion[i];j++)
 				{
-					world.getSettlement()[i].getsick_people().add(j,world.getSettlement()[i].gethealthy_people().get(j).contagion(virus));
-					world.getSettlement()[i].gethealthy_people().remove(j);
+					world.getSettlement()[i].getsick_people().add(world.getSettlement()[i].gethealthy_people().get(0).contagion(virus));
+					world.getSettlement()[i].gethealthy_people().remove(0);
 				}
 			}
 			/**
@@ -63,7 +63,7 @@ public class Main {
 							{
 								boolean flag=false;
 								Random rand=new Random();
-								int x=rand.nextInt(world.getSettlement()[j].getsick_people().size()-1);
+								int x=rand.nextInt(world.getSettlement()[j].gethealthy_people().size()-1);
 								flag=virus.tryToContagion(world.getSettlement()[j].getsick_people().get(k), world.getSettlement()[j].gethealthy_people().get(x));
 								if (flag==true)
 									{
