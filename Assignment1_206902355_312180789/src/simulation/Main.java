@@ -37,8 +37,8 @@ public class Main {
 			 * step 2: Initialization stage: Definition of 1% of all persons in settlement as Sick persons in one of the variants.
 			 */
 			IVirus virus=new BritishVariant();
-			double[] numContagion=new double[Map.getSize()];//array for number of people that contagion in step 2
-			for(int i=0;i<Map.getSize();i++)
+			double[] numContagion=new double[world.getSettlement().length];//array for number of people that contagion in step 2
+			for(int i=0;i<world.getSettlement().length;i++)
 			{
 				numContagion[i]=world.getSettlement()[i].getPopulation()*0.01;
 				for (int j=0;j<numContagion[i];j++)
@@ -54,7 +54,7 @@ public class Main {
 			 */
 			for (int i=0;i<numOfSimulation;i++)//five simulation
 			{
-				for (int j=0;j<Map.getSize();j++)//run over all settlement
+				for (int j=0;j<world.getSettlement().length;j++)//run over all settlement
 				{	
 					for (int k=0;k<numContagion[j];k++)
 					{
@@ -79,7 +79,7 @@ public class Main {
 			}
 			
 			//just for check...
-			for (int i=0;i<Map.getSize();i++)
+			for (int i=0;i<world.getSettlement().length;i++)
 				for(int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
 					if (world.getSettlement()[i].getsick_people().get(j) instanceof Sick)
 						System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());

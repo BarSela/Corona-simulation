@@ -34,6 +34,7 @@ public abstract class Settlement {
 		this.ramzorColor=RamzorColor.GREEN;
 		this.healthy_people=new ArrayList<Person>(population);
 		this.sick_people=new ArrayList<Person>();
+		this.neighbors=new ArrayList<Settlement>();
 		this.capacity=capacity;
 	}
 
@@ -130,6 +131,7 @@ public abstract class Settlement {
 		 */
 		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" ramzor color- "+this.getRamzorColor();
 	}
+
 	public RamzorColor getRamzorColor()
 	{
 		/**

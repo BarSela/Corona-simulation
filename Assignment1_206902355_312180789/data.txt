@@ -8,3 +8,4 @@ Moshav; Shtulim; 47;23; 90;25; 2000
 City; Tel-Aviv; 50;50; 80;80; 9000
 Kibbutz; Beeri; 12;15; 60;60; 1400
 City; Jerusalem; 9;6; 80;80; 10000
+#; Ashdod; Shtulim
