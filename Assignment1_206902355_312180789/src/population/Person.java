@@ -4,13 +4,18 @@
  */
 package population;
 
+import java.util.Random;
+
 import country.City;
 import country.Kibbutz;
 import country.Moshav;
 import country.Settlement;
 import location.Point;
 import simulation.Clock;
+import virus.BritishVariant;
+import virus.ChineseVariant;
 import virus.IVirus;
+import virus.SouthAfricanVariant;
 public abstract class Person 
 {
 	/*
@@ -51,8 +56,29 @@ public abstract class Person
 		 * @param iv the virus that the man is sick
 		 * @return a sick person
 		 */
-		Sick s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
-		return s;
+		
+		Sick s;
+		Random rand = new Random();
+		int x1=rand.nextInt(10);
+		if (x1%3==0)
+		{
+			IVirus virus=new BritishVariant(); 
+			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),virus);
+			return s;
+		}
+		else if (x1%3==1)
+		{
+			IVirus virus=new SouthAfricanVariant();
+			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),virus);
+			return s;
+		}	
+		else if (x1%3==2)
+		{
+			IVirus virus=new ChineseVariant();
+			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),virus);
+			return s;
+		}
+		return s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 	}
 	public String toString() 
 	{
