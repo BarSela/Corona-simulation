@@ -49,6 +49,18 @@ public class ChineseVariant implements IVirus
 		 * @return truth if the second person got infected by the sick person,else false
 		 * @throws Exception 
 		 */
+		if(p_sick instanceof Sick )
+		{
+			Sick p_s =(Sick)p_sick;
+			long contagiousTime=p_s.getContagiousTime();
+			long sickDays=Clock.CalcDays(contagiousTime);
+			
+			if(sickDays < Min_contage_time)
+			{
+				return false;
+			}
+		}
+		
 		if(p_check instanceof Sick )
 		{
 			throw new Exception("Both person's are sick! A sick person cannot get sick again");
@@ -110,6 +122,8 @@ public class ChineseVariant implements IVirus
 	private final static double death_18=0.001;
 	private final static double death_18_55=0.05;
 	private final static double death_up55=0.1;
+	
+	private final static int Min_contage_time=5;
 
 
 }

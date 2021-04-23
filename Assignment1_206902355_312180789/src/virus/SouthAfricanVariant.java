@@ -27,6 +27,7 @@ public class SouthAfricanVariant implements IVirus {
 		 * @param p the person we want to check his propabillity to get contage
 		 * @return the propabillity of the person to get contage
 		 */
+		
 		if(p.getAge()<=18)
 		{
 			return con_0_18*p.contagionProbability();
@@ -43,6 +44,18 @@ public class SouthAfricanVariant implements IVirus {
 		 * @return truth if the second person got infected by the sick person,else false
 		 * @throws Exception 
 		 */
+		
+		if(p_sick instanceof Sick )
+		{
+			Sick p_s =(Sick)p_sick;
+			long contagiousTime=p_s.getContagiousTime();
+			long sickDays=Clock.CalcDays(contagiousTime);
+			
+			if(sickDays < Min_contage_time)
+			{
+				return false;
+			}
+		}
 		if(p_check instanceof Sick )
 		{
 			throw new Exception("Both person's are sick! A sick person cannot get sick again");
@@ -99,4 +112,6 @@ public class SouthAfricanVariant implements IVirus {
 	//death propabillity
 	private final static double death_0_18=0.05;
 	private final static double death_up18=0.08;
+	
+	private final static int Min_contage_time=5;
 }

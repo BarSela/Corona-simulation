@@ -36,7 +36,7 @@ public class Clock
 	 }
 	 public static long CalcDays(long start_time)
 	 {
-		 long tick=time-start_time;
+		 long tick=Clock.now()-start_time;
 		 long days= (long)Math.ceil(tick/tick_per_day);
 		 return days;
 	 }
