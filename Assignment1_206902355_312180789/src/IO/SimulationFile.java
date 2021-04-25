@@ -112,6 +112,10 @@ public class SimulationFile
 	}
 	private static void parseNeighbors(String[] line,Settlement[] settl)
 	{
+		/**
+		 * @param line from file
+		 * @param settl list of the settlement
+		 */
 		for(int i=0;i<settl.length;i++)
 		{
 			if(line[1].contains(settl[i].getName()))

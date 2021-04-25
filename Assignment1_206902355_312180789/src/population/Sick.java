@@ -55,14 +55,14 @@ public class Sick extends Person
 		 */
 		return super.toString()+" contagious Time:"+this.getContagiousTime()+" virus: "+this.getVirus();
 	}
-	private Person recover() 
+	public Person recover() 
 	{
 		/**
 		 * return a recover person
 		 * @return instance of Healthy Person
 		 */
-		Healthy h=new Healthy(this.getLocation(),this.getSettlement(),this.getAge());
-		return h;
+		Convalescent c=new Convalescent(this.getLocation(),this.getSettlement(),this.getAge(),this.getVirus());
+		return c;
 	}
 	public boolean tryTODie() 
 	{

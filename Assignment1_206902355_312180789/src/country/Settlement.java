@@ -129,7 +129,7 @@ public abstract class Settlement {
 		/**
 		 * @return string representation
 		 */
-		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" ramzor color- "+this.getRamzorColor()+" Neighbor- "+this.toString_neighbors();
+		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" Max capacity "+this.getCapacity()+" ramzor color- "+this.getRamzorColor()+" Neighbor- "+this.toString_neighbors()+" Vaccine doses- "+this.getVaccine_doses();
 	}
 
 	public RamzorColor getRamzorColor()
@@ -195,6 +195,13 @@ public abstract class Settlement {
 		 */
 		return vaccine_doses;
 	}
+	public void setVaccine_doses(int vaccine_doses)
+	{
+		/**
+		 * set the number of vaccine_doses
+		 */
+		 this.vaccine_doses=vaccine_doses;
+	}
 	private boolean transferPropabillity(double p1, double p2)
 	{
 		/**
@@ -209,6 +216,9 @@ public abstract class Settlement {
 	}
 	private List<String> toString_neighbors()
 	{
+		/**
+		 * @return list that countains the names of settlement neighbors
+		 */
 		List<String> settlement= new ArrayList<String>();
 		if(this.getneighbors().size()!=0)
 			{
@@ -232,6 +242,6 @@ public abstract class Settlement {
 	private List<Person> sick_people;
 	private RamzorColor ramzorColor;
 	private int capacity;
-	private int vaccine_doses=0;
+	private int vaccine_doses=10;
 	private List<Settlement> neighbors;
 }
