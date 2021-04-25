@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import IO.SimulationFile;
+import IO.StatisticsFile;
 import country.Map;
 import population.Person;
 import population.Sick;
@@ -83,7 +84,7 @@ public class Main {
 				for(int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
 					if (world.getSettlement()[i].getsick_people().get(j) instanceof Sick)
 						System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());
-			
+			StatisticsFile.writeCsv();
 		}
 		catch (IOException e) 
 		{
