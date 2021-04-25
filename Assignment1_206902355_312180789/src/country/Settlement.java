@@ -129,7 +129,7 @@ public abstract class Settlement {
 		/**
 		 * @return string representation
 		 */
-		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" ramzor color- "+this.getRamzorColor()+" Neighbor- ";
+		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" ramzor color- "+this.getRamzorColor()+" Neighbor- "+this.toString_neighbors();
 	}
 
 	public RamzorColor getRamzorColor()
@@ -207,7 +207,20 @@ public abstract class Settlement {
 		 return chance >=Math.random();
 		 
 	}
-	
+	private List<String> toString_neighbors()
+	{
+		List<String> settlement= new ArrayList<String>();
+		if(this.getneighbors().size()!=0)
+			{
+				for (int i=0;i<this.getneighbors().size();i++)
+					{
+						settlement.add(this.getneighbors().get(i).getName());
+					}
+				return settlement;
+			}
+		settlement.add("NO neigbors");
+		return  settlement;
+	}
 	// abstract 
 	public abstract RamzorColor calculateramzorgrade();
 	public abstract boolean equals(Object o);

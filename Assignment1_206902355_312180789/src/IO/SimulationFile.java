@@ -50,7 +50,7 @@ public class SimulationFile
 			FileReader fr= new FileReader(file);
 			BufferedReader br= new BufferedReader(fr);
 			Scanner in=new Scanner(file);
-			while (br.readLine() != null)
+			while (!(br.readLine().contains("#")))
 				Map.setSize();
 			
 			numPeopole=new int[Map.getSize()];
@@ -80,16 +80,15 @@ public class SimulationFile
 			}
 			
 			//neighbors
-			for (int i=0;i<Map.getSize() ;i++)
+			while (in.hasNextLine())
 			{
+				name=in.nextLine();
+				Map.setSize();
 				line=name.split(";");
 				if(line[0].contains("#"))
 				{
 					parseNeighbors(line,settlement);
-				}
-
-				if (in.hasNextLine())
-					name=in.nextLine();
+				}	
 			}
 			Healthy new_person;
 			for(int i=0;i<settlement.length;i++)
