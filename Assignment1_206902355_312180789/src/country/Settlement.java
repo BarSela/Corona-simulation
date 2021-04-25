@@ -129,7 +129,7 @@ public abstract class Settlement {
 		/**
 		 * @return string representation
 		 */
-		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" ramzor color- "+this.getRamzorColor();
+		return this.getName()+" "+this.getLocation().toString()+" population- "+this.getPopulation()+" ramzor color- "+this.getRamzorColor()+" Neighbor- ";
 	}
 
 	public RamzorColor getRamzorColor()
@@ -179,7 +179,7 @@ public abstract class Settlement {
 		/**
 		 * @return the list neighbor settlements
 		 */
-		return neighbors;
+		return this.neighbors;
 	}
 	public int getCapacity()
 	{
