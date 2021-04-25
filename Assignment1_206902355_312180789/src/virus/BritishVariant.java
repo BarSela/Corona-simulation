@@ -4,6 +4,9 @@
  */
 package virus;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import population.Person;
 import population.Sick;
 import simulation.Clock;
@@ -18,8 +21,9 @@ public class BritishVariant implements IVirus {
 	public BritishVariant()
 	{
 		/**
-		 * No initialization information for constructor
+		 * variants list contain the variant type that this variant can contaige
 		 */
+		this.variants=new ArrayList<IVirus>();
 	}
 	public double contagionProbability(Person p)
 	{
@@ -100,7 +104,7 @@ public class BritishVariant implements IVirus {
 		
 	}
 	
-	
+	private List<IVirus> variants;
 	//conation propabillity
 	private final static double contagion=0.7;
 	

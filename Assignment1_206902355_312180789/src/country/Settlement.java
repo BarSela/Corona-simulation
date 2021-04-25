@@ -110,11 +110,11 @@ public abstract class Settlement {
 			{
 				if(p instanceof Sick)
 				{
-					this.healthy_people.remove(p);
+					this.sick_people.remove(p);
 				}
 				else
 				{
-					this.sick_people.remove(p);
+					this.healthy_people.remove(p);
 				}
 				return true;
 			}
@@ -242,6 +242,6 @@ public abstract class Settlement {
 	private List<Person> sick_people;
 	private RamzorColor ramzorColor;
 	private int capacity;
-	private int vaccine_doses=10;
+	private int vaccine_doses=0;
 	private List<Settlement> neighbors;
 }

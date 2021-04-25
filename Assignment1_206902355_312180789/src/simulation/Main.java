@@ -27,37 +27,28 @@ import virus.IVirus;
 public class Main {
 
 	private static final int numOfSimulation = 5;
+	private static final double initialcontagion = 0.01;
+	private static final double sample_sickPeople = 0.2;
+	private static final int num_of_trys_to_initial_contagion = 6;
+	private static final int num_of_trys_to_contagion = 3;
 	public static void main(String[] args) throws Exception 
 	{ 
 		File file=loadFileFunc();
 		try 
 		{
 			/**
-			 * step 1: Upload Step: Get the location of the upload file and load the entire map.
+			 * Upload Step: Get the location of the upload file and load the entire map.
 			 */
 			SimulationFile simulationFile=new SimulationFile();
 			Map world=simulationFile.loadMap(file);
-			/**
-			 * step 2: Initialization stage: Definition of 1% of all persons in settlement as Sick persons in one of the variants.
-			 */
-			IVirus virus=new BritishVariant();
-			double[] numContagion=new double[world.getSettlement().length];//array for number of people that contagion in step 2
-			for(int i=0;i<world.getSettlement().length;i++)
-			{
-				numContagion[i]=world.getSettlement()[i].getPopulation()*0.01;
-				for (int j=0;j<numContagion[i];j++)
-				{
-					world.getSettlement()[i].getsick_people().add(world.getSettlement()[i].gethealthy_people().get(0).contagion(virus));
-					world.getSettlement()[i].gethealthy_people().remove(0);
-				}
-			}
-			/**
-			 * step 3: Simulationstage: Crossing all settlements,
-			 *selection of each Sick persons in the settlement, for which one pick a random selection of six people over The same settelment and try to ifnect them.
-			 *in total perform such a simulation of everything 5 times.
-			 */
-			Main.firstSimulation(world,virus,numContagion);
-			Main.secoundSimulation(world);
+
+			Main.InitialSimulation(world);
+			Main.Simulation(world);
+
+			
+			
+			
+			
 			//just for check...
 			for (int i=0;i<world.getSettlement().length;i++)
 				for(int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
@@ -81,8 +72,22 @@ public class Main {
         System.out.println(f.getPath());
         return f;
 	}
-	private static void firstSimulation(Map world, IVirus virus,double[] numContagion) throws Exception
+	private static void InitialSimulation(Map world) throws Exception
 	{
+		/**
+		 * step 2: Initialization stage: Definition of 1% of all persons in settlement as Sick persons in one of the variants.
+		 */
+		IVirus virus=new BritishVariant();
+		double[] numContagion=new double[world.getSettlement().length];//array for number of people that contagion in step 2
+		for(int i=0;i<world.getSettlement().length;i++)
+		{
+			numContagion[i]=world.getSettlement()[i].getPopulation()*initialcontagion;
+			for (int j=0;j<numContagion[i];j++)
+			{
+				world.getSettlement()[i].getsick_people().add(world.getSettlement()[i].gethealthy_people().get(0).contagion(virus));
+				world.getSettlement()[i].gethealthy_people().remove(0);
+			}
+		}
 		/**
 		 * step 3: Simulationstage: Crossing all settlements,
 		 *selection of each Sick persons in the settlement, for which one pick a random selection of six people over The same settelment and try to ifnect them.
@@ -95,7 +100,7 @@ public class Main {
 				for (int k=0;k<numContagion[j];k++)
 				{
 					if (world.getSettlement()[j].getsick_people().get(k) instanceof Sick)
-						for (int t=0;t<6;t++)
+						for (int t=0;t<num_of_trys_to_initial_contagion;t++)
 						{
 							boolean flag=false;
 							Random rand=new Random();
@@ -114,20 +119,20 @@ public class Main {
 			Clock.nextTick();
 		}
 	}
-	private static void secoundSimulation(Map world) throws Exception
+	private static void Simulation(Map world) throws Exception
 	{
 		double numSick=0;
 		Random rand = new Random();
 		for (int i=0;i<world.getSettlement().length;i++)
 			{
-				numSick= world.getSettlement()[i].getsick_people().size()*0.2;
+				numSick= world.getSettlement()[i].getsick_people().size()*sample_sickPeople;
 				for (int t=0;t<numSick;t++)
 				{
 					boolean flag=false;
 					int x=rand.nextInt(world.getSettlement()[i].getsick_people().size()-1);
 					Sick s=(Sick)world.getSettlement()[i].getsick_people().get(x);
 					IVirus virus=s.getVirus();
-					for (int j=0;j<3;j++)
+					for (int j=0;j<num_of_trys_to_contagion;j++)
 					{
 						int y=rand.nextInt(world.getSettlement()[i].gethealthy_people().size()-1);
 						flag=virus.tryToContagion(s,world.getSettlement()[i].gethealthy_people().get(y));
@@ -174,8 +179,12 @@ public class Main {
 						}
 					}
 				}
+				//update number of doses in the settlement
 				world.getSettlement()[i].setVaccine_doses(world.getSettlement()[i].getVaccine_doses()-count_doses);
 			}
+			Clock.nextTick();
+			Thread.sleep(1000);
+			
 		
 	}
 }
