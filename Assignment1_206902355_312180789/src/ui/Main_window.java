@@ -65,4 +65,5 @@ public class Main_window extends JFrame {
 		
 		
 	}
+	
 }
