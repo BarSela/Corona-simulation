@@ -4,16 +4,20 @@
  */
 package ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.SwingConstants;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JTextField;
 
 
 public class Main_window extends JFrame {
-	
 	public Main_window() {
 		super("Corona-simulation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,7 +29,15 @@ public class Main_window extends JFrame {
 		JMenu Menu= new JMenu("Menu");
 		menuBar.add(Menu);
 		
-		JMenuItem file = new JMenuItem("File");
+		JMenu file = new JMenu("File");
+		JMenuItem load = new JMenuItem("Load");
+		JMenuItem statistics = new JMenuItem("Statistics");
+		JMenuItem edit_mutations = new JMenuItem("edit Mutations");
+		JMenuItem exits = new JMenuItem("Exits");
+		file.add(load);
+		file.add(statistics);
+		file.add(edit_mutations);
+		file.add(exits);
 		Menu.add(file);
 		
 		Menu.addSeparator();
@@ -53,5 +65,4 @@ public class Main_window extends JFrame {
 		
 		
 	}
-
 }
