@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.swing.JFrame;
+
 import IO.SimulationFile;
 import IO.StatisticsFile;
 import country.Map;
@@ -18,6 +21,7 @@ import country.Settlement;
 import population.Healthy;
 import population.Person;
 import population.Sick;
+import ui.Main_window;
 import virus.BritishVariant;
 import virus.IVirus;
 
@@ -33,17 +37,13 @@ public class Main {
 	private static final int num_of_trys_to_contagion = 3;
 	public static void main(String[] args) throws Exception 
 	{ 
-		File file=loadFileFunc();
+		
 		try 
 		{
-			/**
-			 * Upload Step: Get the location of the upload file and load the entire map.
-			 */
-			SimulationFile simulationFile=new SimulationFile();
-			Map world=simulationFile.loadMap(file);
 
-			Main.InitialSimulation(world);
-			Main.Simulation(world);
+			Main_window window = new Main_window();
+	        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
 			
 			
@@ -62,7 +62,7 @@ public class Main {
 		}
 		
 	}
-	private static File loadFileFunc() 
+	public static File loadFileFunc() 
 	{
         FileDialog fd = new FileDialog((Frame) null, "Please choose a file:", FileDialog.LOAD);
         fd.setVisible(true);
@@ -72,7 +72,7 @@ public class Main {
         System.out.println(f.getPath());
         return f;
 	}
-	private static void InitialSimulation(Map world) throws Exception
+	public static void InitialSimulation(Map world) throws Exception
 	{
 		/**
 		 * step 2: Initialization stage: Definition of 1% of all persons in settlement as Sick persons in one of the variants.
@@ -119,7 +119,7 @@ public class Main {
 			Clock.nextTick();
 		}
 	}
-	private static void Simulation(Map world) throws Exception
+	public static void Simulation(Map world) throws Exception
 	{
 		double numSick=0;
 		Random rand = new Random();
