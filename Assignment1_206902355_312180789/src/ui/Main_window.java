@@ -4,32 +4,23 @@
  */
 package ui;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
 import IO.SimulationFile;
 import country.Map;
-
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.SpringLayout;
-
-import java.awt.event.MouseAdapter;
 import java.io.File;
 import simulation.Clock;
 
@@ -39,8 +30,8 @@ public class Main_window extends JFrame {
 	private boolean run=false;
 	private boolean loaded=false;
 	public Main_window() {
-		super("Corona-simulation");
-		GridLayout myGridLayout = new GridLayout(3, 1);
+		super("Corona-simulation Main Window");
+		GridLayout myGridLayout = new GridLayout(2, 1);
 		getContentPane().setLayout(myGridLayout);
 		JPanel map_panel=new JPanel();
 		map_panel.setToolTipText("");
@@ -50,16 +41,10 @@ public class Main_window extends JFrame {
 		simulation_speed.setPaintLabels(true);
 		simulation_speed.setPaintTicks(true);
 		simulation_speed.getValue();
-		
-		
-
 		getContentPane().add(map_panel);
 		getContentPane().add(simulation_speed);
-		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
-		
-		
 		JMenu file = new JMenu("File");
 		JMenuItem load = new JMenuItem("Load");
 		load.addActionListener(new ActionListener() {
@@ -83,8 +68,6 @@ public class Main_window extends JFrame {
 
 			}
 		});
-
-		
 		JMenuItem statistics = new JMenuItem("Statistics");
 		JMenuItem edit_mutations = new JMenuItem("edit Mutations");
 		JMenuItem exits = new JMenuItem("Exits");
@@ -96,7 +79,6 @@ public class Main_window extends JFrame {
 		file.addSeparator();
 		file.add(exits);
 		menuBar.add(file);
-		
 		JMenu submenu_simulation = new JMenu("Simulation");
 		JMenuItem play = new JMenuItem("Play");
 		play.addActionListener(new ActionListener() {
@@ -117,9 +99,7 @@ public class Main_window extends JFrame {
 				}	
 			}
 		});
-		
 		JMenuItem pause = new JMenuItem("Pause");
-		
 		pause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -144,14 +124,12 @@ public class Main_window extends JFrame {
 			}
 		});
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
-		
 		SpinnerModel tick_per_day=new SpinnerNumberModel();
 		JSpinner spinner = new JSpinner(tick_per_day);
 		JPanel p_tick=new JPanel();
 		JButton b = new JButton("Set");
 		p_tick.add(spinner);
 		p_tick.add(b);
-		
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -159,17 +137,15 @@ public class Main_window extends JFrame {
 				Clock.set_tick_per_day(spinner_tick);
 			}
 		});
-		
 		set_tick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
-				
-				
-
+				JFrame set=new JFrame("Set tick per day");
+				set.add((Component) tick_per_day);
+				set.pack();
+				set.setVisible(true);
 			}
 		});
-		
 		submenu_simulation.add(play);
 		submenu_simulation.addSeparator();
 		submenu_simulation.add(pause);
@@ -178,8 +154,6 @@ public class Main_window extends JFrame {
 		submenu_simulation.addSeparator();
 		submenu_simulation.add(set_tick);
 		menuBar.add(submenu_simulation);
-		
-		
 		JMenu submenu_help = new JMenu("Help");
 		JMenuItem help = new JMenuItem("Help");
 		JMenuItem about = new JMenuItem("About");
@@ -187,9 +161,8 @@ public class Main_window extends JFrame {
 		submenu_help.addSeparator();
 		submenu_help.add(about);
 		menuBar.add(submenu_help);
-		
-		
+		this.pack();
+		this.setVisible(true);
 	}
-	
 }
 
