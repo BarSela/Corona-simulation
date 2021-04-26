@@ -5,12 +5,10 @@
 package ui;
 
 import java.awt.GridLayout;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,7 +17,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 
 import IO.SimulationFile;
 import country.Map;
@@ -33,7 +30,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import simulation.Clock;
 
@@ -44,10 +40,10 @@ public class Main_window extends JFrame {
 	private boolean loaded=false;
 	public Main_window() {
 		super("Corona-simulation");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridLayout myGridLayout = new GridLayout(3, 1);
 		getContentPane().setLayout(myGridLayout);
 		JPanel map_panel=new JPanel();
+		map_panel.setToolTipText("");
 		JSlider simulation_speed=new JSlider();
 		simulation_speed.setMajorTickSpacing(10);
 		simulation_speed.setMinorTickSpacing(1);
@@ -148,7 +144,6 @@ public class Main_window extends JFrame {
 			}
 		});
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
-		set_tick.setSelected(true);
 		
 		SpinnerModel tick_per_day=new SpinnerNumberModel();
 		JSpinner spinner = new JSpinner(tick_per_day);
@@ -168,13 +163,7 @@ public class Main_window extends JFrame {
 		set_tick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				Window parentWindow = SwingUtilities.windowForComponent(set_tick);
-                JDialog dialog = new JDialog(parentWindow);
-                dialog.setLocationRelativeTo(set_tick);
-                dialog.setModal(true);
-                dialog.getContentPane().add(new JPanel());
-                dialog.pack();
-                dialog.setVisible(true);
+				
 				
 				
 
