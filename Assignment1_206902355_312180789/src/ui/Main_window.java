@@ -9,8 +9,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -33,16 +37,33 @@ public class Main_window extends JFrame {
 		super("Corona-simulation Main Window");
 		GridLayout myGridLayout = new GridLayout(2, 1);
 		getContentPane().setLayout(myGridLayout);
-		JPanel map_panel=new JPanel();
-		map_panel.setToolTipText("");
+		
+		
+		menuBar();
+		map_panel();
+		
+		
 		JSlider simulation_speed=new JSlider();
 		simulation_speed.setMajorTickSpacing(10);
 		simulation_speed.setMinorTickSpacing(1);
 		simulation_speed.setPaintLabels(true);
 		simulation_speed.setPaintTicks(true);
 		simulation_speed.getValue();
-		getContentPane().add(map_panel);
 		getContentPane().add(simulation_speed);
+		
+		
+		
+		this.pack();
+		this.setVisible(true);
+	}
+	public void map_panel()
+	{
+		JPanel map_panel=new JPanel();
+		getContentPane().add(map_panel);
+	}
+	
+	public void menuBar()
+	{
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		JMenu file = new JMenu("File");
@@ -124,25 +145,28 @@ public class Main_window extends JFrame {
 			}
 		});
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
-		SpinnerModel tick_per_day=new SpinnerNumberModel();
+		SpinnerModel tick_per_day=new SpinnerNumberModel(1,1,100,1);
 		JSpinner spinner = new JSpinner(tick_per_day);
 		JPanel p_tick=new JPanel();
 		JButton b = new JButton("Set");
+		JLabel l_tick = new JLabel("ticks:");
+		p_tick.add(l_tick);
 		p_tick.add(spinner);
 		p_tick.add(b);
+		
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				long spinner_tick=(long) spinner.getValue();
+				int spinner_tick = (Integer) spinner.getValue();
 				Clock.set_tick_per_day(spinner_tick);
 			}
 		});
+		JDialog set=new JDialog(this,"Set tick per day",true);
+		set.add(p_tick);
+		set.pack();
 		set_tick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				JFrame set=new JFrame("Set tick per day");
-				set.add((Component) tick_per_day);
-				set.pack();
 				set.setVisible(true);
 			}
 		});
@@ -154,15 +178,93 @@ public class Main_window extends JFrame {
 		submenu_simulation.addSeparator();
 		submenu_simulation.add(set_tick);
 		menuBar.add(submenu_simulation);
+		
 		JMenu submenu_help = new JMenu("Help");
 		JMenuItem help = new JMenuItem("Help");
+		JDialog help_dialog=new JDialog(this,"Help",true);
+		JPanel help_p=new JPanel();
+		help_p.setLayout(new BoxLayout(help_p,BoxLayout.PAGE_AXIS));
+		JLabel l1 = new JLabel("Hello");
+		JLabel l2 = new JLabel("This is a corona simulation");
+		JLabel lE1 = new JLabel("There is a land where the corona began to develop");
+		JLabel lE2 = new JLabel("Each simulation will allow you to control the development of the disease in the country.");
+		JLabel l3 = new JLabel("The map appears on the main window. There are all the settlements according to their location");
+		JLabel l4 = new JLabel("Each settlement is painted in color according to the number of patients in the locality in relation to the population");
+		JLabel l5 = new JLabel("In the main window you can control the speed of the simulation using the slider");
+		JLabel l6 = new JLabel("   ");
+		JLabel l7 = new JLabel("Top toolbar:");
+		JLabel l8 = new JLabel("--file: Load a new simulation, view statistics by choice, edit mutations (convert from one mutation to another during infection) and exit the program.");
+		JLabel l9 = new JLabel("--simulation: play (note: possible only when simulation is loaded), pause, stop and set tick per day - how many ticks are currently considered one day");
+		JLabel l10 = new JLabel("   ");
+		JLabel l11= new JLabel("Statistics window: You can filter the results of the statistics by column and key-words. In this window you can add sick people and vaccine doses to a selected locality.");
+		JLabel l12= new JLabel("information about the creators of the program->Help->About");
+		JLabel l13 = new JLabel("   ");
+		JLabel l14 = new JLabel("Enjoy");
+		JLabel l15 = new JLabel("   ");
+		help_p.add(l1);
+		help_p.add(l2);
+		help_p.add(lE1);
+		help_p.add(lE2);
+		help_p.add(l3);
+		help_p.add(l4);
+		help_p.add(l5);
+		help_p.add(l6);
+		help_p.add(l7);
+		help_p.add(l8);
+		help_p.add(l9);
+		help_p.add(l10);
+		help_p.add(l11);
+		help_p.add(l12);
+		help_p.add(l13);
+		help_p.add(l14);
+		help_p.add(l15);
+		
+		
+		
+		help_dialog.add(help_p);
+		help_dialog.pack();
+		help.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				help_dialog.setVisible(true);
+			}
+		});
+
+		
+		//about
 		JMenuItem about = new JMenuItem("About");
+		JDialog about_dialog=new JDialog(this,"About",true);
+		JPanel about_p=new JPanel();
+		about_p.setLayout(new BoxLayout(about_p,BoxLayout.PAGE_AXIS));
+		JLabel lb1 = new JLabel("Program Name:    Corona Simulation ");
+		JLabel lb2 = new JLabel("Production date:                    6.4.2021 ");
+		JLabel lb3 = new JLabel("   ");
+		JLabel lb4 = new JLabel("Creators:");
+		JLabel lb5 = new JLabel("Bar Sela                              ID:206902355");
+		JLabel lb6 = new JLabel("Betsalel Koginsky         ID:312180789");
+		JLabel lb7 = new JLabel("    ");
+
+		about_p.add(lb1);
+		about_p.add(lb2);
+		about_p.add(lb3);
+		about_p.add(lb4);
+		about_p.add(lb5);
+		about_p.add(lb6);
+		about_p.add(lb7);
+		about_dialog.add(about_p);
+		about_dialog.pack();
+		about.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				about_dialog.setVisible(true);
+			}
+		});
+		
 		submenu_help.add(help);
 		submenu_help.addSeparator();
 		submenu_help.add(about);
+		
 		menuBar.add(submenu_help);
-		this.pack();
-		this.setVisible(true);
 	}
 }
 

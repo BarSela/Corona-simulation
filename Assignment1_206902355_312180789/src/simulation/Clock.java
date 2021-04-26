@@ -14,7 +14,7 @@ public class Clock
 	 * The variable tick_per_day is the ratio of tick to day, ie how many ticks there are in one day.
 	 */
 	private static long time=0;
-	private static long tick_per_day=1;
+	private static int tick_per_day=1;
 	
 	public static long now() 
 	 {
@@ -30,7 +30,7 @@ public class Clock
 		  */
 		 time +=1;
 	 }
-	 public static void set_tick_per_day(long new_tic)
+	 public static void set_tick_per_day(int new_tic)
 	 {
 		 tick_per_day = new_tic;
 	 }
