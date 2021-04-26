@@ -34,30 +34,12 @@ public class Main {
 	public static void main(String[] args) throws Exception 
 	{ 
 		
-		try 
-		{
+		Main_window window = new Main_window();
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-			//Main_window window = new Main_window();
-	        //window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			Map world=null;
-			for (int i=0;i<world.getSettlement().length;i++)
-				world.getSettlement()[i].InitialSimulation();
-			for (int i=0;i<world.getSettlement().length;i++)
-				world.getSettlement()[i].Simulation(world);
-			
-			
-			
-			//just for check...
-			for (int i=0;i<world.getSettlement().length;i++)
-				for(int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
-					if (world.getSettlement()[i].getsick_people().get(j) instanceof Sick)
-						System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());
-			StatisticsFile.writeCsv();
-		}
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
+
+		
+		StatisticsFile.writeCsv();
 		
 	}
 	public static File loadFileFunc() 

@@ -5,10 +5,12 @@
 package ui;
 
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,6 +19,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import IO.SimulationFile;
 import country.Map;
@@ -43,7 +46,7 @@ public class Main_window extends JFrame {
 		super("Corona-simulation");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridLayout myGridLayout = new GridLayout(3, 1);
-		setLayout(myGridLayout);
+		getContentPane().setLayout(myGridLayout);
 		JPanel map_panel=new JPanel();
 		JSlider simulation_speed=new JSlider();
 		simulation_speed.setMajorTickSpacing(10);
@@ -54,8 +57,8 @@ public class Main_window extends JFrame {
 		
 		
 
-		add(map_panel);
-		add(simulation_speed);
+		getContentPane().add(map_panel);
+		getContentPane().add(simulation_speed);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -145,6 +148,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
+		set_tick.setSelected(true);
 		
 		SpinnerModel tick_per_day=new SpinnerNumberModel();
 		JSpinner spinner = new JSpinner(tick_per_day);
@@ -164,7 +168,13 @@ public class Main_window extends JFrame {
 		set_tick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+				Window parentWindow = SwingUtilities.windowForComponent(set_tick);
+                JDialog dialog = new JDialog(parentWindow);
+                dialog.setLocationRelativeTo(set_tick);
+                dialog.setModal(true);
+                dialog.getContentPane().add(new JPanel());
+                dialog.pack();
+                dialog.setVisible(true);
 				
 				
 
