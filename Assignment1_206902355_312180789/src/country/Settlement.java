@@ -13,6 +13,8 @@ import population.Healthy;
 import population.Person;
 import population.Sick;
 import simulation.Clock;
+import virus.BritishVariant;
+import virus.IVirus;
 
 /*
  * Settlement class
