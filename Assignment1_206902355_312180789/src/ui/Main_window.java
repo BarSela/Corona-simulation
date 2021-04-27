@@ -4,16 +4,13 @@
  */
 package ui;
 
-import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
-
 import simulation.Main;
 import virus.BritishVariant;
 import virus.IVirus;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -31,18 +28,13 @@ import IO.StatisticsFile;
 import country.City;
 import country.Kibbutz;
 import country.Map;
-import population.Sick;
 
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableModel;
 
 import java.io.File;
 import java.util.Random;
@@ -57,14 +49,14 @@ public class Main_window extends JFrame {
 	private int row_settl=-1;
 	private int col;
 	private Map world=null;
-	private boolean run=false;
-	private boolean loaded=false;
+	private static int sleep_time=10000;
 	public Main_window() 
 	{
 		super("Corona-simulation Main Window");
 		GridLayout myGridLayout = new GridLayout(2, 1);
 		getContentPane().setLayout(myGridLayout);
-		
+		setBounds(390,170,200,300);
+		setPreferredSize(new Dimension(550, 450));
 		//main window components
 		menuBar();
 		map_panel();
@@ -76,13 +68,28 @@ public class Main_window extends JFrame {
 	}
 	public void simulationSpeedSlider()
 	{
+		JPanel simulationspeed_p=new JPanel();
+		simulationspeed_p.setLayout(new BoxLayout(simulationspeed_p, BoxLayout.LINE_AXIS));
+		
 		JSlider simulation_speed=new JSlider();
-		simulation_speed.setMajorTickSpacing(10);
+		simulation_speed.setMajorTickSpacing(5);
 		simulation_speed.setMinorTickSpacing(1);
+		simulation_speed.setMaximum(50);
 		simulation_speed.setPaintLabels(true);
 		simulation_speed.setPaintTicks(true);
-		simulation_speed.getValue();
-		getContentPane().add(simulation_speed);
+		JButton b_speed=new JButton("Set");
+		b_speed.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				sleep_time=1000*simulation_speed.getValue();
+			}
+			});
+		
+		simulationspeed_p.add(new JLabel("Speed: "));
+		simulationspeed_p.add(simulation_speed);
+		simulationspeed_p.add(b_speed);
+		getContentPane().add(simulationspeed_p);
 		
 	}
 	public void map_panel()
@@ -93,8 +100,8 @@ public class Main_window extends JFrame {
 	public JTable statistic_table(Map world)
 	{    
  
-	    String data[][]=new String[world.getSettlement().length][6];    
-	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses"};         
+	    String data[][]=new String[world.getSettlement().length][7];    
+	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses","Dead"};         
 	    for (int i=0;i<world.getSettlement().length;i++)
 			{
 	    		data[i][0]=world.getSettlement()[i].getName();
@@ -108,6 +115,7 @@ public class Main_window extends JFrame {
 	    		data[i][3]=world.getSettlement()[i].getRamzorColor()+"";
 	    		data[i][4]=((double)world.getSettlement()[i].getsick_people().size()/world.getSettlement()[i].getPopulation())*100+"%";
 	    		data[i][5]=world.getSettlement()[i].getVaccine_doses()+"";
+	    		data[i][6]=world.getSettlement()[i].getdead()+"";
 	  
 			}
 	    JTable jt=new JTable(data,column);    
@@ -284,40 +292,42 @@ public class Main_window extends JFrame {
 		
 		//--file submenu--
 		JMenu file = new JMenu("File");
-		//load 
+		JMenuItem statistics = new JMenuItem("Statistics");
 		JMenuItem load = new JMenuItem("Load");
+		JMenuItem play = new JMenuItem("Play");
+		JMenuItem pause = new JMenuItem("Pause");
+		JMenuItem stop = new JMenuItem("Stop");
+		//load 
+		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
 				/**
 				 * Upload Step: Get the location of the upload file and load the entire map.
 				 */
-				if(!loaded)
-				{
-					loaded=true;
-					File file=Main.loadFileFunc();
-					SimulationFile simulationFile=new SimulationFile();
-					try {
-						world=simulationFile.loadMap(file);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+				load.setEnabled(false);
+				play.setEnabled(true);
+				statistics.setEnabled(true);
+				File file=Main.loadFileFunc();
+				SimulationFile simulationFile=new SimulationFile();
+				try {
+					world=simulationFile.loadMap(file);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
 				}
 
 			}
 		});
 		//statistic
-		JMenuItem statistics = new JMenuItem("Statistics");
 		statistics.setSelected(true);
+		statistics.setEnabled(false);
 		statistics.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(loaded)
-				{
-					JDialog statistic_d=statisticWindow(world);
-					statistic_d.setVisible(true);
-				}
+				JDialog statistic_d=statisticWindow(world);
+				statistic_d.setVisible(true);
+
 			}
 		});
 		//edit mutations
@@ -335,16 +345,19 @@ public class Main_window extends JFrame {
 		edit_mutations.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				if(loaded)
-				{
-					edit_mutations_d.setVisible(true);
-				}
+				edit_mutations_d.setVisible(true);
 			}
 		});
 
 		
 		//exit 
-		JMenuItem exits = new JMenuItem("Exit");
+		JMenuItem exit = new JMenuItem("Exit");
+		exit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				//*****************************8
+			}
+		});
 		
 		//add to submenu
 		file.add(load);
@@ -353,58 +366,61 @@ public class Main_window extends JFrame {
 		file.addSeparator();
 		file.add(edit_mutations);
 		file.addSeparator();
-		file.add(exits);
+		file.add(exit);
 		menuBar.add(file);
 		
 		//--simulation submenu--
 		JMenu submenu_simulation = new JMenu("Simulation");
 		
 		//play
-		JMenuItem play = new JMenuItem("Play");
+
+
+		play.setEnabled(false);
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(loaded)
-				{
-					run = true;
-					try {
-						for (int i=0;i<world.getSettlement().length;i++)
-							world.getSettlement()[i].InitialSimulation();
-						for (int i=0;i<world.getSettlement().length;i++)
-							world.getSettlement()[i].Simulation(world);
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}	
+				play.setEnabled(false);
+				pause.setEnabled(true);
+				stop.setEnabled(true);
+				try {
+					for (int i=0;i<world.getSettlement().length;i++)
+						world.getSettlement()[i].InitialSimulation();
+					for (int i=0;i<world.getSettlement().length;i++)
+						world.getSettlement()[i].Simulation(world,sleep_time);
+
+
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			}
 		});
 		
 		//pause
-		JMenuItem pause = new JMenuItem("Pause");
+		pause.setEnabled(false);
 		pause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				
-				if(run)
-				{
-					run =false;
-					//*******************************************************
-				}
+				pause.setEnabled(false);
+				play.setEnabled(true);
+				stop.setEnabled(true);
+
+				//*******************************************************
 			}
 		});
 		
 		//stop
-		JMenuItem stop = new JMenuItem("Stop");
+		stop.setEnabled(false);
 		stop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				if(loaded)
-				{
-					loaded = false;
-					//*******************************************************
-				}
-				
+				play.setEnabled(false);
+				pause.setEnabled(false);
+				stop.setEnabled(false);
+				load.setEnabled(true);
+				statistics.setEnabled(false);
+				//*******************************************************
+
 			}
 		});
 		
@@ -454,40 +470,21 @@ public class Main_window extends JFrame {
 		JDialog help_dialog=new JDialog(this,"Help",true);
 		JPanel help_p=new JPanel();
 		help_p.setLayout(new BoxLayout(help_p,BoxLayout.PAGE_AXIS));
-		JLabel l1 = new JLabel("Hello");
-		JLabel l2 = new JLabel("This is a corona simulation");
-		JLabel lE1 = new JLabel("There is a land where the corona began to develop");
-		JLabel lE2 = new JLabel("Each simulation will allow you to control the development of the disease in the country.");
-		JLabel l3 = new JLabel("The map appears on the main window. There are all the settlements according to their location");
-		JLabel l4 = new JLabel("Each settlement is painted in color according to the number of patients in the locality in relation to the population");
-		JLabel l5 = new JLabel("In the main window you can control the speed of the simulation using the slider");
-		JLabel l6 = new JLabel("   ");
-		JLabel l7 = new JLabel("Top toolbar:");
-		JLabel l8 = new JLabel("--file: Load a new simulation, view statistics by choice, edit mutations (convert from one mutation to another during infection) and exit the program.");
-		JLabel l9 = new JLabel("--simulation: play (note: possible only when simulation is loaded), pause, stop and set tick per day - how many ticks are currently considered one day");
-		JLabel l10 = new JLabel("   ");
-		JLabel l11= new JLabel("Statistics window: You can filter the results of the statistics by column and key-words. In this window you can add sick people and vaccine doses to a selected locality.");
-		JLabel l12= new JLabel("information about the creators of the program->Help->About");
-		JLabel l13 = new JLabel("   ");
-		JLabel l14 = new JLabel("Enjoy");
-		JLabel l15 = new JLabel("   ");
-		help_p.add(l1);
-		help_p.add(l2);
-		help_p.add(lE1);
-		help_p.add(lE2);
-		help_p.add(l3);
-		help_p.add(l4);
-		help_p.add(l5);
-		help_p.add(l6);
-		help_p.add(l7);
-		help_p.add(l8);
-		help_p.add(l9);
-		help_p.add(l10);
-		help_p.add(l11);
-		help_p.add(l12);
-		help_p.add(l13);
-		help_p.add(l14);
-		help_p.add(l15);
+		JLabel l = new JLabel("<html>Hello<br/>"
+				+ "This is a corona simulation<br/> "
+				+ "There is a land where the corona began to develop<br/>"
+				+ "Each simulation will allow you to control the development of the disease in the country<br/>"
+				+ "The map appears on the main window. There are all the settlements according to their location<br/>"
+				+ "Each settlement is painted in color according to the number of patients in the locality in relation to the population<br/>"
+				+ "In the main window you can control the speed of the simulation using the slider<br/>"
+				+ "Top toolbar:<br/>"
+				+ "--file: Load a new simulation, view statistics by choice, edit mutations (convert from one mutation to another during infection) and exit the program<br/>"
+				+ "--simulation: play (note: possible only when simulation is loaded), pause, stop and set tick per day - how many ticks are currently considered one day<br/>"
+				+ "Statistics window: You can filter the results of the statistics by column and key-words. In this window you can add sick people and vaccine doses to a selected locality<br/>"
+				+ "information about the creators of the program->Help->About<br/><br/>"
+				+ "Enjoy<html>");
+
+		help_p.add(l);
 		
 		
 		help_dialog.getContentPane().add(help_p);
@@ -505,21 +502,14 @@ public class Main_window extends JFrame {
 		JDialog about_dialog=new JDialog(this,"About",true);
 		JPanel about_p=new JPanel();
 		about_p.setLayout(new BoxLayout(about_p,BoxLayout.PAGE_AXIS));
-		JLabel lb1 = new JLabel("Program Name:    Corona Simulation ");
-		JLabel lb2 = new JLabel("Production date:                    6.4.2021 ");
-		JLabel lb3 = new JLabel("   ");
-		JLabel lb4 = new JLabel("Creators:");
-		JLabel lb5 = new JLabel("Bar Sela                              ID:206902355");
-		JLabel lb6 = new JLabel("Betsalel Koginsky         ID:312180789");
-		JLabel lb7 = new JLabel("    ");
+		JLabel lb = new JLabel("<html>Program Name:    Corona Simulation<br/>"
+				+ "Production date:                    6.4.2021<br/><br/>"
+				+ "Creators: <br/>"
+				+ "Bar Sela                              ID:206902355<br/>"
+				+ "Betsalel Koginsky         ID:312180789<br/><html>");
 
-		about_p.add(lb1);
-		about_p.add(lb2);
-		about_p.add(lb3);
-		about_p.add(lb4);
-		about_p.add(lb5);
-		about_p.add(lb6);
-		about_p.add(lb7);
+		about_p.add(lb);
+
 		about_dialog.getContentPane().add(about_p);
 		about_dialog.pack();
 		about.addActionListener(new ActionListener() {

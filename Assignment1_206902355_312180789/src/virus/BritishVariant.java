@@ -103,8 +103,12 @@ public class BritishVariant implements IVirus {
 		return true;
 		
 	}
+	public static void setMutation(List<IVirus> m) 
+	{
+		variants=m;
+	}
 	
-	private List<IVirus> variants;
+	private static List<IVirus> variants;
 	//conation propabillity
 	private final static double contagion=0.7;
 	

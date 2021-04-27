@@ -106,8 +106,12 @@ public class SouthAfricanVariant implements IVirus {
 		return true;
 		
 	}
+	public static void setMutation(List<IVirus> m) 
+	{
+		variants=m;
+	}
 	
-	private List<IVirus> variants;
+	private static List<IVirus> variants;
 
 	//conation propabillity
 	private final static double con_0_18=0.6;

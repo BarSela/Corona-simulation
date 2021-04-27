@@ -116,7 +116,11 @@ public class ChineseVariant implements IVirus
 		return true;
 		
 	}
-	private List<IVirus> variants;
+	public static void setMutation(List<IVirus> m) 
+	{
+		variants=m;
+	}
+	private static List<IVirus> variants;
 	
 	//conation propabillity
 	private final static double con_18=0.2;

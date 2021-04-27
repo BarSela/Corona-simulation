@@ -15,6 +15,7 @@ import population.Person;
 import population.Sick;
 import population.Vaccinated;
 import simulation.Clock;
+import ui.Main_window;
 import virus.BritishVariant;
 import virus.IVirus;
 
@@ -98,6 +99,17 @@ public abstract class Settlement {
 		
 		
 	}
+	public void KillPerson(Person p)
+	{
+		/**
+		 * kill person and delete him from settlement
+		 * @param p the person that killed
+		 */
+		this.sick_people.remove(p);
+		this.dead++;
+		
+		
+	}
 	public boolean transferPerson(Person p, Settlement settl)
 	{
 		/**
@@ -127,104 +139,6 @@ public abstract class Settlement {
 		return false;
 
 		
-	}
-	public void InitialSimulation() throws Exception 
-	{
-		IVirus virus=new BritishVariant();
-		double numContagion=0;//array for number of people that contagion in step 2
-		numContagion=this.getPopulation()*initialcontagion;
-		for (int j=0;j<numContagion;j++)
-		{
-			this.getsick_people().add(this.gethealthy_people().get(0).contagion(virus));
-			this.gethealthy_people().remove(0);
-		}
-		/**
-		 * step 3: Simulationstage: Crossing all settlements,
-		 *selection of each Sick persons in the settlement, for which one pick a random selection of six people over The same settelment and try to ifnect them.
-		 *in total perform such a simulation of everything 5 times.
-		 */
-		for (int i=0;i<numOfSimulation;i++)//five simulation
-		{	
-			for (int k=0;k<numContagion;k++)
-			{
-				if (this.getsick_people().get(k) instanceof Sick)
-					for (int t=0;t<num_of_trys_to_initial_contagion;t++)
-					{
-						boolean flag=false;
-						Random rand=new Random();
-						int x=rand.nextInt(this.gethealthy_people().size()-1);
-						flag=virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
-						if (flag==true)
-						{
-							this.getsick_people().add(x,this.gethealthy_people().get(x).contagion(virus));;
-							this.gethealthy_people().remove(x);
-						}
-					}
-				}
-			this.setRamzorColor(this.calculateramzorgrade());
-		}
-			Clock.nextTick();
-	}
-	public void Simulation(Map world) throws Exception
-	{
-		double numSick=this.getsick_people().size()*sample_sickPeople;
-		Random rand = new Random();
-		for (int i=0;i<numSick;i++)
-		{
-			boolean flag=false;
-			int x=rand.nextInt(this.getsick_people().size()-1);
-			Sick s=(Sick)this.getsick_people().get(x);
-			IVirus virus=s.getVirus();
-			for (int j=0;j<num_of_trys_to_contagion;j++)
-			{
-				int y=rand.nextInt(this.gethealthy_people().size()-1);
-				flag=virus.tryToContagion(s,this.gethealthy_people().get(y));
-				if (flag)
-				{
-					this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));
-					this.gethealthy_people().remove(y);
-				}
-			}
-		}
-		for(int k=0;k<this.getsick_people().size();k++)
-		{
-			Sick s=(Sick)this.getsick_people().get(k);
-			if(Clock.CalcDays(s.getContagiousTime())>25)
-			{
-				this.gethealthy_people().add(s.recover());
-				this.getsick_people().remove(k);
-			}
-		}
-		for (int transfer=0;transfer<this.getPopulation()*0.03;transfer++)
-		{
-			List<Person> population=new ArrayList<Person>(this.getPopulation());
-			population.addAll(this.gethealthy_people());
-			population.addAll(this.getsick_people());
-			int people=rand.nextInt(population.size());
-			int settl=rand.nextInt(world.getSettlement().length);
-			while(world.getSettlement()[settl].getName().equals(this.getName()))
-					settl=rand.nextInt(world.getSettlement().length);
-			this.transferPerson(population.get(people), world.getSettlement()[settl]);
-		}
-		int count_doses=0;
-		for (int vaccine_doses=0;vaccine_doses<this.getVaccine_doses();vaccine_doses++)
-		{
-			for(int healthy=0;healthy<this.gethealthy_people().size();healthy++)
-			{
-				if (this.gethealthy_people().get(healthy) instanceof Healthy)
-				{
-					Healthy h=(Healthy)this.gethealthy_people().get(healthy);
-					this.gethealthy_people().set(healthy, h.vaccinate());
-					count_doses++;
-					break;
-				}
-			}
-		}
-		//update number of doses in the settlement
-		this.add_vaccine_doses(this.getVaccine_doses()-count_doses);
-		Clock.nextTick();
-		Thread.sleep(1000);
-
 	}
 	@Override
 	public String toString()
@@ -262,6 +176,12 @@ public abstract class Settlement {
 		 */
 		int population =this.healthy_people.size()+this.sick_people.size();
 		return population;
+		} 
+	public int getdead() {
+		/**
+		 * @return amount of dead people in the settlemnet
+		 */
+		return this.dead;
 		} 
 	public List<Person> gethealthy_people()
 	{
@@ -339,6 +259,105 @@ public abstract class Settlement {
 	public abstract RamzorColor calculateramzorgrade();
 	public abstract boolean equals(Object o);
 	
+	public void InitialSimulation() throws Exception 
+	{
+		IVirus virus=new BritishVariant();
+		double numContagion=0;//array for number of people that contagion in step 2
+		numContagion=this.getPopulation()*initialcontagion;
+		for (int j=0;j<numContagion;j++)
+		{
+			this.getsick_people().add(this.gethealthy_people().get(0).contagion(virus));
+			this.gethealthy_people().remove(0);
+		}
+		/**
+		 * step 3: Simulationstage: Crossing all settlements,
+		 *selection of each Sick persons in the settlement, for which one pick a random selection of six people over The same settelment and try to ifnect them.
+		 *in total perform such a simulation of everything 5 times.
+		 */
+		for (int i=0;i<numOfSimulation;i++)//five simulation
+		{	
+			for (int k=0;k<numContagion;k++)
+			{
+				if (this.getsick_people().get(k) instanceof Sick)
+					for (int t=0;t<num_of_trys_to_initial_contagion;t++)
+					{
+						boolean flag=false;
+						Random rand=new Random();
+						int x=rand.nextInt(this.gethealthy_people().size()-1);
+						flag=virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
+						if (flag==true)
+						{
+							this.getsick_people().add(x,this.gethealthy_people().get(x).contagion(virus));;
+							this.gethealthy_people().remove(x);
+						}
+					}
+				}
+			this.setRamzorColor(this.calculateramzorgrade());
+		}
+			Clock.nextTick();
+	}
+	public void Simulation(Map world,int sleep_time) throws Exception
+	{
+		double numSick=this.getsick_people().size()*sample_sickPeople;
+		Random rand = new Random();
+		for (int i=0;i<numSick;i++)
+		{
+			boolean flag=false;
+			int x=rand.nextInt(this.getsick_people().size()-1);
+			Sick s=(Sick)this.getsick_people().get(x);
+			IVirus virus=s.getVirus();
+			for (int j=0;j<num_of_trys_to_contagion;j++)
+			{
+				int y=rand.nextInt(this.gethealthy_people().size()-1);
+				flag=virus.tryToContagion(s,this.gethealthy_people().get(y));
+				if (flag)
+				{
+					this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));
+					this.gethealthy_people().remove(y);
+				}
+			}
+		}
+		for(int k=0;k<this.getsick_people().size();k++)
+		{
+			Sick s=(Sick)this.getsick_people().get(k);
+			if(Clock.CalcDays(s.getContagiousTime())>25)
+			{
+				this.gethealthy_people().add(s.recover());
+				this.getsick_people().remove(k);
+			}
+		}
+		for (int transfer=0;transfer<this.getPopulation()*0.03;transfer++)
+		{
+			List<Person> population=new ArrayList<Person>(this.getPopulation());
+			population.addAll(this.gethealthy_people());
+			population.addAll(this.getsick_people());
+			int people=rand.nextInt(population.size());
+			int settl=rand.nextInt(world.getSettlement().length);
+			while(world.getSettlement()[settl].getName().equals(this.getName()))
+					settl=rand.nextInt(world.getSettlement().length);
+			this.transferPerson(population.get(people), world.getSettlement()[settl]);
+		}
+		int count_doses=0;
+		for (int vaccine_doses=0;vaccine_doses<this.getVaccine_doses();vaccine_doses++)
+		{
+			for(int healthy=0;healthy<this.gethealthy_people().size();healthy++)
+			{
+				if (this.gethealthy_people().get(healthy) instanceof Healthy)
+				{
+					Healthy h=(Healthy)this.gethealthy_people().get(healthy);
+					this.gethealthy_people().set(healthy, h.vaccinate());
+					count_doses++;
+					break;
+				}
+			}
+		}
+		//update number of doses in the settlement
+		this.add_vaccine_doses(this.getVaccine_doses()-count_doses);
+		Clock.nextTick();
+		Thread.sleep(sleep_time);
+
+	}
+	
 	//data members
 	private String name;
 	private Location location;
@@ -347,10 +366,13 @@ public abstract class Settlement {
 	private RamzorColor ramzorColor;
 	private int capacity;
 	private int vaccine_doses=0;
+	private int dead=0;
 	private List<Settlement> neighbors;
 	private static final int numOfSimulation = 5;
 	private static final double initialcontagion = 0.01;
 	private static final double sample_sickPeople = 0.2;
 	private static final int num_of_trys_to_initial_contagion = 6;
 	private static final int num_of_trys_to_contagion = 3;
+	
+	
 }
