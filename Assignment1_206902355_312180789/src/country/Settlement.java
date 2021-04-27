@@ -9,9 +9,11 @@ import java.util.List;
 import java.util.Random;
 import location.Location;
 import location.Point;
+import population.Convalescent;
 import population.Healthy;
 import population.Person;
 import population.Sick;
+import population.Vaccinated;
 import simulation.Clock;
 import virus.BritishVariant;
 import virus.IVirus;
@@ -81,7 +83,7 @@ public abstract class Settlement {
 		
 		if(this.getPopulation() < this.getCapacity())
 		{
-			if(p instanceof Healthy)
+			if(p instanceof Healthy || p instanceof Vaccinated || p instanceof Convalescent)
 			{
 				this.healthy_people.add(p);
 			}

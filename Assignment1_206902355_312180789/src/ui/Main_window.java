@@ -53,14 +53,18 @@ public class Main_window extends JFrame {
 	private Map world=null;
 	private boolean run=false;
 	private boolean loaded=false;
-	public Main_window() {
+	public Main_window() 
+	{
 		super("Corona-simulation Main Window");
 		GridLayout myGridLayout = new GridLayout(2, 1);
 		getContentPane().setLayout(myGridLayout);
+		
+		//main window components
 		menuBar();
 		map_panel();
 		simulationSpeedSlider();
 
+		
 		this.pack();
 		this.setVisible(true);
 	}
@@ -112,15 +116,13 @@ public class Main_window extends JFrame {
 	{
 		
 		JDialog statistic_d=new JDialog(this,"Statistics",false);
-		statistic_d.setLayout(new GridLayout(3, 1));
+		statistic_d.getContentPane().setLayout(new GridLayout(3, 1));
 		
 		JPanel top_panel=new JPanel();
 		top_panel.setLayout(new GridLayout(1, 2));
 		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
 		bottom_panel.setLayout(new GridLayout(1, 3));
 		JPanel table=table(world);
-		Component[] com =table.getComponents();
-		JTable jt=(JTable) com[1];
 		//top panel:
 		//change to comboBox
 		JPanel combo=new JPanel();
@@ -180,8 +182,7 @@ public class Main_window extends JFrame {
 			{
 				try 
 				{
-					int index=jt.getSelectedRow();
-					addSick(world,index);
+					addSick(world,0);
 				} 
 				catch (Exception e1) {
 					e1.printStackTrace();
@@ -201,12 +202,13 @@ public class Main_window extends JFrame {
 		b_dose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
+				int index;
 				int douses = (Integer) spinner.getValue();
-				//add to settlement   ----add_vaccine_doses(int douses)
+				adddouses(world,0,douses) ;
 			}
 		});
 		JDialog vaccinate=new JDialog(this,"Add vaccinate douses",true);
-		vaccinate.add(p_douses);
+		vaccinate.getContentPane().add(p_douses);
 		vaccinate.pack();
 		b_vaccinate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -218,10 +220,10 @@ public class Main_window extends JFrame {
 		bottom_panel.add(b_sick);
 		bottom_panel.add(b_vaccinate);
 		
-		statistic_d.add(top_panel);
+		statistic_d.getContentPane().add(top_panel);
 		
-		statistic_d.add(table);
-		statistic_d.add(bottom_panel);
+		statistic_d.getContentPane().add(table);
+		statistic_d.getContentPane().add(bottom_panel);
 		
 		statistic_d.pack();
 		return statistic_d;
@@ -229,9 +231,13 @@ public class Main_window extends JFrame {
 	}
 	public void menuBar()
 	{
+		//create menu bar
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+		
+		//--file submenu--
 		JMenu file = new JMenu("File");
+		//load 
 		JMenuItem load = new JMenuItem("Load");
 		load.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -254,7 +260,9 @@ public class Main_window extends JFrame {
 
 			}
 		});
+		//statistic
 		JMenuItem statistics = new JMenuItem("Statistics");
+		statistics.setSelected(true);
 		statistics.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -265,8 +273,14 @@ public class Main_window extends JFrame {
 				}
 			}
 		});
+		
+		//edit mutations
 		JMenuItem edit_mutations = new JMenuItem("edit Mutations");
+		
+		//exit 
 		JMenuItem exits = new JMenuItem("Exit");
+		
+		//add to submenu
 		file.add(load);
 		file.addSeparator();
 		file.add(statistics);
@@ -275,7 +289,11 @@ public class Main_window extends JFrame {
 		file.addSeparator();
 		file.add(exits);
 		menuBar.add(file);
+		
+		//--simulation submenu--
 		JMenu submenu_simulation = new JMenu("Simulation");
+		
+		//play
 		JMenuItem play = new JMenuItem("Play");
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -295,6 +313,8 @@ public class Main_window extends JFrame {
 				}	
 			}
 		});
+		
+		//pause
 		JMenuItem pause = new JMenuItem("Pause");
 		pause.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -307,6 +327,8 @@ public class Main_window extends JFrame {
 				}
 			}
 		});
+		
+		//stop
 		JMenuItem stop = new JMenuItem("Stop");
 		stop.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -319,6 +341,8 @@ public class Main_window extends JFrame {
 				
 			}
 		});
+		
+		//set tick
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
 		SpinnerModel tick_per_day=new SpinnerNumberModel(1,1,100,1);
 		JSpinner spinner = new JSpinner(tick_per_day);
@@ -337,7 +361,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		JDialog set=new JDialog(this,"Set tick per day",true);
-		set.add(p_tick);
+		set.getContentPane().add(p_tick);
 		set.pack();
 		set_tick.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -345,6 +369,8 @@ public class Main_window extends JFrame {
 				set.setVisible(true);
 			}
 		});
+		
+		//add to submenu
 		submenu_simulation.add(play);
 		submenu_simulation.addSeparator();
 		submenu_simulation.add(pause);
@@ -354,7 +380,10 @@ public class Main_window extends JFrame {
 		submenu_simulation.add(set_tick);
 		menuBar.add(submenu_simulation);
 		
+		//--help submenu--
 		JMenu submenu_help = new JMenu("Help");
+		
+		//help
 		JMenuItem help = new JMenuItem("Help");
 		JDialog help_dialog=new JDialog(this,"Help",true);
 		JPanel help_p=new JPanel();
@@ -395,8 +424,7 @@ public class Main_window extends JFrame {
 		help_p.add(l15);
 		
 		
-		
-		help_dialog.add(help_p);
+		help_dialog.getContentPane().add(help_p);
 		help_dialog.pack();
 		help.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -426,7 +454,7 @@ public class Main_window extends JFrame {
 		about_p.add(lb5);
 		about_p.add(lb6);
 		about_p.add(lb7);
-		about_dialog.add(about_p);
+		about_dialog.getContentPane().add(about_p);
 		about_dialog.pack();
 		about.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -435,10 +463,12 @@ public class Main_window extends JFrame {
 			}
 		});
 		
+		//add to submenu
 		submenu_help.add(help);
 		submenu_help.addSeparator();
 		submenu_help.add(about);
 		
+		//add submenu to menu
 		menuBar.add(submenu_help);
 	}
 	public void addSick(Map world, int index) throws Exception 
@@ -454,6 +484,10 @@ public class Main_window extends JFrame {
 			world.getSettlement()[index].gethealthy_people().remove(x);
 		}
 		world.getSettlement()[index].setRamzorColor(world.getSettlement()[index].calculateramzorgrade());
+	}
+	public void adddouses(Map world, int index, int douses) 
+	{
+		world.getSettlement()[index].add_vaccine_doses(douses);
 	}
 }
 
