@@ -42,8 +42,6 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 import java.io.File;
@@ -233,7 +231,7 @@ public class Main_window extends JFrame {
 						addSick(world,row_settl);
 						StatisticsFile.writeCsv(world);
 					}
-					
+
 				} 
 				catch (Exception e1) {
 					e1.printStackTrace();

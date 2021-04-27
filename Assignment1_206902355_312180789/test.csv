@@ -1,11 +1,11 @@
 Settlement Name,Settlement Type,Population,Ramzor color,Sick Percentages,Vaccine doses
- Ashdod,City,1000,GREEN,0.0%,0
- Beer-Sheva,City,1200,GREEN,0.0%,12
- Gevim,Moshav,700,GREEN,0.0%,0
- Rehovot,City,9000,GREEN,0.0%,0
- ruhama,Kibbutz,1500,GREEN,0.0%,0
- Eilat,City,7000,GREEN,0.0%,0
- Shtulim,Moshav,2000,GREEN,0.0%,0
- Tel-Aviv,City,9000,GREEN,0.0%,0
- Beeri,Kibbutz,1400,GREEN,0.0%,0
- Jerusalem,City,10000,GREEN,0.0%,0
+ Ashdod,City,1118,GREEN,0.8944543828264758%,0
+ Beer-Sheva,City,1291,GREEN,1.0844306738962044%,0
+ Gevim,Moshav,837,GREEN,37.39545997610514%,0
+ Rehovot,City,8852,GREEN,1.0054225033890645%,0
+ ruhama,Kibbutz,1593,GREEN,1.1299435028248588%,0
+ Eilat,City,6916,GREEN,1.0266049739733951%,0
+ Shtulim,Moshav,2140,GREEN,1.1214953271028036%,0
+ Tel-Aviv,City,8856,GREEN,0.9936766034327009%,0
+ Beeri,Kibbutz,1477,GREEN,0.9478672985781991%,0
+ Jerusalem,City,9803,GREEN,0.9894930123431603%,0
