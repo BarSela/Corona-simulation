@@ -8,7 +8,6 @@ import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.File;
 import javax.swing.JFrame;
-import IO.StatisticsFile;
 import ui.Main_window;
 
 

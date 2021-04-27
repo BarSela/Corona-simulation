@@ -219,7 +219,7 @@ public abstract class Settlement {
 			}
 		}
 		//update number of doses in the settlement
-		this.setVaccine_doses(this.getVaccine_doses()-count_doses);
+		this.add_vaccine_doses(this.getVaccine_doses()-count_doses);
 		Clock.nextTick();
 		Thread.sleep(1000);
 
@@ -296,12 +296,13 @@ public abstract class Settlement {
 		 */
 		return vaccine_doses;
 	}
-	public void setVaccine_doses(int vaccine_doses)
+	public void add_vaccine_doses(int douses)
 	{
 		/**
-		 * set the number of vaccine_doses
+		 * add vaccine doses to the settlement
+		 * @param douses number of douses to add
 		 */
-		 this.vaccine_doses=vaccine_doses;
+		this.vaccine_doses +=douses;
 	}
 	private boolean transferPropabillity(double p1, double p2)
 	{

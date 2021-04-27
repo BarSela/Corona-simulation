@@ -196,8 +196,6 @@ public class SimulationFile
 	}
 	
 	//data members
-	private Map map;
-	private static int Size;
 	private final static double capcity=1.3;
 	private final static int standardDeviation=6;
 	private final static int expectation=9;

@@ -4,11 +4,12 @@
  */
 package ui;
 
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
+import virus.BritishVariant;
+import virus.IVirus;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -26,17 +27,26 @@ import IO.StatisticsFile;
 import country.City;
 import country.Kibbutz;
 import country.Map;
+import population.Sick;
+
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import java.io.File;
+import java.util.Random;
+
 import simulation.Clock;
 
 
 public class Main_window extends JFrame {
+	private static final double initialcontagion = 0.01;
 	private JTextField tbfilter;
 	private JLabel resultfilter=null;
 	private Map world=null;
@@ -72,8 +82,8 @@ public class Main_window extends JFrame {
 	public JPanel table(Map world)
 	{    
 		JPanel p=new JPanel();    
-	    String data[][]=new String[world.getSettlement().length][7];    
-	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses","Dead People Number"};         
+	    String data[][]=new String[world.getSettlement().length][6];    
+	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses"};         
 	    for (int i=0;i<world.getSettlement().length;i++)
 			{
 	    		data[i][0]=world.getSettlement()[i].getName();
@@ -87,11 +97,10 @@ public class Main_window extends JFrame {
 	    		data[i][3]=world.getSettlement()[i].getRamzorColor()+"";
 	    		data[i][4]=((double)world.getSettlement()[i].getsick_people().size()/world.getSettlement()[i].getPopulation())*100+"%";
 	    		data[i][5]=world.getSettlement()[i].getVaccine_doses()+"";
-	    		data[i][6]=world.getSettlement()[i].getVaccine_doses()+"";
+	  
 			}
-	    StatisticsFile.writeCsv(world);
 	    JTable jt=new JTable(data,column);    
-	    jt.setBounds(30,40,200,300);          
+	    jt.setBounds(30,40,200,300);
 	    JScrollPane sp=new JScrollPane(jt);    
 	    p.add(sp);          
 	    p.setSize(300,400);    
@@ -157,7 +166,7 @@ public class Main_window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				//save changes***
+				StatisticsFile.writeCsv(world);
 			}
 			});
 	
@@ -166,7 +175,14 @@ public class Main_window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				//add sick***
+				try 
+				{
+					
+					addSick(world,0);
+				} 
+				catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 			});
 		JButton b_vaccinate= new JButton("Vaccinate");
@@ -269,9 +285,6 @@ public class Main_window extends JFrame {
 							world.getSettlement()[i].InitialSimulation();
 						for (int i=0;i<world.getSettlement().length;i++)
 							world.getSettlement()[i].Simulation(world);
-						for (int i=0;i<world.getSettlement().length;i++)
-							for (int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
-								System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -424,6 +437,20 @@ public class Main_window extends JFrame {
 		submenu_help.add(about);
 		
 		menuBar.add(submenu_help);
+	}
+	public void addSick(Map world, int index) throws Exception 
+	{
+		IVirus virus=new BritishVariant();
+		double numContagion=0;//array for number of people that contagion in step 2
+		numContagion=world.getSettlement()[index].getPopulation()*initialcontagion;
+		for (int i=0;i<numContagion;i++)
+		{
+			Random rand=new Random();
+			int x=rand.nextInt(world.getSettlement()[index].gethealthy_people().size()-1);
+			world.getSettlement()[index].getsick_people().add(world.getSettlement()[index].gethealthy_people().get(x).contagion(virus));
+			world.getSettlement()[index].gethealthy_people().remove(x);
+		}
+		world.getSettlement()[index].setRamzorColor(world.getSettlement()[index].calculateramzorgrade());
 	}
 }
 

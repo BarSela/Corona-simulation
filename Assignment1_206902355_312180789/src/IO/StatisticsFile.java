@@ -29,8 +29,6 @@ public class StatisticsFile
 		    sb.append("Sick Percentages");
 		    sb.append(',');
 		    sb.append("Vaccine doses");
-		    sb.append(',');
-		    sb.append("Dead People Number");
 		    sb.append('\n');
 		    for (int i=0;i<world.getSettlement().length;i++)
 			{
@@ -48,8 +46,6 @@ public class StatisticsFile
 	    		sb.append(world.getSettlement()[i].getRamzorColor());
 	    		sb.append(',');
 	    		sb.append(((double)world.getSettlement()[i].getsick_people().size()/world.getSettlement()[i].getPopulation())*100+"%");
-	    		sb.append(',');
-	    		sb.append(world.getSettlement()[i].getVaccine_doses());
 	    		sb.append(',');
 	    		sb.append(world.getSettlement()[i].getVaccine_doses());
 	    		sb.append('\n');
