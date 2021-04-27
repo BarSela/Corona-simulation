@@ -84,7 +84,7 @@ public abstract class Person
 		/**
 		 * @return the String representation of the person
 		 */
-		return "age: "+this.getAge()+" location:"+this.getLocation().toString()+" Settlment:"+this.getSettlement().toString();
+		return "age: "+this.getAge()+" location:"+this.getLocation().toString()+" Settlement:"+this.getSettlement().toString();
 	}
 
 	public int getAge()

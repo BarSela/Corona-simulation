@@ -19,10 +19,15 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import IO.SimulationFile;
+import country.City;
+import country.Kibbutz;
 import country.Map;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import java.io.File;
@@ -37,12 +42,8 @@ public class Main_window extends JFrame {
 		super("Corona-simulation Main Window");
 		GridLayout myGridLayout = new GridLayout(2, 1);
 		getContentPane().setLayout(myGridLayout);
-		
-		
 		menuBar();
 		map_panel();
-		
-		
 		JSlider simulation_speed=new JSlider();
 		simulation_speed.setMajorTickSpacing(10);
 		simulation_speed.setMinorTickSpacing(1);
@@ -50,9 +51,6 @@ public class Main_window extends JFrame {
 		simulation_speed.setPaintTicks(true);
 		simulation_speed.getValue();
 		getContentPane().add(simulation_speed);
-		
-		
-		
 		this.pack();
 		this.setVisible(true);
 	}
@@ -61,7 +59,34 @@ public class Main_window extends JFrame {
 		JPanel map_panel=new JPanel();
 		getContentPane().add(map_panel);
 	}
-	
+	@SuppressWarnings("null")
+	public void table(Map world)
+	{    
+		JFrame f=new JFrame();    
+	    String data[][]=new String[world.getSettlement().length][7];    
+	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses","Dead People Number"};         
+	    for (int i=0;i<world.getSettlement().length;i++)
+			{
+	    		data[i][0]=world.getSettlement()[i].getName();
+	    		if(world.getSettlement()[i] instanceof City)
+	    			data[i][1]="City";
+	    		else if(world.getSettlement()[i] instanceof Kibbutz)
+	    			data[i][1]="Kibbutz";
+	    		else
+	    			data[i][1]="Moshav";
+	    		data[i][2]=world.getSettlement()[i].getPopulation()+"";
+	    		data[i][3]=world.getSettlement()[i].getRamzorColor()+"";
+	    		data[i][4]=((double)world.getSettlement()[i].getsick_people().size()/world.getSettlement()[i].getPopulation())*100+"%";
+	    		data[i][5]=world.getSettlement()[i].getVaccine_doses()+"";
+	    		data[i][6]=world.getSettlement()[i].getVaccine_doses()+"";
+			}
+	    JTable jt=new JTable(data,column);    
+	    jt.setBounds(30,40,200,300);          
+	    JScrollPane sp=new JScrollPane(jt);    
+	    f.add(sp);          
+	    f.setSize(300,400);    
+	    f.setVisible(true);    
+	} 
 	public void menuBar()
 	{
 		JMenuBar menuBar = new JMenuBar();
@@ -90,6 +115,15 @@ public class Main_window extends JFrame {
 			}
 		});
 		JMenuItem statistics = new JMenuItem("Statistics");
+		statistics.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(loaded)
+				{
+					table(world);
+				}
+			}
+		});
 		JMenuItem edit_mutations = new JMenuItem("edit Mutations");
 		JMenuItem exits = new JMenuItem("Exits");
 		file.add(load);
@@ -113,6 +147,9 @@ public class Main_window extends JFrame {
 							world.getSettlement()[i].InitialSimulation();
 						for (int i=0;i<world.getSettlement().length;i++)
 							world.getSettlement()[i].Simulation(world);
+						for (int i=0;i<world.getSettlement().length;i++)
+							for (int j=0;j<world.getSettlement()[i].getsick_people().size();j++)
+								System.out.println(world.getSettlement()[i].getsick_people().get(j).toString());
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
