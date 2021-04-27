@@ -8,12 +8,15 @@ import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+
 import simulation.Main;
 import virus.BritishVariant;
 import virus.IVirus;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -50,6 +53,8 @@ public class Main_window extends JFrame {
 	private static final double initialcontagion = 0.01;
 	private JTextField tbfilter;
 	private JLabel resultfilter=null;
+	private int row_settl=-1;
+	private int col;
 	private Map world=null;
 	private boolean run=false;
 	private boolean loaded=false;
@@ -84,9 +89,9 @@ public class Main_window extends JFrame {
 		JPanel map_panel=new JPanel();
 		getContentPane().add(map_panel);
 	}
-	public JPanel table(Map world)
+	public JTable statistic_table(Map world)
 	{    
-		JPanel p=new JPanel();    
+ 
 	    String data[][]=new String[world.getSettlement().length][6];    
 	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses"};         
 	    for (int i=0;i<world.getSettlement().length;i++)
@@ -106,11 +111,31 @@ public class Main_window extends JFrame {
 			}
 	    JTable jt=new JTable(data,column);    
 	    jt.setBounds(30,40,200,300);
-	    JScrollPane sp=new JScrollPane(jt);    
-	    p.add(sp);          
-	    p.setSize(300,400);    
-	    p.setVisible(true);
-	    return p;
+	      
+    
+
+	    return jt;
+	}
+	public JTable mutations_table(Map world)
+	{    
+ 
+	    Object data[][]=new Object[3][4];    
+	    String column[]={"Mutation","British Variant","Chinese Variant","SouthAfrican Variant"}; 
+	    
+		data[0][0]="British";
+		data[0][1]="Chinese";
+		data[0][2]="SouthAfrican";
+
+	    for (int i=1;i<3;i++)
+			{
+
+			}
+	    JTable jt=new JTable(data,column);    
+	    jt.setBounds(30,40,200,300);
+	      
+    
+
+	    return jt;
 	}
 	public JDialog statisticWindow(Map world)
 	{
@@ -122,7 +147,28 @@ public class Main_window extends JFrame {
 		top_panel.setLayout(new GridLayout(1, 2));
 		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
 		bottom_panel.setLayout(new GridLayout(1, 3));
-		JPanel table=table(world);
+		
+		//table
+		JTable table=statistic_table(world);
+		table.addMouseListener(new java.awt.event.MouseAdapter() {
+		    @Override
+		    public void mouseClicked(java.awt.event.MouseEvent evt) {
+		    	if (evt.getClickCount() == 1)
+		    	{
+			        row_settl = table.rowAtPoint(evt.getPoint());
+			        col = table.columnAtPoint(evt.getPoint());
+		    	}
+
+		    }
+		});
+		JPanel p_table=new JPanel();
+		JScrollPane sp=new JScrollPane(table);  
+		p_table.add(sp);          
+		p_table.setSize(300,400);
+		
+		
+		
+		
 		//top panel:
 		//change to comboBox
 		JPanel combo=new JPanel();
@@ -182,7 +228,11 @@ public class Main_window extends JFrame {
 			{
 				try 
 				{
-					addSick(world,0);
+					if(row_settl != -1)
+					{
+						addSick(world,row_settl);
+					}
+
 				} 
 				catch (Exception e1) {
 					e1.printStackTrace();
@@ -202,9 +252,12 @@ public class Main_window extends JFrame {
 		b_dose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				int index;
-				int douses = (Integer) spinner.getValue();
-				adddouses(world,0,douses) ;
+				if(row_settl != -1)
+				{
+					int douses = (Integer) spinner.getValue();
+					adddouses(world,row_settl,douses) ;
+				}
+
 			}
 		});
 		JDialog vaccinate=new JDialog(this,"Add vaccinate douses",true);
@@ -222,7 +275,7 @@ public class Main_window extends JFrame {
 		
 		statistic_d.getContentPane().add(top_panel);
 		
-		statistic_d.getContentPane().add(table);
+		statistic_d.getContentPane().add(p_table);
 		statistic_d.getContentPane().add(bottom_panel);
 		
 		statistic_d.pack();
@@ -275,7 +328,8 @@ public class Main_window extends JFrame {
 		});
 		
 		//edit mutations
-		JMenuItem edit_mutations = new JMenuItem("edit Mutations");
+		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
+		JDialog edit_mutations_d=new JDialog(this,"Edit Mutations",true);
 		
 		//exit 
 		JMenuItem exits = new JMenuItem("Exit");
