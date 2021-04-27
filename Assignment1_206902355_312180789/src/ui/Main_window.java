@@ -42,6 +42,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 
 import java.io.File;
 import java.util.Random;
@@ -111,9 +112,6 @@ public class Main_window extends JFrame {
 			}
 	    JTable jt=new JTable(data,column);    
 	    jt.setBounds(30,40,200,300);
-	      
-    
-
 	    return jt;
 	}
 	public JTable mutations_table(Map world)
@@ -231,6 +229,7 @@ public class Main_window extends JFrame {
 					if(row_settl != -1)
 					{
 						addSick(world,row_settl);
+						StatisticsFile.writeCsv(world);
 					}
 
 				} 
@@ -255,7 +254,8 @@ public class Main_window extends JFrame {
 				if(row_settl != -1)
 				{
 					int douses = (Integer) spinner.getValue();
-					adddouses(world,row_settl,douses) ;
+					addDouses(world,row_settl,douses);
+					StatisticsFile.writeCsv(world);
 				}
 
 			}
@@ -530,7 +530,7 @@ public class Main_window extends JFrame {
 		IVirus virus=new BritishVariant();
 		double numContagion=0;//array for number of people that contagion in step 2
 		numContagion=world.getSettlement()[index].getPopulation()*initialcontagion;
-		for (int i=0;i<numContagion;i++)
+		for (int i=0;i<numContagion&&world.getSettlement()[index].getPopulation()<world.getSettlement()[index].getCapacity();i++)
 		{
 			Random rand=new Random();
 			int x=rand.nextInt(world.getSettlement()[index].gethealthy_people().size()-1);
@@ -539,7 +539,7 @@ public class Main_window extends JFrame {
 		}
 		world.getSettlement()[index].setRamzorColor(world.getSettlement()[index].calculateramzorgrade());
 	}
-	public void adddouses(Map world, int index, int douses) 
+	public void addDouses(Map world, int index, int douses) 
 	{
 		world.getSettlement()[index].add_vaccine_doses(douses);
 	}
