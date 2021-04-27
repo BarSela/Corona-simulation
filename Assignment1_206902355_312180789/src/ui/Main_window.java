@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import IO.SimulationFile;
+import IO.StatisticsFile;
 import country.City;
 import country.Kibbutz;
 import country.Map;
@@ -80,6 +81,7 @@ public class Main_window extends JFrame {
 	    		data[i][5]=world.getSettlement()[i].getVaccine_doses()+"";
 	    		data[i][6]=world.getSettlement()[i].getVaccine_doses()+"";
 			}
+	    StatisticsFile.writeCsv(world);
 	    JTable jt=new JTable(data,column);    
 	    jt.setBounds(30,40,200,300);          
 	    JScrollPane sp=new JScrollPane(jt);    

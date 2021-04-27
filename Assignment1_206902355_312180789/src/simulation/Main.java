@@ -20,7 +20,6 @@ public class Main {
 	{ 
 		Main_window window = new Main_window();
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		StatisticsFile.writeCsv();
 	}
 	public static File loadFileFunc() 
 	{
