@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -117,7 +118,9 @@ public class Main_window extends JFrame {
 		top_panel.setLayout(new GridLayout(1, 2));
 		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
 		bottom_panel.setLayout(new GridLayout(1, 3));
-		
+		JPanel table=table(world);
+		Component[] com =table.getComponents();
+		JTable jt=(JTable) com[1];
 		//top panel:
 		//change to comboBox
 		JPanel combo=new JPanel();
@@ -177,8 +180,8 @@ public class Main_window extends JFrame {
 			{
 				try 
 				{
-					
-					addSick(world,0);
+					int index=jt.getSelectedRow();
+					addSick(world,index);
 				} 
 				catch (Exception e1) {
 					e1.printStackTrace();
@@ -216,7 +219,7 @@ public class Main_window extends JFrame {
 		bottom_panel.add(b_vaccinate);
 		
 		statistic_d.add(top_panel);
-		JPanel table=table(world);
+		
 		statistic_d.add(table);
 		statistic_d.add(bottom_panel);
 		
@@ -263,7 +266,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		JMenuItem edit_mutations = new JMenuItem("edit Mutations");
-		JMenuItem exits = new JMenuItem("Exits");
+		JMenuItem exits = new JMenuItem("Exit");
 		file.add(load);
 		file.addSeparator();
 		file.add(statistics);
