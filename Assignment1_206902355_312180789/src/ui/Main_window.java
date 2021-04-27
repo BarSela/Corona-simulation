@@ -117,22 +117,16 @@ public class Main_window extends JFrame {
 	public JTable mutations_table(Map world)
 	{    
  
-	    Object data[][]=new Object[3][4];    
-	    String column[]={"Mutation","British Variant","Chinese Variant","SouthAfrican Variant"}; 
-	    
-		data[0][0]="British";
-		data[0][1]="Chinese";
-		data[0][2]="SouthAfrican";
-
-	    for (int i=1;i<3;i++)
-			{
-
-			}
+		JCheckBox data[][]=new JCheckBox[3][3];    
+	    String column[]={"British Variant","Chinese Variant","SouthAfrican Variant"};
+	    for (int i=0;i<3;i++)
+	    	for(int j=0;j<3;j++)
+	    		{
+	    			data[i][j]=new JCheckBox();   
+	    			data[i][j].setBounds(150,100, 50,50);
+	    		}
 	    JTable jt=new JTable(data,column);    
 	    jt.setBounds(30,40,200,300);
-	      
-    
-
 	    return jt;
 	}
 	public JDialog statisticWindow(Map world)
@@ -326,10 +320,28 @@ public class Main_window extends JFrame {
 				}
 			}
 		});
-		
 		//edit mutations
+		
 		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
 		JDialog edit_mutations_d=new JDialog(this,"Edit Mutations",true);
+		JTable table=mutations_table(world);
+		String row[]={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
+		RowedTableScroll jt_rowed =new RowedTableScroll(table,row);
+		
+		edit_mutations_d.add(jt_rowed);
+		edit_mutations_d.pack();
+		
+		
+		edit_mutations.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e)
+			{
+				if(loaded)
+				{
+					edit_mutations_d.setVisible(true);
+				}
+			}
+		});
+
 		
 		//exit 
 		JMenuItem exits = new JMenuItem("Exit");
