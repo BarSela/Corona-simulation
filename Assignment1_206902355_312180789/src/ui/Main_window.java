@@ -29,6 +29,7 @@ import country.Map;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import java.io.File;
@@ -36,6 +37,8 @@ import simulation.Clock;
 
 
 public class Main_window extends JFrame {
+	private JTextField tbfilter;
+	private JLabel resultfilter=null;
 	private Map world=null;
 	private boolean run=false;
 	private boolean loaded=false;
@@ -45,6 +48,13 @@ public class Main_window extends JFrame {
 		getContentPane().setLayout(myGridLayout);
 		menuBar();
 		map_panel();
+		simulationSpeedSlider();
+
+		this.pack();
+		this.setVisible(true);
+	}
+	public void simulationSpeedSlider()
+	{
 		JSlider simulation_speed=new JSlider();
 		simulation_speed.setMajorTickSpacing(10);
 		simulation_speed.setMinorTickSpacing(1);
@@ -52,18 +62,16 @@ public class Main_window extends JFrame {
 		simulation_speed.setPaintTicks(true);
 		simulation_speed.getValue();
 		getContentPane().add(simulation_speed);
-		this.pack();
-		this.setVisible(true);
+		
 	}
 	public void map_panel()
 	{
 		JPanel map_panel=new JPanel();
 		getContentPane().add(map_panel);
 	}
-	@SuppressWarnings("null")
-	public void table(Map world)
+	public JPanel table(Map world)
 	{    
-		JFrame f=new JFrame();    
+		JPanel p=new JPanel();    
 	    String data[][]=new String[world.getSettlement().length][7];    
 	    String column[]={"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses","Dead People Number"};         
 	    for (int i=0;i<world.getSettlement().length;i++)
@@ -85,10 +93,121 @@ public class Main_window extends JFrame {
 	    JTable jt=new JTable(data,column);    
 	    jt.setBounds(30,40,200,300);          
 	    JScrollPane sp=new JScrollPane(jt);    
-	    f.add(sp);          
-	    f.setSize(300,400);    
-	    f.setVisible(true);    
-	} 
+	    p.add(sp);          
+	    p.setSize(300,400);    
+	    p.setVisible(true);
+	    return p;
+	}
+	public JDialog statisticWindow(Map world)
+	{
+		
+		JDialog statistic_d=new JDialog(this,"Statistics",false);
+		statistic_d.setLayout(new GridLayout(3, 1));
+		
+		JPanel top_panel=new JPanel();
+		top_panel.setLayout(new GridLayout(1, 2));
+		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
+		bottom_panel.setLayout(new GridLayout(1, 3));
+		
+		//top panel:
+		//change to comboBox
+		JPanel combo=new JPanel();
+		combo.setLayout(new BoxLayout(combo, BoxLayout.PAGE_AXIS));
+		combo.add(new JLabel("select column:"));
+		
+		//filter
+		JPanel filter=new JPanel();
+		filter.setLayout(new BoxLayout(filter, BoxLayout.LINE_AXIS));
+		filter.add(new JLabel("filter:"));
+		JPanel lb_text_and_result=new JPanel();
+		lb_text_and_result.setLayout(new BoxLayout(lb_text_and_result, BoxLayout.PAGE_AXIS));
+		lb_text_and_result.add(new JLabel("filter:"));
+		lb_text_and_result.add(tbfilter=new JTextField());
+		lb_text_and_result.add(resultfilter=new JLabel(""));
+		filter.add(lb_text_and_result);
+		JButton b_ok = new JButton("Ok");
+		b_ok.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				String c =tbfilter.getText().toString();
+				boolean col=false;//change to find col name***
+				//put c somwhere***
+				if(col)
+				{
+
+					resultfilter.setText("Filtered");
+				}
+				else
+				{
+					resultfilter.setText("Try again");
+				}
+				
+			}
+			});
+		filter.add(b_ok);
+		
+		top_panel.add(combo);
+		top_panel.add(filter);
+		
+		//bottom panel:
+		
+		JButton b_save = new JButton("Save");
+		b_save.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				//save changes***
+			}
+			});
+	
+		JButton b_sick = new JButton("Add Sick");
+		b_sick.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				//add sick***
+			}
+			});
+		JButton b_vaccinate= new JButton("Vaccinate");
+		SpinnerModel vaccinate_nodel=new SpinnerNumberModel(1,1,100,1);
+		JSpinner spinner = new JSpinner(vaccinate_nodel);
+		JPanel p_douses=new JPanel();
+		JButton b_dose = new JButton("Add");
+		JLabel l_dose = new JLabel("Douses:");
+		p_douses.add(l_dose);
+		p_douses.add(spinner);
+		p_douses.add(b_dose);
+		
+		b_dose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				int douses = (Integer) spinner.getValue();
+				//add to settlement   ----add_vaccine_doses(int douses)
+			}
+		});
+		JDialog vaccinate=new JDialog(this,"Add vaccinate douses",true);
+		vaccinate.add(p_douses);
+		vaccinate.pack();
+		b_vaccinate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				vaccinate.setVisible(true);
+			}
+		});
+		bottom_panel.add(b_save);
+		bottom_panel.add(b_sick);
+		bottom_panel.add(b_vaccinate);
+		
+		statistic_d.add(top_panel);
+		JPanel table=table(world);
+		statistic_d.add(table);
+		statistic_d.add(bottom_panel);
+		
+		statistic_d.pack();
+		return statistic_d;
+		
+	}
 	public void menuBar()
 	{
 		JMenuBar menuBar = new JMenuBar();
@@ -122,7 +241,8 @@ public class Main_window extends JFrame {
 			{
 				if(loaded)
 				{
-					table(world);
+					JDialog statistic_d=statisticWindow(world);
+					statistic_d.setVisible(true);
 				}
 			}
 		});
