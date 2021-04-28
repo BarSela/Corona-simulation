@@ -178,7 +178,7 @@ public class Main_window extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				StatisticsFile.writeCsv(world);
+				StatisticsFile.writeCsv(world,Main.loadFileFunc());
 			}
 			});
 	

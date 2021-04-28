@@ -12,11 +12,11 @@ import country.Map;
 
 public class StatisticsFile 
 {
-	public static void writeCsv(Map world)
+	public static void writeCsv(Map world ,File file)
 	{
 		try  
 		{
-			PrintWriter writer = new PrintWriter(new File("test.csv"));
+			PrintWriter writer = new PrintWriter(file);
 			StringBuilder sb = new StringBuilder();
 			sb.append("Settlement Name");
 		    sb.append(',');
