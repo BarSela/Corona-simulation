@@ -1,18 +1,12 @@
 package ui;
 
 import java.awt.Dimension;
-import java.util.HashSet;
 import java.util.Set;
-
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
-
-import country.City;
-import country.Kibbutz;
 import virus.BritishVariant;
 import virus.ChineseVariant;
 import virus.IVirus;

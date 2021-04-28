@@ -4,11 +4,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
 
-import IO.StatisticsFile;
 import country.City;
 import country.Kibbutz;
 import country.Settlement;
-import simulation.Main;
 import virus.BritishVariant;
 import virus.IVirus;
 

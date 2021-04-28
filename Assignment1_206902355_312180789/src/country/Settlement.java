@@ -15,7 +15,6 @@ import population.Person;
 import population.Sick;
 import population.Vaccinated;
 import simulation.Clock;
-import ui.Main_window;
 import virus.BritishVariant;
 import virus.IVirus;
 

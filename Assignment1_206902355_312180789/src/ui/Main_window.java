@@ -13,10 +13,8 @@ import virus.BritishVariant;
 import virus.ChineseVariant;
 import virus.IVirus;
 import virus.SouthAfricanVariant;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -24,25 +22,15 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
 import IO.SimulationFile;
 import IO.StatisticsFile;
-import country.City;
-import country.Kibbutz;
 import country.Map;
 import country.Settlement;
-
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-
 import java.io.File;
-import java.util.Random;
-
 import simulation.Clock;
 
 
