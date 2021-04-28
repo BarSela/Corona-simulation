@@ -104,7 +104,7 @@ public class BritishVariant implements IVirus {
 		return true;
 		
 	}
-	public static void addMutation(IVirus v) 
+	public static void addMutation(IVirus v)
 	{
 		variants.add(v);
 	}
