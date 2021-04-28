@@ -4,8 +4,8 @@ Settlement Name,Settlement Type,Population,Ramzor color,Sick Percentages,Vaccine
  Gevim,Moshav,700,GREEN,0.0%,0
  Rehovot,City,9000,GREEN,0.0%,0
  ruhama,Kibbutz,1500,GREEN,0.0%,0
- Eilat,City,7000,GREEN,0.0%,0
+ Eilat,City,7000,GREEN,0.0%,1
  Shtulim,Moshav,2000,GREEN,0.0%,0
  Tel-Aviv,City,9000,GREEN,0.0%,0
- Beeri,Kibbutz,1400,GREEN,0.0%,2
+ Beeri,Kibbutz,1400,GREEN,0.0%,0
  Jerusalem,City,10000,GREEN,0.0%,0

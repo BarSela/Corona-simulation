@@ -130,7 +130,7 @@ public class Main_window extends JFrame {
 	    for (int i=0;i<3;i++)
 	    	for(int j=0;j<3;j++)
 	    		{
-	    			data[i][j]=new JCheckBox();   
+	    			data[i][j]=new JCheckBox("hey");   
 	    			data[i][j].setBounds(150,100, 50,50);
 	    		}
 	    JTable jt=new JTable(data,column);    
