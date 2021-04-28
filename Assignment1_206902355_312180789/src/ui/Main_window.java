@@ -47,13 +47,8 @@ import simulation.Clock;
 
 
 public class Main_window extends JFrame {
-	private static final double initialcontagion = 0.01;
-	private JTextField tbfilter;
-	private JLabel resultfilter=null;
-	private int row_settl=-1;
-	private int col;
 	private Map world=null;
-	private static int sleep_time=10000;
+	private int sleep_time=10000;
 	public Main_window() 
 	{
 		super("Corona-simulation Main Window");
@@ -71,6 +66,14 @@ public class Main_window extends JFrame {
 		this.setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	public Map getmap()
+	{
+		return world;
+	}
+	public int getsleeptime()
+	{
+		return sleep_time;
+	}
 	public void simulationSpeedSlider()
 	{
 		JPanel simulationspeed_p=new JPanel();
@@ -80,6 +83,8 @@ public class Main_window extends JFrame {
 		simulation_speed.setMajorTickSpacing(5);
 		simulation_speed.setMinorTickSpacing(1);
 		simulation_speed.setMaximum(50);
+		simulation_speed.setValue(30);
+		simulation_speed.setToolTipText("sec to wait beteen ticks");
 		simulation_speed.setPaintLabels(true);
 		simulation_speed.setPaintTicks(true);
 		JButton b_speed=new JButton("Set");
@@ -295,17 +300,10 @@ public class Main_window extends JFrame {
 				play.setEnabled(false);
 				pause.setEnabled(true);
 				stop.setEnabled(true);
-				try {
-					for (int i=0;i<world.getSettlement().length;i++)
-						world.getSettlement()[i].InitialSimulation();
-					for (int i=0;i<world.getSettlement().length;i++)
-						world.getSettlement()[i].Simulation(world,sleep_time);
+				Main.setPlay(true);
+				Main.setPause(false);
+				Main.setStop(false);
 
-
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
 			}
 		});
 		
@@ -317,6 +315,9 @@ public class Main_window extends JFrame {
 				pause.setEnabled(false);
 				play.setEnabled(true);
 				stop.setEnabled(true);
+				Main.setPlay(false);
+				Main.setPause(true);
+				Main.setStop(false);
 
 				//*******************************************************
 			}
@@ -332,6 +333,11 @@ public class Main_window extends JFrame {
 				stop.setEnabled(false);
 				load.setEnabled(true);
 				statistics.setEnabled(false);
+				Main.setPlay(false);
+				Main.setStop(true);
+				Main.setPause(false);
+				world=null;
+				
 				//*******************************************************
 
 			}

@@ -46,12 +46,10 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 			 */
 			return col;
 		}
-		public String getName() {
-			/**
-			 * @return the color to paint the square for the map
-			 */
-			return colname;
-		}
+        @Override
+        public String toString() {
+            return colname;
+        }
 		
 	}
     private static class StatisticModel extends AbstractTableModel {
