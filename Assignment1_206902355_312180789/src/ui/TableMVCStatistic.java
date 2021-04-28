@@ -46,6 +46,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 			 */
 			return col;
 		}
+		
         @Override
         public String toString() {
             return colname;
