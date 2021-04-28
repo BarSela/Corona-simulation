@@ -4,6 +4,8 @@
  */
 package population;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import country.City;
@@ -58,23 +60,28 @@ public abstract class Person
 		 */
 		Sick s;
 		Random rand = new Random();
-		int x1=rand.nextInt(10);
-		if (x1%3==0)
+		if (iv instanceof BritishVariant)
 		{
-			IVirus virus=new BritishVariant(); 
-			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),virus);
+			List<IVirus> list = new ArrayList<IVirus>(BritishVariant.getSetMutation());
+			int x1=rand.nextInt(list.size());
+			iv = list.get(x1);
+			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 			return s;
 		}
-		else if (x1%3==1)
+		if (iv instanceof ChineseVariant)
 		{
-			IVirus virus=new SouthAfricanVariant();
-			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),virus);
+			List<IVirus> list = new ArrayList<IVirus>(ChineseVariant.getSetMutation());
+			int x1=rand.nextInt(list.size());
+			iv = list.get(x1);
+			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 			return s;
-		}	
-		else if (x1%3==2)
+		}
+		if (iv instanceof SouthAfricanVariant)
 		{
-			IVirus virus=new ChineseVariant();
-			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),virus);
+			List<IVirus> list = new ArrayList<IVirus>(SouthAfricanVariant.getSetMutation());
+			int x1=rand.nextInt(list.size());
+			iv = list.get(x1);
+			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 			return s;
 		}
 		return s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
