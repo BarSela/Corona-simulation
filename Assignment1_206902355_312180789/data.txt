@@ -2,7 +2,7 @@ City; Ashdod; 0;0; 90;50; 1000
 City; Beer-Sheva; 30;0; 80;80; 1200
 Moshav; Gevim; 15;9; 15;20; 700
 City; Rehovot; 7;18; 40;30; 9000
-Kibbutz; ruhama; 10;10; 20;10; 1500
+Kibbutz; Ruhama; 10;10; 20;10; 1500
 City; Eilat; 70;30; 80;80; 7000
 Moshav; Shtulim; 47;23; 90;25; 2000
 City; Tel-Aviv; 50;50; 80;80; 9000

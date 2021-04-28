@@ -42,7 +42,9 @@ public class SimulationFile
 		 */
 		Settlement[] settlement=null;
 		String name = null;
-		String[] line=null;
+		String[] lineSetl=null;
+		String[][] lineNeighbor=null;
+		int index=0;
 		List<Settlement> settl_temp=new ArrayList<Settlement>();
 		int[] numPeopole=null;
 		try 
@@ -50,26 +52,31 @@ public class SimulationFile
 			FileReader fr= new FileReader(file);
 			BufferedReader br= new BufferedReader(fr);
 			Scanner in=new Scanner(file);
-			while (!(br.readLine().contains("#")))
+			while (br.readLine()!=null)
 				Map.setSize();
 			
+			lineNeighbor=new String[Map.getSize()][3];
 			numPeopole=new int[Map.getSize()];
 			name=in.nextLine();
 			for (int i=0;i<Map.getSize();i++)
 			{
-				line=name.split(";");
-				if(!(line[0].contains("#")))
+				
+				if(name.contains("#"))
 				{
-					if (parseSettlement(line)!=null)
+					lineNeighbor[index]=name.split(";");
+					index++;
+				}
+				else 
+				{
+					lineSetl=name.split(";");
+					if (parseSettlement(lineSetl)!=null)
 					{
-						settl_temp.add(parseSettlement(line));
-						numPeopole[i]=Integer.parseInt(line[6].replace(" ", ""));
+						settl_temp.add(parseSettlement(lineSetl));
+						numPeopole[i]=Integer.parseInt(lineSetl[6].replace(" ", ""));
 					}
 					else
-						throw new Exception("Error with the Settlement type");
+						throw new Exception("Error with the Settlement type");	
 				}
-				
-
 				if (!(i==Map.getSize()-1))
 					name=in.nextLine();
 			}
@@ -78,18 +85,9 @@ public class SimulationFile
 			{
 				settlement[i]=settl_temp.get(i);
 			}
-			
 			//neighbors
-			while (in.hasNextLine())
-			{
-				name=in.nextLine();
-				Map.setSize();
-				line=name.split(";");
-				if(line[0].contains("#"))
-				{
-					parseNeighbors(line,settlement);
-				}	
-			}
+			for (int i=0;i<index;i++)
+				parseNeighbors(lineNeighbor[i],settlement);
 			Healthy new_person;
 			for(int i=0;i<settlement.length;i++)
 			{
