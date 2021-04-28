@@ -51,6 +51,13 @@ public class Map {
 		 */
 		size++;
 	}
+	public static void resetSize() 
+	{
+		/**
+		 * set size to size+1
+		 */
+		size=0;
+	}
 	public Settlement[] getSettlement() 
 	{
 		/**

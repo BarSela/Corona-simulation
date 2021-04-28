@@ -109,6 +109,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
         }
         public void setSick(int row) {
         	
+        	
         	Settlement settlement = data[row];
         	IVirus virus=new BritishVariant();
     		double numContagion=settlement.getPopulation()*initialcontagion;;
@@ -179,7 +180,12 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public void setSick()
     {
-    	model.setSick(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()));
+    	if(table.getSelectedRow()>0)
+    	{
+        	model.setSick(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()));
+    	}
+
+
     }
     public void setDouse(int douses)
     {

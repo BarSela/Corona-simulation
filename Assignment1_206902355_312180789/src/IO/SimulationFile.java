@@ -100,6 +100,7 @@ public class SimulationFile
 			in.close();
 			br.close();
 			fr.close();
+			Map.resetSize();
 		}
 		catch (FileNotFoundException ex) 
 		{

@@ -107,21 +107,6 @@ public class Main_window extends JFrame {
 		JPanel map_panel=new JPanel();
 		getContentPane().add(map_panel);
 	}
-	public JTable mutations_table(Map world)
-	{    
- 
-		JCheckBox data[][]=new JCheckBox[3][3];    
-	    String column[]={"British Variant","Chinese Variant","SouthAfrican Variant"};
-	    for (int i=0;i<3;i++)
-	    	for(int j=0;j<3;j++)
-	    		{
-	    			data[i][j]=new JCheckBox("hey");   
-	    			data[i][j].setBounds(150,100, 50,50);
-	    		}
-	    JTable jt=new JTable(data,column);    
-	    jt.setBounds(30,40,200,300);
-	    return jt;
-	}
 	public JDialog statisticWindow(Map world)
 	{
 		

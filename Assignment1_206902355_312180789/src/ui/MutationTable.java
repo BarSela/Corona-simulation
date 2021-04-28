@@ -88,6 +88,11 @@ public class MutationTable extends JDialog
         public Class getColumnClass(int column) {
         	return getValueAt(0, column).getClass(); 
         }
+        @Override
+        public boolean isCellEditable(int row, int col) 
+        { return true; 
+        }
+
         
         @Override
         public void setValueAt(Object aValue, int row, int col) {
