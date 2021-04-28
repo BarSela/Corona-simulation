@@ -115,6 +115,11 @@ public class SouthAfricanVariant implements IVirus {
 	{
 		variants.remove(v);
 	}
+	public static Set<IVirus> getSetMutation() 
+	{
+		return variants;
+	}
+	
 
 	
 	private static Set<IVirus> variants=new HashSet<IVirus>();

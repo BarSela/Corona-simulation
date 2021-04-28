@@ -10,7 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
 import virus.BritishVariant;
+import virus.ChineseVariant;
 import virus.IVirus;
+import virus.SouthAfricanVariant;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -118,10 +121,8 @@ public class Main_window extends JFrame {
 	{
 		
 		JDialog statistic_d=new JDialog(this,"Statistics",false);
-		statistic_d.getContentPane().setLayout(new GridLayout(3, 1));
-		
-		JPanel top_panel=new JPanel();
-		top_panel.setLayout(new GridLayout(1, 2));
+		statistic_d.getContentPane().setLayout(new GridLayout(2, 1));
+
 		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
 		bottom_panel.setLayout(new GridLayout(1, 3));
 		
@@ -129,47 +130,6 @@ public class Main_window extends JFrame {
 		Settlement[] settlements = world.getSettlement();
         TableMVCStatistic table_model = new TableMVCStatistic(settlements);        
 		
-		
-		//top panel:
-		//change to comboBox
-		JPanel combo=new JPanel();
-		combo.setLayout(new BoxLayout(combo, BoxLayout.PAGE_AXIS));
-		combo.add(new JLabel("select column:"));
-		
-		//filter
-		JPanel filter=new JPanel();
-		filter.setLayout(new BoxLayout(filter, BoxLayout.LINE_AXIS));
-		filter.add(new JLabel("filter:"));
-		JPanel lb_text_and_result=new JPanel();
-		lb_text_and_result.setLayout(new BoxLayout(lb_text_and_result, BoxLayout.PAGE_AXIS));
-		lb_text_and_result.add(new JLabel("filter:"));
-		lb_text_and_result.add(tbfilter=new JTextField());
-		lb_text_and_result.add(resultfilter=new JLabel(""));
-		filter.add(lb_text_and_result);
-		JButton b_ok = new JButton("Ok");
-		b_ok.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				String c =tbfilter.getText().toString();
-				boolean col=false;//change to find col name***
-				//put c somwhere***
-				if(col)
-				{
-
-					resultfilter.setText("Filtered");
-				}
-				else
-				{
-					resultfilter.setText("Try again");
-				}
-				
-			}
-			});
-		filter.add(b_ok);
-		
-		top_panel.add(combo);
-		top_panel.add(filter);
 		
 		//bottom panel:
 		
@@ -229,8 +189,6 @@ public class Main_window extends JFrame {
 		bottom_panel.add(b_sick);
 		bottom_panel.add(b_vaccinate);
 		
-		statistic_d.getContentPane().add(top_panel);
-		
 		statistic_d.getContentPane().add(table_model);
 		statistic_d.getContentPane().add(bottom_panel);
 		
@@ -287,13 +245,14 @@ public class Main_window extends JFrame {
 		//edit mutations
 		
 		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
-		JDialog edit_mutations_d=new JDialog(this,"Edit Mutations",true);
-		JTable table=mutations_table(world);
-		String row[]={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
-		RowedTableScroll jt_rowed =new RowedTableScroll(table,row);
-		
-		edit_mutations_d.add(jt_rowed);
-		edit_mutations_d.pack();
+		//JDialog edit_mutations_d=new JDialog(this,"Edit Mutations",true);
+    	IVirus[] variants={new BritishVariant(),new ChineseVariant(),new SouthAfricanVariant() };
+    	MutationTable edit_mutations_d = new MutationTable(this,variants);
+		//JTable table=mutations_table(world);
+		//String row[]={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
+		//RowedTableScroll jt_rowed =new RowedTableScroll(table,row);
+		//edit_mutations_d.add(jt_rowed);
+		//edit_mutations_d.pack();
 		
 		
 		edit_mutations.addActionListener(new ActionListener(){
