@@ -15,7 +15,8 @@ public class City extends Settlement {
 	 * this class represent the sttlement city
 	 * extend settlement class
 	 */
-	public City(String name, Location location,int population,int capacity) {
+	public City(String name, Location location,int population,int capacity) 
+	{
 		/**
 		 * consturctor
 		 * @param name          the name of the settlement
