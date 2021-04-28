@@ -5,7 +5,9 @@
 package virus;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import population.Person;
 import population.Sick;
@@ -23,7 +25,6 @@ public class BritishVariant implements IVirus {
 		/**
 		 * variants list contain the variant type that this variant can contaige
 		 */
-		this.variants=new ArrayList<IVirus>();
 	}
 	public double contagionProbability(Person p)
 	{
@@ -103,12 +104,21 @@ public class BritishVariant implements IVirus {
 		return true;
 		
 	}
-	public static void setMutation(List<IVirus> m) 
+	public static void addMutation(IVirus v) 
 	{
-		variants=m;
+		variants.add(v);
+	}
+	public static void removeMutation(IVirus v) 
+	{
+		variants.remove(v);
+	}
+
+	
+	private static Set<IVirus> variants=new HashSet<IVirus>();
+	static {
+		variants.add(new BritishVariant());
 	}
 	
-	private static List<IVirus> variants;
 	//conation propabillity
 	private final static double contagion=0.7;
 	

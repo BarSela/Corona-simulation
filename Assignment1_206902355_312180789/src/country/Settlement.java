@@ -44,7 +44,7 @@ public abstract class Settlement {
 		this.capacity=capacity;
 	}
 
-	protected double contagiousPercent()
+	public double contagiousPercent()
 	{
 		/**
 		 * @return the contagious percent in the settlement
