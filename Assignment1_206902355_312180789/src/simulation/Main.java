@@ -72,7 +72,6 @@ public class Main {
         if (fd.getFile() == null)
             return null;
         File f = new File(fd.getDirectory(), fd.getFile());
-        System.out.println(f.getPath());
         return f;
 	}
 	public static void setPause(boolean b)
