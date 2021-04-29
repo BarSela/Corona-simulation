@@ -1,11 +1,15 @@
-City; Ashdod; 220;20; 50;90; 1000
-City; Beer-Sheva; 120;150; 80;80; 1200
-Moshav; Ramot; 450;380; 25;50; 700
-City; Rehovot; 320;150; 40;50; 9000
+City; Ashdod; 320;20; 50;90; 1000
+City; Beer-Sheva; 220;250; 80;80; 1200
+City; Kiryat-Shmona; 1100;100; 80;90; 1200
+Moshav; Ramot; 900;380; 25;50; 700
+City; Rehovot; 470;150; 40;50; 9000
+City; Tevria; 900;250; 80;80; 1200
 Kibbutz; Ruhama; 180;100; 40;50; 1500
-City; Eilat; 20;200; 40;40; 7000
-Moshav; Shtulim; 250;100; 40;50; 2000
-City; Tel-Aviv; 330;50; 60;60; 9000
-Kibbutz; Shiler; 320;250; 40;40; 1400
-City; Jerusalem; 360;350; 80;80; 10000
+City; Eilat; 20;300; 40;40; 7000
+Moshav; Shtulim; 350;100; 40;50; 2000
+City; Tel-Aviv; 650;50; 60;60; 9000
+Kibbutz; Shiler; 470;250; 40;40; 1400
+City; Jerusalem; 560;350; 80;80; 10000
 #; Ashdod; Shtulim
+#; Rehovot; Shiler
+#; Tevria; Ramot
