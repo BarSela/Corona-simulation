@@ -26,7 +26,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
 import IO.SimulationFile;
 import IO.StatisticsFile;
 import country.Map;
