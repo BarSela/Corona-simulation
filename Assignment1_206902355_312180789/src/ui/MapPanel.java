@@ -1,5 +1,6 @@
 package ui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -14,7 +15,6 @@ public class MapPanel extends JPanel
 	public MapPanel(Map world) 
 	{
 		this.world=world;
-		
 	}
 	@Override
 	public void paintComponent(Graphics g) 
@@ -26,12 +26,14 @@ public class MapPanel extends JPanel
 			center= world.getSettlement()[i].getLocation().getsize().getWidth()/2 + world.getSettlement()[i].getLocation().getsize().getHeight()/2;
 			g.drawRect(world.getSettlement()[i].getLocation().getPosition().getPoint_x(), world.getSettlement()[i].getLocation().getPosition().getPoint_y(), world.getSettlement()[i].getLocation().getsize().getWidth(), world.getSettlement()[i].getLocation().getsize().getHeight());
 			g.setColor(world.getSettlement()[i].getRamzorColor().getColor());
-			g.drawString(world.getSettlement()[i].getName(), center, center);
+			g.fillRect(world.getSettlement()[i].getLocation().getPosition().getPoint_x(), world.getSettlement()[i].getLocation().getPosition().getPoint_y(), world.getSettlement()[i].getLocation().getsize().getWidth(), world.getSettlement()[i].getLocation().getsize().getHeight());
+			g.setColor(Color.BLACK);
+			g.drawString(world.getSettlement()[i].getName(), world.getSettlement()[i].getLocation().getPosition().getPoint_x(), world.getSettlement()[i].getLocation().getPosition().getPoint_y()+15);
 		}
 		
 	}
 	@Override
 	public Dimension getPreferredSize() {
-	return new Dimension(400, 400);
+	return new Dimension(800,800);
 	}
 }

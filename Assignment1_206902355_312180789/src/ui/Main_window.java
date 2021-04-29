@@ -103,6 +103,7 @@ public class Main_window extends JFrame {
 	{
 		MapPanel map_panel=new MapPanel(world);
 		map_panel.setVisible(true);
+		map_panel.repaint();
 		getContentPane().add(map_panel,BorderLayout.CENTER);
 		//remove(map_panel);
 		

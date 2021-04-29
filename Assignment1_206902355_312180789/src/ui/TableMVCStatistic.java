@@ -187,8 +187,8 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public void setDouse(int douses)
     {
-    	
-    	model.setdouses(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()),douses);
+    	if(table.getSelectedRow()>0)
+    		model.setdouses(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()),douses);
     }
     public void actionPerformed(ActionEvent e) {
         col=column.getItemAt(column.getSelectedIndex()).getcol();
