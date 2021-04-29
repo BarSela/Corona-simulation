@@ -7,6 +7,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.border.EtchedBorder;
 
 import country.Map;
 
@@ -16,6 +18,8 @@ public class MapPanel extends JPanel
 	public MapPanel(Map world) 
 	{
 		this.world=world;
+		this.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+	
 	}
 	@Override
 	public void paintComponent(Graphics g) 
@@ -31,7 +35,6 @@ public class MapPanel extends JPanel
 				int x1=findCenterX(i);
 				int y1=findCenterY(i);
 				int x2=world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_x()+world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getHeight()/2;
-				
 				int y2=world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_y()+world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getHeight()/2;
 				g.drawLine(x1,y1,x2,y2);
 				g.setColor(Color.BLACK);
@@ -43,11 +46,10 @@ public class MapPanel extends JPanel
 			g.setColor(Color.BLACK);
 			g.drawString(world.getSettlement()[i].getName(), world.getSettlement()[i].getLocation().getPosition().getPoint_x(), world.getSettlement()[i].getLocation().getPosition().getPoint_y()+15);
 		}
-		
 	}
 	@Override
 	public Dimension getPreferredSize() {
-	return new Dimension(800,800);
+	return new Dimension(600,600);
 	}
 	public int findCenterX(int i)
 	{

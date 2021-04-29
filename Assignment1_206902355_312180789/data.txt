@@ -11,5 +11,6 @@ City; Tel-Aviv; 650;50; 60;60; 9000
 Kibbutz; Shiler; 470;250; 40;40; 1400
 City; Jerusalem; 560;350; 80;80; 10000
 #; Ashdod; Shtulim
+#; Ashdod; Tel-Aviv
 #; Rehovot; Shiler
 #; Tevria; Ramot

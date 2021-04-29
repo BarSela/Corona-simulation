@@ -25,6 +25,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import IO.SimulationFile;
 import IO.StatisticsFile;
 import country.Map;
@@ -37,6 +39,7 @@ import java.io.File;
 import java.io.IOException;
 
 import simulation.Clock;
+import java.awt.Font;
 
 
 public class Main_window extends JFrame {
@@ -45,6 +48,7 @@ public class Main_window extends JFrame {
 	public Main_window() throws IOException 
 	{
 		super("Corona-simulation Main Window");
+		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 11));
 		//GridLayout myGridLayout = new GridLayout(2, 1);
 		BorderLayout myBorderLayout = new BorderLayout();
 		getContentPane().setLayout(myBorderLayout);
@@ -55,9 +59,9 @@ public class Main_window extends JFrame {
 		
 		simulationSpeedSlider();
 
-		
 		this.pack();
 		this.setVisible(true);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public Map getmap()
@@ -99,12 +103,16 @@ public class Main_window extends JFrame {
 		getContentPane().add(simulationspeed_p,BorderLayout.SOUTH);
 		
 	}
+	@SuppressWarnings("deprecation")
 	public void map_panel()
 	{
 		MapPanel map_panel=new MapPanel(world);
 		map_panel.setVisible(true);
 		map_panel.repaint();
-		getContentPane().add(map_panel,BorderLayout.CENTER);
+		
+		JScrollPane pane = new JScrollPane(map_panel);
+		getContentPane().add(pane,BorderLayout.CENTER);
+		
 		//remove(map_panel);
 		
 	}
