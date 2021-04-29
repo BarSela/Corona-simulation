@@ -1,26 +1,41 @@
 package ui;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.util.Set;
+
+import javax.swing.JCheckBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableCellRenderer;
+
 import virus.BritishVariant;
 import virus.ChineseVariant;
 import virus.IVirus;
 import virus.SouthAfricanVariant;
 
-public class MutationTable extends JDialog
+public class MutationTable extends JDialog 
 {
 
     private static class MutationModel extends AbstractTableModel {
-        private IVirus[] data;
+        private Boolean[][] data;
         private final String[] columnNames ={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
 
         public MutationModel(IVirus[] data) {
-            this.data = data;
+        	Boolean arr[][]=new Boolean[3][3];
+        	arr[0][0]=BritishVariant.getSetMutation().contains(new BritishVariant());
+        	arr[0][1]=BritishVariant.getSetMutation().contains(new ChineseVariant());
+        	arr[0][2]=BritishVariant.getSetMutation().contains(new SouthAfricanVariant());
+        	arr[1][0]=ChineseVariant.getSetMutation().contains(new BritishVariant());
+        	arr[1][1]=ChineseVariant.getSetMutation().contains(new ChineseVariant());
+        	arr[1][2]=ChineseVariant.getSetMutation().contains(new SouthAfricanVariant());
+        	arr[2][0]=SouthAfricanVariant.getSetMutation().contains(new BritishVariant());
+        	arr[2][1]=SouthAfricanVariant.getSetMutation().contains(new ChineseVariant());
+        	arr[2][2]=SouthAfricanVariant.getSetMutation().contains(new SouthAfricanVariant());
+            this.data = arr;
         }
 
         @Override
@@ -35,8 +50,7 @@ public class MutationTable extends JDialog
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-           IVirus v= data[rowIndex];
-           if(v instanceof BritishVariant)
+           if(rowIndex == 0)
            {
         	   Set<IVirus> british=BritishVariant.getSetMutation();
         	   switch (columnIndex) {
@@ -47,7 +61,7 @@ public class MutationTable extends JDialog
                case 2: return british.contains(new SouthAfricanVariant());
         	   }
            }
-           if(v instanceof ChineseVariant)
+           if(rowIndex == 1)
            {
         	   Set<IVirus> chinese=BritishVariant.getSetMutation();
         	   switch (columnIndex) {
@@ -58,7 +72,7 @@ public class MutationTable extends JDialog
                case 2: return  chinese.contains(new SouthAfricanVariant());
         	   }
            }
-           if(v instanceof SouthAfricanVariant)
+           if(rowIndex == 2)
            {
         	   Set<IVirus> sa=BritishVariant.getSetMutation();
         	   switch (columnIndex) {
@@ -85,47 +99,41 @@ public class MutationTable extends JDialog
         @Override
         public boolean isCellEditable(int row, int col) 
         { return true; 
-        }
-
-        
+        }   
         @Override
         public void setValueAt(Object aValue, int row, int col) {
-        	IVirus v=data[row];
         	boolean bl=(Boolean) aValue;
-            if(v instanceof BritishVariant)
+            if(row == 0)
             {
          	   if(bl)
          	   {
-         		   BritishVariant.addMutation(v);
+         		   BritishVariant.addMutation(new BritishVariant());
          	   }
          	   else
          	   {
-         		  BritishVariant.removeMutation(v);
-         	   }
-         	   
-
+         		  BritishVariant.removeMutation(new BritishVariant());
+         	   }  	   
             }
-            if(v instanceof ChineseVariant)
+            if(row == 1)
             {
           	   if(bl)
           	   {
-          		 ChineseVariant.addMutation(v);
+          		 ChineseVariant.addMutation(new ChineseVariant());
           	   }
           	   else
           	   {
-          		 ChineseVariant.removeMutation(v);
+          		 ChineseVariant.removeMutation(new ChineseVariant());
           	   }
-
             }
-            if(v instanceof SouthAfricanVariant)
+            if(row == 2)
             {
            	   if(bl)
            	   {
-           		SouthAfricanVariant.addMutation(v);
+           		SouthAfricanVariant.addMutation(new SouthAfricanVariant());
            	   }
            	   else
            	   {
-           		SouthAfricanVariant.removeMutation(v);
+           		SouthAfricanVariant.removeMutation(new SouthAfricanVariant());
            	   }
             }
             fireTableCellUpdated(row, col);

@@ -61,9 +61,10 @@ public class Main {
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+			}
+			System.out.println(window.getsleeptime());		
 		}
-			
-		}
+		
 	}
 	public static File loadFileFunc() 
 	{

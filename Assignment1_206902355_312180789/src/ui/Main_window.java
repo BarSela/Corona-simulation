@@ -4,8 +4,10 @@
  */
 package ui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import simulation.Main;
@@ -14,6 +16,7 @@ import virus.ChineseVariant;
 import virus.IVirus;
 import virus.SouthAfricanVariant;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -31,22 +34,25 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import java.io.File;
+import java.io.IOException;
+
 import simulation.Clock;
 
 
 public class Main_window extends JFrame {
 	private Map world=null;
-	private int sleep_time=10000;
-	public Main_window() 
+	private int sleep_time=30000;
+	public Main_window() throws IOException 
 	{
 		super("Corona-simulation Main Window");
-		GridLayout myGridLayout = new GridLayout(2, 1);
-		getContentPane().setLayout(myGridLayout);
+		//GridLayout myGridLayout = new GridLayout(2, 1);
+		BorderLayout myBorderLayout = new BorderLayout();
+		getContentPane().setLayout(myBorderLayout);
 		setBounds(390,170,200,300);
 		setPreferredSize(new Dimension(550, 450));
 		//main window components
 		menuBar();
-		map_panel();
+		
 		simulationSpeedSlider();
 
 		
@@ -72,7 +78,7 @@ public class Main_window extends JFrame {
 		simulation_speed.setMinorTickSpacing(1);
 		simulation_speed.setMaximum(50);
 		simulation_speed.setValue(30);
-		simulation_speed.setToolTipText("sec to wait beteen ticks");
+		simulation_speed.setToolTipText("<= go faster || go slower =>");
 		simulation_speed.setPaintLabels(true);
 		simulation_speed.setPaintTicks(true);
 		JButton b_speed=new JButton("Set");
@@ -84,16 +90,22 @@ public class Main_window extends JFrame {
 			}
 			});
 		
-		simulationspeed_p.add(new JLabel("Speed: "));
+		ImageIcon speedIcon=new ImageIcon(getClass().getResource("/Speed-icon.png"));
+		JLabel sp_icon = new JLabel();
+		sp_icon.setIcon(speedIcon);
+		simulationspeed_p.add(sp_icon);
 		simulationspeed_p.add(simulation_speed);
 		simulationspeed_p.add(b_speed);
-		getContentPane().add(simulationspeed_p);
+		getContentPane().add(simulationspeed_p,BorderLayout.SOUTH);
 		
 	}
 	public void map_panel()
 	{
-		JPanel map_panel=new JPanel();
-		getContentPane().add(map_panel);
+		MapPanel map_panel=new MapPanel(world);
+		map_panel.setVisible(true);
+		getContentPane().add(map_panel,BorderLayout.CENTER);
+		//remove(map_panel);
+		
 	}
 	public JDialog statisticWindow(Map world)
 	{
@@ -174,7 +186,7 @@ public class Main_window extends JFrame {
 		return statistic_d;
 		
 	}
-	public void menuBar()
+	public void menuBar() throws IOException
 	{
 		//create menu bar
 		JMenuBar menuBar = new JMenuBar();
@@ -183,10 +195,20 @@ public class Main_window extends JFrame {
 		//--file submenu--
 		JMenu file = new JMenu("File");
 		JMenuItem statistics = new JMenuItem("Statistics");
+		Image sIcon=new ImageIcon(getClass().getResource("/Statistics-icon.png")).getImage();
+		statistics.setIcon(new ImageIcon(sIcon));
 		JMenuItem load = new JMenuItem("Load");
+		Image loadIcon=new ImageIcon(getClass().getResource("/load-icon.png")).getImage();
+		load.setIcon(new ImageIcon(loadIcon));
 		JMenuItem play = new JMenuItem("Play");
+		Image playIcon=new ImageIcon(getClass().getResource("/Play-icon.png")).getImage();
+		play.setIcon(new ImageIcon(playIcon));
 		JMenuItem pause = new JMenuItem("Pause");
+		Image pauseIcon=new ImageIcon(getClass().getResource("/Pause-icon.png")).getImage();
+		pause.setIcon(new ImageIcon(pauseIcon));
 		JMenuItem stop = new JMenuItem("Stop");
+		Image stopIcon=new ImageIcon(getClass().getResource("/Stop-icon.png")).getImage();
+		stop.setIcon(new ImageIcon(stopIcon));
 		//load 
 		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
@@ -195,6 +217,7 @@ public class Main_window extends JFrame {
 				/**
 				 * Upload Step: Get the location of the upload file and load the entire map.
 				 */
+				
 				load.setEnabled(false);
 				play.setEnabled(true);
 				statistics.setEnabled(true);
@@ -202,6 +225,7 @@ public class Main_window extends JFrame {
 				SimulationFile simulationFile=new SimulationFile();
 				try {
 					world=simulationFile.loadMap(file);
+					map_panel();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -359,6 +383,8 @@ public class Main_window extends JFrame {
 		
 		//help
 		JMenuItem help = new JMenuItem("Help");
+		Image helpIcon=new ImageIcon(getClass().getResource("/Help-icon.png")).getImage();
+		help.setIcon(new ImageIcon(helpIcon));
 		JDialog help_dialog=new JDialog(this,"Help",true);
 		JPanel help_p=new JPanel();
 		help_p.setLayout(new BoxLayout(help_p,BoxLayout.PAGE_AXIS));
