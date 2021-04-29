@@ -12,6 +12,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import country.Settlement;
 import virus.BritishVariant;
 import virus.ChineseVariant;
 import virus.IVirus;
@@ -21,21 +22,14 @@ public class MutationTable extends JDialog
 {
 
     private static class MutationModel extends AbstractTableModel {
-        private Boolean[][] data;
+        private IVirus[] data;
         private final String[] columnNames ={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
 
         public MutationModel(IVirus[] data) {
-        	Boolean arr[][]=new Boolean[3][3];
-        	arr[0][0]=BritishVariant.getSetMutation().contains(new BritishVariant());
-        	arr[0][1]=BritishVariant.getSetMutation().contains(new ChineseVariant());
-        	arr[0][2]=BritishVariant.getSetMutation().contains(new SouthAfricanVariant());
-        	arr[1][0]=ChineseVariant.getSetMutation().contains(new BritishVariant());
-        	arr[1][1]=ChineseVariant.getSetMutation().contains(new ChineseVariant());
-        	arr[1][2]=ChineseVariant.getSetMutation().contains(new SouthAfricanVariant());
-        	arr[2][0]=SouthAfricanVariant.getSetMutation().contains(new BritishVariant());
-        	arr[2][1]=SouthAfricanVariant.getSetMutation().contains(new ChineseVariant());
-        	arr[2][2]=SouthAfricanVariant.getSetMutation().contains(new SouthAfricanVariant());
-            this.data = arr;
+        	data[0]=new BritishVariant();
+        	data[1]=new ChineseVariant();
+        	data[2]=new SouthAfricanVariant();
+            this.data = data;
         }
 
         @Override
@@ -50,37 +44,35 @@ public class MutationTable extends JDialog
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-           if(rowIndex == 0)
+        	IVirus virus = data[rowIndex];
+           if(rowIndex == 0)//british
            {
-        	   Set<IVirus> british=BritishVariant.getSetMutation();
         	   switch (columnIndex) {
                case 0: 
-            	   return british.contains(new BritishVariant());
+            	   return BritishVariant.get_british_m();
                case 1:
-   	    			return british.contains(new ChineseVariant());
-               case 2: return british.contains(new SouthAfricanVariant());
+   	    			return BritishVariant.get_chinese_m();
+               case 2: return BritishVariant.get_southafrican_m();
         	   }
            }
-           if(rowIndex == 1)
+           if(rowIndex == 1)//chinese
            {
-        	   Set<IVirus> chinese=BritishVariant.getSetMutation();
         	   switch (columnIndex) {
                case 0: 
-            	   return  chinese.contains(new BritishVariant());
+            	   return  ChineseVariant.get_british_m();
                case 1:
-   	    			return  chinese.contains(new ChineseVariant());
-               case 2: return  chinese.contains(new SouthAfricanVariant());
+   	    			return  ChineseVariant.get_chinese_m();
+               case 2: return  ChineseVariant.get_southafrican_m();
         	   }
            }
-           if(rowIndex == 2)
+           if(rowIndex == 2)//southafrican
            {
-        	   Set<IVirus> sa=BritishVariant.getSetMutation();
         	   switch (columnIndex) {
                case 0: 
-            	   return  sa.contains(new BritishVariant());
+            	   return  SouthAfricanVariant.get_british_m();
                case 1:
-   	    			return  sa.contains(new ChineseVariant());
-               case 2: return  sa.contains(new SouthAfricanVariant());
+   	    			return  SouthAfricanVariant.get_chinese_m();
+               case 2: return  SouthAfricanVariant.get_southafrican_m();
         	   }
            }
            return null;
@@ -105,36 +97,30 @@ public class MutationTable extends JDialog
         	boolean bl=(Boolean) aValue;
             if(row == 0)
             {
-         	   if(bl)
-         	   {
-         		   BritishVariant.addMutation(new BritishVariant());
-         	   }
-         	   else
-         	   {
-         		  BritishVariant.removeMutation(new BritishVariant());
-         	   }  	   
+            	if(col==0)
+            		BritishVariant.set_british_m(bl);
+            	if(col==1)
+            		BritishVariant.set_chinese_m(bl);
+            	if(col==2)
+            		BritishVariant.set_southafrican_m(bl);
             }
             if(row == 1)
             {
-          	   if(bl)
-          	   {
-          		 ChineseVariant.addMutation(new ChineseVariant());
-          	   }
-          	   else
-          	   {
-          		 ChineseVariant.removeMutation(new ChineseVariant());
-          	   }
+            	if(col==0)
+            		ChineseVariant.set_british_m(bl);
+            	if(col==1)
+            		ChineseVariant.set_chinese_m(bl);
+            	if(col==2)
+            		ChineseVariant.set_southafrican_m(bl);
             }
             if(row == 2)
             {
-           	   if(bl)
-           	   {
-           		SouthAfricanVariant.addMutation(new SouthAfricanVariant());
-           	   }
-           	   else
-           	   {
-           		SouthAfricanVariant.removeMutation(new SouthAfricanVariant());
-           	   }
+            	if(col==0)
+            		SouthAfricanVariant.set_british_m(bl);
+            	if(col==1)
+            		SouthAfricanVariant.set_chinese_m(bl);
+            	if(col==2)
+            		SouthAfricanVariant.set_southafrican_m(bl);
             }
             fireTableCellUpdated(row, col);
         }
@@ -147,12 +133,19 @@ public class MutationTable extends JDialog
         String row[]= {"British Variant", "Chinese Variant", "SouthAfrican Variant"};
 		RowedTableScroll jt_rowed =new RowedTableScroll(table,row);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        table.setPreferredScrollableViewportSize(new Dimension(500, 150));
+        table.setPreferredScrollableViewportSize(new Dimension(getPreferredSize()));
         table.setFillsViewportHeight(true);
         this.add(new RowedTableScroll(table,row));
+        this.getPreferredSize();
+        setBounds(390,170,200,300);
 
         this.pack();
     }
+	@Override
+	public Dimension getPreferredSize() {
+		//selected according max x and y points 
+	return new Dimension(700,125);
+	}
 
 
 }

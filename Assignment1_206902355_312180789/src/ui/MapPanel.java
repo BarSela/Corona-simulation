@@ -49,7 +49,8 @@ public class MapPanel extends JPanel
 	}
 	@Override
 	public Dimension getPreferredSize() {
-	return new Dimension(600,600);
+		//selected according max x and y points 
+	return new Dimension(1200,400);
 	}
 	public int findCenterX(int i)
 	{
@@ -59,4 +60,5 @@ public class MapPanel extends JPanel
 	{
 		return world.getSettlement()[i].getLocation().getPosition().getPoint_y()+world.getSettlement()[i].getLocation().getsize().getHeight()/2;
 	}
+	
 }

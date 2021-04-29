@@ -40,6 +40,8 @@ import java.io.IOException;
 
 import simulation.Clock;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 public class Main_window extends JFrame {
@@ -109,6 +111,30 @@ public class Main_window extends JFrame {
 		MapPanel map_panel=new MapPanel(world);
 		map_panel.setVisible(true);
 		map_panel.repaint();
+		map_panel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) 
+			{
+				for(int i=0;i<world.getSettlement().length;i++)
+				{
+
+					int x_settl=world.getSettlement()[i].getLocation().getPosition().getPoint_x();
+					int y_settl=world.getSettlement()[i].getLocation().getPosition().getPoint_y();
+					int h_settl=world.getSettlement()[i].getLocation().getsize().getHeight();
+					int w_settl=world.getSettlement()[i].getLocation().getsize().getWidth();
+					if(x_settl<=e.getPoint().getX() && e.getPoint().getX()<=x_settl+w_settl && y_settl<=e.getPoint().getY() && e.getPoint().getY()<=y_settl+h_settl)
+					{
+						System.out.println(world.getSettlement()[i].getName());
+						JDialog statistic_d=statisticWindow(world);
+						statistic_d.setBounds(390,170,200,300);
+						statistic_d.setVisible(true);
+						break;
+					}
+					
+				}
+				e.getPoint();
+			}
+		});
 		
 		JScrollPane pane = new JScrollPane(map_panel);
 		getContentPane().add(pane,BorderLayout.CENTER);
@@ -120,6 +146,7 @@ public class Main_window extends JFrame {
 	{
 		
 		JDialog statistic_d=new JDialog(this,"Statistics",false);
+		statistic_d.setBounds(390,170,200,300);
 		statistic_d.getContentPane().setLayout(new GridLayout(2, 1));
 
 		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
@@ -176,6 +203,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		JDialog vaccinate=new JDialog(this,"Add vaccinate douses",true);
+		vaccinate.setBounds(390,170,200,300);
 		vaccinate.getContentPane().add(p_douses);
 		vaccinate.pack();
 		b_vaccinate.addActionListener(new ActionListener() {
@@ -256,14 +284,9 @@ public class Main_window extends JFrame {
 		//edit mutations
 		
 		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
-		//JDialog edit_mutations_d=new JDialog(this,"Edit Mutations",true);
     	IVirus[] variants={new BritishVariant(),new ChineseVariant(),new SouthAfricanVariant() };
     	MutationTable edit_mutations_d = new MutationTable(this,variants);
-		//JTable table=mutations_table(world);
-		//String row[]={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
-		//RowedTableScroll jt_rowed =new RowedTableScroll(table,row);
-		//edit_mutations_d.add(jt_rowed);
-		//edit_mutations_d.pack();
+
 		
 		
 		edit_mutations.addActionListener(new ActionListener(){
@@ -368,6 +391,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		JDialog set=new JDialog(this,"Set tick per day",true);
+		set.setBounds(390,170,200,300);
 		set.getContentPane().add(p_tick);
 		set.pack();
 		set_tick.addActionListener(new ActionListener() {
@@ -395,6 +419,7 @@ public class Main_window extends JFrame {
 		Image helpIcon=new ImageIcon(getClass().getResource("/Help-icon.png")).getImage();
 		help.setIcon(new ImageIcon(helpIcon));
 		JDialog help_dialog=new JDialog(this,"Help",true);
+		help_dialog.setBounds(390,170,200,300);
 		JPanel help_p=new JPanel();
 		help_p.setLayout(new BoxLayout(help_p,BoxLayout.PAGE_AXIS));
 		JLabel l = new JLabel("<html>Hello<br/>"
@@ -427,6 +452,7 @@ public class Main_window extends JFrame {
 		//about
 		JMenuItem about = new JMenuItem("About");
 		JDialog about_dialog=new JDialog(this,"About",true);
+		about_dialog.setBounds(390,170,200,300);
 		JPanel about_p=new JPanel();
 		about_p.setLayout(new BoxLayout(about_p,BoxLayout.PAGE_AXIS));
 		JLabel lb = new JLabel("<html>Program Name:    Corona Simulation<br/>"

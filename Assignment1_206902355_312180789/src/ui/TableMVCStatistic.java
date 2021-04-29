@@ -169,7 +169,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
             public void changedUpdate(DocumentEvent e) { newFilter(); }
         
         });
-
+        
         this.setVisible(true);
     }
     public StatisticModel getModel()

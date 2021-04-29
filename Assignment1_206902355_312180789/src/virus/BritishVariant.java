@@ -113,13 +113,39 @@ public class BritishVariant implements IVirus {
 	{
 		return variants;
 	}
-	
+	public static boolean get_british_m()
+	{
+		return british_m;
+	}
+	public static boolean get_chinese_m()
+	{
+		return chinese_m;
+	}
+	public static boolean get_southafrican_m()
+	{
+		return southafrican_m;
+	}
+	public static void set_british_m(boolean b)
+	{
+		british_m=b;
+	}
+	public static void set_chinese_m(boolean b)
+	{
+		chinese_m=b;
+	}
+	public static void set_southafrican_m(boolean b)
+	{
+		southafrican_m=b;
+	}
 
 	
 	private static Set<IVirus> variants=new HashSet<IVirus>();
 	static {
 		variants.add(new BritishVariant());
 	}
+	private static boolean british_m=true;
+	private static boolean chinese_m=false;
+	private static boolean southafrican_m=false;
 	
 	//conation propabillity
 	private final static double contagion=0.7;
