@@ -1,9 +1,12 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package ui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -13,30 +16,48 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
-
 import IO.StatisticsFile;
 import country.Map;
 import country.Settlement;
 import simulation.Main;
-import virus.IVirus;
+
 
 public class StatisticWindow extends JDialog 
 {
+	/**
+	 * this class represent the statistic window dialog
+	 */
+	
+	//data members
 	private Map world=null;
 	private TableMVCStatistic table;
+	
+	
 	public StatisticWindow(JFrame window,Map world,String row_name) 
 	{
+		/**
+		 * Constructor
+		 * @param window parent window
+		 * @param world the loaded map
+		 * @param row_name the name of the settlement to show statistics if clicked from map
+		 */
+		
         super(window,"Statistics",false);
         setBounds(390,170,200,300);
         getContentPane().setLayout(new GridLayout(2, 1));
+        
         JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
     	bottom_panel.setLayout(new GridLayout(1, 3));
+    	
     	
     	//table
     	Settlement[] settlements = world.getSettlement();
         TableMVCStatistic table_model = new TableMVCStatistic(settlements,row_name);
-      //bottom panel:
-    	
+        
+        
+        //bottom panel:
+        
+        //save table to exel
     	JButton b_save = new JButton("Save");
     	b_save.addActionListener(new ActionListener() {
     		@Override
@@ -46,6 +67,7 @@ public class StatisticWindow extends JDialog
     		}
     		});
 
+    	//button to add 0.01% sick persons to the selected settlement
     	JButton b_sick = new JButton("Add Sick");
     	b_sick.addActionListener(new ActionListener() {
     		@Override
@@ -61,6 +83,9 @@ public class StatisticWindow extends JDialog
     			}
     		}
     		});
+    	
+    	
+    	//add doases to the selected settlement
     	JButton b_vaccinate= new JButton("Vaccinate");
     	SpinnerModel vaccinate_nodel=new SpinnerNumberModel(1,1,100,1);
     	JSpinner spinner = new JSpinner(vaccinate_nodel);
@@ -69,8 +94,7 @@ public class StatisticWindow extends JDialog
     	JLabel l_dose = new JLabel("Douses:");
     	p_douses.add(l_dose);
     	p_douses.add(spinner);
-    	p_douses.add(b_dose);
-    	
+    	p_douses.add(b_dose);	
     	b_dose.addActionListener(new ActionListener() {
     		public void actionPerformed(ActionEvent e) 
     		{
@@ -90,17 +114,23 @@ public class StatisticWindow extends JDialog
     			vaccinate.setVisible(true);
     		}
     	});
+    	
+    	
     	bottom_panel.add(b_save);
     	bottom_panel.add(b_sick);
     	bottom_panel.add(b_vaccinate);
-    	
     	getContentPane().add(table_model);
     	getContentPane().add(bottom_panel);
+    	
     	
     	pack();
 	}
 	public JTable getTableFromDialog()
     {
+		/**
+		 * this fuction return the table from the table panel
+		 * @return  statistic table
+		 */
     	return table.getTableFromPanel();
     }
 

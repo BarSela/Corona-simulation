@@ -1,3 +1,7 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package ui;
 
 import java.awt.Color;
@@ -5,19 +9,27 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-
 import javax.swing.JPanel;
-import javax.swing.JSplitPane;
 import javax.swing.border.EtchedBorder;
-
 import country.Map;
 
 public class MapPanel extends JPanel
 {
+	/**
+	 * this class represent the map panel
+	 * drow and paint all the settlements and the line conector between two neighbors
+	 */
 
+	
+	//data member
 	private Map world=null;
+	
+	
 	public MapPanel(Map world) 
 	{
+		/**
+		 * Constructor
+		 */
 		this.world=world;
 		this.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
 	
@@ -25,6 +37,10 @@ public class MapPanel extends JPanel
 	@Override
 	public void paintComponent(Graphics g) 
 	{
+		/**
+		 * Calls the UI delegate's paint method
+		 * @param g the Graphics object
+		 */
 		int center=0;
 		super.paintComponent(g);
 		Graphics2D gr=(Graphics2D)g;
@@ -55,10 +71,20 @@ public class MapPanel extends JPanel
 	}
 	public int findCenterX(int i)
 	{
+		/**
+		 * calc the x cordinate center of the settlement
+		 * @param i index of the settlement
+		 * @return the x center cordinate of the settlement
+		 */
 		return world.getSettlement()[i].getLocation().getPosition().getPoint_x()+world.getSettlement()[i].getLocation().getsize().getHeight()/2;
 	}
 	public int findCenterY(int i)
 	{
+		/**
+		 * calc the y cordinate center of the settlement
+		 * @param i index of the settlement
+		 * @return the y center cordinate of the settlement
+		 */
 		return world.getSettlement()[i].getLocation().getPosition().getPoint_y()+world.getSettlement()[i].getLocation().getsize().getHeight()/2;
 	}
 

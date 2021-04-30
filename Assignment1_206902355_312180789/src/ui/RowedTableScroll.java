@@ -5,6 +5,9 @@ import java.awt.Component;
 import javax.swing.*;
 import javax.swing.table.*;
 
+/**
+ * attache
+ */
 
 public class RowedTableScroll extends JScrollPane 
 {

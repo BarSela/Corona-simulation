@@ -1,9 +1,12 @@
+/**
+ * @author Bar Sela            206902355
+ * @author Betsalel Koginsky   312180789
+ */
 package ui;
 
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
-
 import country.City;
 import country.Kibbutz;
 import country.Settlement;
@@ -12,7 +15,6 @@ import virus.BritishVariant;
 import virus.ChineseVariant;
 import virus.IVirus;
 import virus.SouthAfricanVariant;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +22,15 @@ import java.util.Random;
 
 public class TableMVCStatistic extends JPanel implements ActionListener
 {
+	/**
+	 * this class represent the statistic table
+	 */
 	
-	public enum ColumnName {
+	public enum ColumnName 
+	{
+		/**
+		 * this enum represent a column
+		 */
 		ZERO ("Settlement Name", 0),
 		ONE("Settlement Type",1),
 		TWO("Population", 2),
@@ -30,8 +39,10 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 		FIVE("Vaccine doses", 5),
 		SIX("Dead", 6);
 		
+		//data members
 	    private final int col; 
-	    private final String colname;  
+	    private final String colname; 
+	    
 	    ColumnName(String name, int col) {
 	    	/**
 	    	 * constractor
@@ -49,32 +60,65 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 		}
 		
         @Override
-        public String toString() {
+        public String toString() 
+        {
+        	/**
+        	 * string representation
+        	 */
             return colname;
         }
 		
 	}
-    private static class StatisticModel extends AbstractTableModel {
+    private static class StatisticModel extends AbstractTableModel 
+    {
+    	/**
+    	 * this class provides default implementations for most of the methods in the TableModel interface
+    	 */
+    	
+    	//data members
     	private static final double initialcontagion = 0.01;
         private Settlement[] data;
         private final String[] columnNames = {"Settlement Name","Settlement Type","Population","Ramzor color","Sick Percentages","Vaccine doses","Dead"};   ;
 
-        public StatisticModel(Settlement[] data) {
+        
+        public StatisticModel(Settlement[] data) 
+        {
+        	/**
+        	 * Constructor
+        	 * @param data all the settlements in the map
+        	 */
             this.data = data;
         }
 
         @Override
-        public int getRowCount() {
+        public int getRowCount() 
+        {
+        	/**
+        	 * getter to number of rows
+        	 * @return the number of rows 
+        	 */
             return data.length;
         }
 
         @Override
-        public int getColumnCount() {
+        public int getColumnCount() 
+        {
+         	/**
+        	 * getter to number of columns
+        	 * @return the number of columns
+        	 */
             return 7;
         }
 
         @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
+        public Object getValueAt(int rowIndex, int columnIndex) 
+        {
+        	/**
+        	 * get the value at cell by row and col index
+        	 * @param rowIndex row index
+        	 * @param columnIndex col index
+        	 * return the value at the cell 
+        	 */
         	Settlement settlement = data[rowIndex];
             switch (columnIndex) {
                 case 0: return settlement.getName();
@@ -95,20 +139,42 @@ public class TableMVCStatistic extends JPanel implements ActionListener
         }
 
         @Override
-        public String getColumnName(int column) {
+        public String getColumnName(int column) 
+        {
+        	/**
+        	 * get column name
+        	 * @param column the number of column
+        	 * @return the name of the column
+        	 */
             return columnNames[column];
         }
 
         @Override
-        public Class getColumnClass(int c) {
+        public Class getColumnClass(int c) 
+        {
+        	/**
+        	 * @param column column index
+        	 * @returm class of the value
+        	 */
             return getValueAt(0, c).getClass();
         }
 
         @Override
-        public boolean isCellEditable(int rowIndex, int columnIndex) {
+        public boolean isCellEditable(int rowIndex, int columnIndex) 
+        {
+        	/**
+        	 * @param row row index
+        	 * @param col col index
+        	 * @return if cell is editable
+        	 */
             return columnIndex >= 0;
         }
-        public void setSick(int row) {
+        public void setSick(int row) 
+        {
+        	/**
+        	 * set number of sick peole in the settlement
+        	 * @param row the row index
+        	 */
         	
         	Random rand=new Random();
         	IVirus virus=null;
@@ -136,8 +202,13 @@ public class TableMVCStatistic extends JPanel implements ActionListener
             fireTableCellUpdated(row, 4);
             fireTableCellUpdated(row, 3);
         }
-        public void setdouses(int row,int douses) {
-        	
+        public void setdouses(int row,int douses) 
+        {
+        	/**
+        	 * set number of douses in settlement
+        	 * @param row row index
+        	 * @param douses number of douses to add the settlement
+        	 */
         	Settlement settlement = data[row];
         	settlement.add_vaccine_doses(douses);
 
@@ -145,6 +216,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
         }
     }
 
+    //data members
     private TableRowSorter<StatisticModel> sorter;
     private JTextField tbFilterText;
     private int col;
@@ -153,7 +225,13 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     private final JComboBox<ColumnName> column;
     
 
-    public TableMVCStatistic(Settlement[] data,String row_name) {
+    public TableMVCStatistic(Settlement[] data,String row_name) 
+    {
+    	/**
+    	 * Constructor
+    	 * @param data all the settlements in the map
+    	 * @row_name the name of the settlement to show statistics
+    	 */
     	this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     	JPanel top=new JPanel();
     	top.setLayout(new BoxLayout(top, BoxLayout.LINE_AXIS));
@@ -188,10 +266,16 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public StatisticModel getModel()
     {
+    	/**
+    	 * @return the model
+    	 */
     	return model;
     }
     public void setSick()
     {
+    	/**
+    	 * sick setter
+    	 */
     	if(table.getSelectedRow()>=0)
     	{
         	model.setSick(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()));
@@ -201,6 +285,10 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public void setDouse(int douses)
     {
+    	/**
+    	 * douses setter
+    	 * @param douses the number of douses to add to the settlement
+    	 */
     	if(table.getSelectedRow()>=0)
     		model.setdouses(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()),douses);
     }
@@ -211,23 +299,37 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public int getcol()
     {
+    	/**
+    	 * @return the col number
+    	 */
     	return col;
     }
     public JTable getTableFromPanel()
     {
+    	/**
+    	 * @return statistic table
+    	 */
     	return table;
     }
     
 
     
-    private void newFilter() {
+    private void newFilter() 
+    {
+    	/**
+    	 * filter the table by select
+    	 */
         try {
             sorter.setRowFilter(RowFilter.regexFilter(tbFilterText.getText(), getcol()));
         } catch (java.util.regex.PatternSyntaxException e) {
             // If current expression doesn't parse, don't update.
         }
     }
-    private void InitialFilter(String row_name) {
+    private void InitialFilter(String row_name) 
+    {
+    	/**
+    	 * filter by the selected settlement
+    	 */
         try {
             sorter.setRowFilter(RowFilter.regexFilter(row_name, getcol()));
         } catch (java.util.regex.PatternSyntaxException e) {

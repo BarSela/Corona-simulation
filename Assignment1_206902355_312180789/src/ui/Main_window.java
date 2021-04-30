@@ -6,7 +6,6 @@ package ui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +33,6 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import java.io.File;
 import java.io.IOException;
-
 import simulation.Clock;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -51,6 +49,7 @@ public class Main_window extends JFrame {
 	//data members:
 	private Map world=null; //the map
 	private int sleep_time=3000; //gap between ticks (simulation)
+	
 	
 	public Main_window() throws IOException 
 	{
@@ -70,24 +69,37 @@ public class Main_window extends JFrame {
 		menuBar();
 		simulationSpeedSlider();
 
+		
 		this.pack();
 		this.setVisible(true);
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	public Map getmap()
 	{
+		/**
+		 * map getter
+		 * @return the loaded map
+		 */
 		return world;
 	}
 	public int getsleeptime()
 	{
+		/**
+		 * sleep time getter
+		 * sleep time is the gap between simulations. control by speed simulation
+		 * @return sleep time
+		 */
 		return sleep_time;
 	}
 	public void simulationSpeedSlider()
 	{
+		/**
+		 * this function create the panel of the speed slider on the main window
+		 */
+		//panel
 		JPanel simulationspeed_p=new JPanel();
 		simulationspeed_p.setLayout(new BoxLayout(simulationspeed_p, BoxLayout.LINE_AXIS));
-		
+		//slider
 		JSlider simulation_speed=new JSlider();
 		simulation_speed.setMajorTickSpacing(5);
 		simulation_speed.setMinorTickSpacing(1);
@@ -96,6 +108,8 @@ public class Main_window extends JFrame {
 		simulation_speed.setToolTipText("<= go faster || go slower =>");
 		simulation_speed.setPaintLabels(true);
 		simulation_speed.setPaintTicks(true);
+		
+		//save the selected speed
 		JButton b_speed=new JButton("Set");
 		b_speed.addActionListener(new ActionListener() {
 			@Override
@@ -105,20 +119,30 @@ public class Main_window extends JFrame {
 			}
 			});
 		
+		//speed icon
 		ImageIcon speedIcon=new ImageIcon(getClass().getResource("/Speed-icon.png"));
 		JLabel sp_icon = new JLabel();
 		sp_icon.setIcon(speedIcon);
+		
+		//add to panel
 		simulationspeed_p.add(sp_icon);
 		simulationspeed_p.add(simulation_speed);
 		simulationspeed_p.add(b_speed);
-		getContentPane().add(simulationspeed_p,BorderLayout.SOUTH);
 		
+		getContentPane().add(simulationspeed_p,BorderLayout.SOUTH);	
 	}
 	public void map_panel()
 	{
+		/**
+		 * this function create the map panel. called after load the file
+		 */
+		
+		//panel
 		MapPanel map_panel=new MapPanel(world);
 		map_panel.setVisible(true);
 		map_panel.repaint();
+		
+		//identify click on spesific settlement. open statistic window with the row of the settlement
 		map_panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) 
@@ -140,46 +164,64 @@ public class Main_window extends JFrame {
 					}
 					
 				}
-				e.getPoint();
 			}
 		});
+		
 		
 		JScrollPane pane = new JScrollPane(map_panel);
 		getContentPane().add(pane,BorderLayout.CENTER);
 		
-		//remove(map_panel);
+		
 		
 	}
 	public StatisticWindow statisticWindow(Map world,String row_name)
 	{
-		
+		/**
+		 * this function create the statistic window and return it
+		 * @param world the map
+		 * @param row name the name of the settlement to represent on the statistic table
+		 * @return statistic window
+		 */
 		StatisticWindow statistic_d=new StatisticWindow(this,world,row_name);
 		return statistic_d;
 		
 	}
 	public void menuBar() throws IOException
 	{
+		/**
+		 * the function create the menu bar on the main window
+		 */
+		
 		//create menu bar
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		//--file submenu--
+		
+		//------------file submenu-----------------
 		JMenu file = new JMenu("File");
-		JMenuItem statistics = new JMenuItem("Statistics");
+		
+		
+		//ICONS for the menu items
 		Image sIcon=new ImageIcon(getClass().getResource("/Statistics-icon.png")).getImage();
+		Image loadIcon=new ImageIcon(getClass().getResource("/load-icon.png")).getImage();
+		Image playIcon=new ImageIcon(getClass().getResource("/Play-icon.png")).getImage();
+		Image pauseIcon=new ImageIcon(getClass().getResource("/Pause-icon.png")).getImage();
+		Image stopIcon=new ImageIcon(getClass().getResource("/Stop-icon.png")).getImage();
+		
+		
+		//menu items
+		JMenuItem statistics = new JMenuItem("Statistics");
 		statistics.setIcon(new ImageIcon(sIcon));
 		JMenuItem load = new JMenuItem("Load");
-		Image loadIcon=new ImageIcon(getClass().getResource("/load-icon.png")).getImage();
 		load.setIcon(new ImageIcon(loadIcon));
 		JMenuItem play = new JMenuItem("Play");
-		Image playIcon=new ImageIcon(getClass().getResource("/Play-icon.png")).getImage();
 		play.setIcon(new ImageIcon(playIcon));
 		JMenuItem pause = new JMenuItem("Pause");
-		Image pauseIcon=new ImageIcon(getClass().getResource("/Pause-icon.png")).getImage();
 		pause.setIcon(new ImageIcon(pauseIcon));
 		JMenuItem stop = new JMenuItem("Stop");
-		Image stopIcon=new ImageIcon(getClass().getResource("/Stop-icon.png")).getImage();
 		stop.setIcon(new ImageIcon(stopIcon));
+		
+		
 		//load 
 		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
@@ -205,6 +247,8 @@ public class Main_window extends JFrame {
 
 			}
 		});
+		
+		
 		//statistic
 		statistics.setSelected(true);
 		statistics.setEnabled(false);
@@ -216,14 +260,14 @@ public class Main_window extends JFrame {
 
 			}
 		});
-		//edit mutations
 		
+		
+		//edit mutations
 		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
     	IVirus[] variants={new BritishVariant(),new ChineseVariant(),new SouthAfricanVariant() };
     	MutationTable edit_mutations_d = new MutationTable(this,variants);
-
-		
-		
+    	
+    	//open edit mutation window
 		edit_mutations.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
@@ -251,12 +295,12 @@ public class Main_window extends JFrame {
 		file.add(exit);
 		menuBar.add(file);
 		
-		//--simulation submenu--
+		
+		//---------simulation submenu---------
 		JMenu submenu_simulation = new JMenu("Simulation");
 		
+		
 		//play
-
-
 		play.setEnabled(false);
 		play.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -271,6 +315,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		
+		
 		//pause
 		pause.setEnabled(false);
 		pause.addActionListener(new ActionListener() {
@@ -284,6 +329,7 @@ public class Main_window extends JFrame {
 				Main.setStop(false);
 			}
 		});
+		
 		
 		//stop
 		stop.setEnabled(false);
@@ -303,6 +349,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		
+		
 		//set tick
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
 		SpinnerModel tick_per_day=new SpinnerNumberModel(1,1,100,1);
@@ -321,6 +368,7 @@ public class Main_window extends JFrame {
 				Clock.set_tick_per_day(spinner_tick);
 			}
 		});
+		//open set ticks per day dialog
 		JDialog set=new JDialog(this,"Set tick per day",true);
 		set.setBounds(390,170,200,300);
 		set.getContentPane().add(p_tick);
@@ -332,6 +380,7 @@ public class Main_window extends JFrame {
 			}
 		});
 		
+		
 		//add to submenu
 		submenu_simulation.add(play);
 		submenu_simulation.addSeparator();
@@ -342,18 +391,28 @@ public class Main_window extends JFrame {
 		submenu_simulation.add(set_tick);
 		menuBar.add(submenu_simulation);
 		
-		//--help submenu--
+		
+		//-----------help submenu-------------
 		JMenu submenu_help = new JMenu("Help");
+		
 		
 		//help
 		JMenuItem help = new JMenuItem("Help");
+		
+		//ICONS
 		Image helpIcon=new ImageIcon(getClass().getResource("/Help-icon.png")).getImage();
 		help.setIcon(new ImageIcon(helpIcon));
+		ImageIcon corona_pic=new ImageIcon(getClass().getResource("/Virus-a.png"));
+		JLabel corona_icon = new JLabel();
+		corona_icon.setIcon(corona_pic);
+		
+		
 		JDialog help_dialog=new JDialog(this,"Help",true);
 		help_dialog.setBounds(390,170,200,300);
 		JPanel help_p=new JPanel();
-		
 		help_p.setLayout(new BoxLayout(help_p,BoxLayout.PAGE_AXIS));
+		
+		//lable
 		JLabel l = new JLabel("<html>Hello<br/>"
 				+ "This is a corona simulation<br/> "
 				+ "There is a land where the corona began to develop<br/>"
@@ -368,9 +427,7 @@ public class Main_window extends JFrame {
 				+ "information about the creators of the program->Help->About<br/><br/>"
 				+ "Enjoy<html>");
 		
-		ImageIcon corona_pic=new ImageIcon(getClass().getResource("/Virus-a.png"));
-		JLabel corona_icon = new JLabel();
-		corona_icon.setIcon(corona_pic);
+		//add to help
 		help_p.add(corona_icon);
 		help_p.add(l);
 		
@@ -398,7 +455,6 @@ public class Main_window extends JFrame {
 				+ "Betsalel Koginsky         ID:312180789<br/><html>");
 
 		about_p.add(lb);
-
 		about_dialog.getContentPane().add(about_p);
 		about_dialog.pack();
 		about.addActionListener(new ActionListener() {
@@ -408,10 +464,13 @@ public class Main_window extends JFrame {
 			}
 		});
 		
+		
 		//add to submenu
 		submenu_help.add(help);
 		submenu_help.addSeparator();
 		submenu_help.add(about);
+		
+		
 		
 		//add submenu to menu
 		menuBar.add(submenu_help);

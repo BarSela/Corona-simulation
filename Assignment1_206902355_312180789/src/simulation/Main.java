@@ -17,10 +17,14 @@ import ui.Main_window;
  * Main class
  */
 public class Main {
+	
+	//data members
 	private static boolean pause=false;
 	private static boolean play=false;
 	private static boolean initial_play=false;
 	private static boolean stop=false;
+	
+	
 	public static void main(String[] args) throws Exception 
 	{ 
 		Main_window window = new Main_window();
@@ -72,6 +76,10 @@ public class Main {
 	}
 	public static File loadFileFunc() 
 	{
+		/**
+		 * load new file
+		 * @return file
+		 */
         FileDialog fd = new FileDialog((Frame) null, "Please choose a file:", FileDialog.LOAD);
         fd.setVisible(true);
         if (fd.getFile() == null)
@@ -81,14 +89,26 @@ public class Main {
 	}
 	public static void setPause(boolean b)
 	{
+		/**
+		 *pause setter
+		 *@param b the current state of pause putton 
+		 */
 		pause=b;
 	}
 	public static void setStop(boolean b)
 	{
+		/**
+		 *stop setter
+		 *@param b the current state of stop putton 
+		 */
 		stop=b;
 	}
 	public static void setPlay(boolean b)
 	{
+		/**
+		 *play setter
+		 *@param b the current state of play putton 
+		 */
 		play=b;
 	}
 
