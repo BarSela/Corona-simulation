@@ -27,9 +27,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import IO.SimulationFile;
-import IO.StatisticsFile;
 import country.Map;
-import country.Settlement;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
@@ -44,20 +42,32 @@ import java.awt.event.MouseEvent;
 
 
 public class Main_window extends JFrame {
-	private Map world=null;
-	private int sleep_time=3000;
+	/**
+	 * this Class represent the main window
+	 * contains the menuBar, map panel and the speed slider
+	 * 
+	 */
+	
+	//data members:
+	private Map world=null; //the map
+	private int sleep_time=3000; //gap between ticks (simulation)
+	
 	public Main_window() throws IOException 
 	{
+		/**
+		 * Constructor
+		 * main window extends Jframe
+		 */
+		
 		super("Corona-simulation Main Window");
 		getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 11));
-		//GridLayout myGridLayout = new GridLayout(2, 1);
 		BorderLayout myBorderLayout = new BorderLayout();
 		getContentPane().setLayout(myBorderLayout);
 		setBounds(390,170,200,300);
 		setPreferredSize(new Dimension(550, 450));
+		
 		//main window components
 		menuBar();
-		
 		simulationSpeedSlider();
 
 		this.pack();
@@ -104,7 +114,6 @@ public class Main_window extends JFrame {
 		getContentPane().add(simulationspeed_p,BorderLayout.SOUTH);
 		
 	}
-	@SuppressWarnings("deprecation")
 	public void map_panel()
 	{
 		MapPanel map_panel=new MapPanel(world);
@@ -125,9 +134,7 @@ public class Main_window extends JFrame {
 					if(x_settl<=e.getPoint().getX() && e.getPoint().getX()<=x_settl+w_settl && y_settl<=e.getPoint().getY() && e.getPoint().getY()<=y_settl+h_settl)
 					{
 						System.out.println(world.getSettlement()[i].getName());
-						JDialog statistic_d=statisticWindow(world);
-						JTable table=statistic_d.gettable();
-						statistic_d.setBounds(390,170,200,300);
+						StatisticWindow statistic_d=statisticWindow(world,world.getSettlement()[i].getName());
 						statistic_d.setVisible(true);
 						break;
 					}
@@ -143,84 +150,10 @@ public class Main_window extends JFrame {
 		//remove(map_panel);
 		
 	}
-	public JDialog statisticWindow(Map world)
+	public StatisticWindow statisticWindow(Map world,String row_name)
 	{
 		
-		JDialog statistic_d=new JDialog(this,"Statistics",false);
-		statistic_d.setBounds(390,170,200,300);
-		statistic_d.getContentPane().setLayout(new GridLayout(2, 1));
-
-		JPanel bottom_panel=new JPanel(new GridLayout(1, 3));
-		bottom_panel.setLayout(new GridLayout(1, 3));
-		
-		//table
-		Settlement[] settlements = world.getSettlement();
-        TableMVCStatistic table_model = new TableMVCStatistic(settlements);        
-		
-		
-		//bottom panel:
-		
-		JButton b_save = new JButton("Save");
-		b_save.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				StatisticsFile.writeCsv(world,Main.loadFileFunc());
-			}
-			});
-	
-		JButton b_sick = new JButton("Add Sick");
-		b_sick.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				try 
-				{
-					table_model.setSick();
-
-				} 
-				catch (Exception e1) {
-					e1.printStackTrace();
-				}
-			}
-			});
-		JButton b_vaccinate= new JButton("Vaccinate");
-		SpinnerModel vaccinate_nodel=new SpinnerNumberModel(1,1,100,1);
-		JSpinner spinner = new JSpinner(vaccinate_nodel);
-		JPanel p_douses=new JPanel();
-		JButton b_dose = new JButton("Add");
-		JLabel l_dose = new JLabel("Douses:");
-		p_douses.add(l_dose);
-		p_douses.add(spinner);
-		p_douses.add(b_dose);
-		
-		b_dose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-
-				int douses = (Integer) spinner.getValue();
-				table_model.setDouse(douses);
-
-			}
-		});
-		JDialog vaccinate=new JDialog(this,"Add vaccinate douses",true);
-		vaccinate.setBounds(390,170,200,300);
-		vaccinate.getContentPane().add(p_douses);
-		vaccinate.pack();
-		b_vaccinate.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) 
-			{
-				vaccinate.setVisible(true);
-			}
-		});
-		bottom_panel.add(b_save);
-		bottom_panel.add(b_sick);
-		bottom_panel.add(b_vaccinate);
-		
-		statistic_d.getContentPane().add(table_model);
-		statistic_d.getContentPane().add(bottom_panel);
-		
-		statistic_d.pack();
+		StatisticWindow statistic_d=new StatisticWindow(this,world,row_name);
 		return statistic_d;
 		
 	}
@@ -263,6 +196,7 @@ public class Main_window extends JFrame {
 				SimulationFile simulationFile=new SimulationFile();
 				try {
 					world=simulationFile.loadMap(file);
+					
 					map_panel();
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
@@ -277,7 +211,7 @@ public class Main_window extends JFrame {
 		statistics.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e)
 			{
-				JDialog statistic_d=statisticWindow(world);
+				StatisticWindow statistic_d=statisticWindow(world,"");
 				statistic_d.setVisible(true);
 
 			}
@@ -348,8 +282,6 @@ public class Main_window extends JFrame {
 				Main.setPlay(false);
 				Main.setPause(true);
 				Main.setStop(false);
-
-				//*******************************************************
 			}
 		});
 		
@@ -368,8 +300,6 @@ public class Main_window extends JFrame {
 				Main.setPause(false);
 				world=null;
 				
-				//*******************************************************
-
 			}
 		});
 		
@@ -422,6 +352,7 @@ public class Main_window extends JFrame {
 		JDialog help_dialog=new JDialog(this,"Help",true);
 		help_dialog.setBounds(390,170,200,300);
 		JPanel help_p=new JPanel();
+		
 		help_p.setLayout(new BoxLayout(help_p,BoxLayout.PAGE_AXIS));
 		JLabel l = new JLabel("<html>Hello<br/>"
 				+ "This is a corona simulation<br/> "
@@ -436,7 +367,11 @@ public class Main_window extends JFrame {
 				+ "Statistics window: You can filter the results of the statistics by column and key-words. In this window you can add sick people and vaccine doses to a selected locality<br/>"
 				+ "information about the creators of the program->Help->About<br/><br/>"
 				+ "Enjoy<html>");
-
+		
+		ImageIcon corona_pic=new ImageIcon(getClass().getResource("/Virus-a.png"));
+		JLabel corona_icon = new JLabel();
+		corona_icon.setIcon(corona_pic);
+		help_p.add(corona_icon);
 		help_p.add(l);
 		
 		

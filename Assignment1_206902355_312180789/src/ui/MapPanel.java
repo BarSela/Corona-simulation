@@ -14,6 +14,7 @@ import country.Map;
 
 public class MapPanel extends JPanel
 {
+
 	private Map world=null;
 	public MapPanel(Map world) 
 	{
@@ -60,5 +61,5 @@ public class MapPanel extends JPanel
 	{
 		return world.getSettlement()[i].getLocation().getPosition().getPoint_y()+world.getSettlement()[i].getLocation().getsize().getHeight()/2;
 	}
-	
+
 }

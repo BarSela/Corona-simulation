@@ -153,7 +153,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     private final JComboBox<ColumnName> column;
     
 
-    public TableMVCStatistic(Settlement[] data) {
+    public TableMVCStatistic(Settlement[] data,String row_name) {
     	this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
     	JPanel top=new JPanel();
     	top.setLayout(new BoxLayout(top, BoxLayout.LINE_AXIS));
@@ -165,6 +165,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
         table.setPreferredScrollableViewportSize(new Dimension(500, 150));
         table.setFillsViewportHeight(true);
         table.setRowSorter(sorter = new TableRowSorter<StatisticModel>(model));
+        InitialFilter(row_name);
         this.add(new JLabel("filter:"));
         this.add(top);
         this.add(new JScrollPane(table));
@@ -212,7 +213,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     {
     	return col;
     }
-    public JTable gettable()
+    public JTable getTableFromPanel()
     {
     	return table;
     }
@@ -222,6 +223,13 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     private void newFilter() {
         try {
             sorter.setRowFilter(RowFilter.regexFilter(tbFilterText.getText(), getcol()));
+        } catch (java.util.regex.PatternSyntaxException e) {
+            // If current expression doesn't parse, don't update.
+        }
+    }
+    private void InitialFilter(String row_name) {
+        try {
+            sorter.setRowFilter(RowFilter.regexFilter(row_name, getcol()));
         } catch (java.util.regex.PatternSyntaxException e) {
             // If current expression doesn't parse, don't update.
         }
