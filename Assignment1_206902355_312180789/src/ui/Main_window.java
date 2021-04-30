@@ -121,10 +121,12 @@ public class Main_window extends JFrame {
 					int y_settl=world.getSettlement()[i].getLocation().getPosition().getPoint_y();
 					int h_settl=world.getSettlement()[i].getLocation().getsize().getHeight();
 					int w_settl=world.getSettlement()[i].getLocation().getsize().getWidth();
+					
 					if(x_settl<=e.getPoint().getX() && e.getPoint().getX()<=x_settl+w_settl && y_settl<=e.getPoint().getY() && e.getPoint().getY()<=y_settl+h_settl)
 					{
 						System.out.println(world.getSettlement()[i].getName());
 						JDialog statistic_d=statisticWindow(world);
+						JTable table=statistic_d.gettable();
 						statistic_d.setBounds(390,170,200,300);
 						statistic_d.setVisible(true);
 						break;

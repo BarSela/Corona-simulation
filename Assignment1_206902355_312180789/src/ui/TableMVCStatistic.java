@@ -212,10 +212,13 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     {
     	return col;
     }
+    public JTable gettable()
+    {
+    	return table;
+    }
+    
 
-
-
-
+    
     private void newFilter() {
         try {
             sorter.setRowFilter(RowFilter.regexFilter(tbFilterText.getText(), getcol()));
