@@ -45,7 +45,7 @@ import java.awt.event.MouseEvent;
 
 public class Main_window extends JFrame {
 	private Map world=null;
-	private int sleep_time=30000;
+	private int sleep_time=3000;
 	public Main_window() throws IOException 
 	{
 		super("Corona-simulation Main Window");

@@ -45,6 +45,7 @@ public class Main {
 					for (int i=0;i<world.getSettlement().length;i++)
 						world.getSettlement()[i].InitialSimulation();
 					initial_play=true;
+					play=true;
 				}
 
 				if(!pause && !stop && play)

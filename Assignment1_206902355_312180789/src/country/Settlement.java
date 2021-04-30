@@ -293,7 +293,7 @@ public abstract class Settlement {
 				}
 			this.setRamzorColor(this.calculateramzorgrade());
 		}
-			Clock.nextTick();
+		Clock.nextTick();
 	}
 	public void Simulation(Map world,int sleep_time) throws Exception
 	{
