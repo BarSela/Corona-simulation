@@ -60,31 +60,77 @@ public abstract class Person
 		 */
 		Sick s;
 		Random rand = new Random();
+		List<IVirus> mutation = new ArrayList<IVirus>();
 		if (iv instanceof BritishVariant)
 		{
-			List<IVirus> list = new ArrayList<IVirus>(BritishVariant.getSetMutation());
-			int x1=rand.nextInt(list.size());
-			iv = list.get(x1);
+			if (BritishVariant.get_british_m())
+			{
+				mutation.add(new BritishVariant());
+			}
+			if (BritishVariant.get_chinese_m())
+			{
+				mutation.add(new ChineseVariant());
+			}
+			if (BritishVariant.get_southafrican_m())
+			{
+				mutation.add(new SouthAfricanVariant());
+			}
+			if(mutation.size()==0)
+			{
+				return new Healthy(this.getLocation(),this.getSettlement(),this.getAge());
+			}
+			int x1=rand.nextInt(mutation.size());
+			iv = mutation.get(x1);
 			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 			return s;
 		}
 		if (iv instanceof ChineseVariant)
 		{
-			List<IVirus> list = new ArrayList<IVirus>(ChineseVariant.getSetMutation());
-			int x1=rand.nextInt(list.size());
-			iv = list.get(x1);
+			if (ChineseVariant.get_british_m())
+			{
+				mutation.add(new BritishVariant());
+			}
+			if (ChineseVariant.get_chinese_m())
+			{
+				mutation.add(new ChineseVariant());
+			}
+			if (ChineseVariant.get_southafrican_m())
+			{
+				mutation.add(new SouthAfricanVariant());
+			}
+			if(mutation.size()==0)
+			{
+				return new Healthy(this.getLocation(),this.getSettlement(),this.getAge());
+			}
+			int x1=rand.nextInt(mutation.size());
+			iv = mutation.get(x1);
 			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 			return s;
 		}
 		if (iv instanceof SouthAfricanVariant)
 		{
-			List<IVirus> list = new ArrayList<IVirus>(SouthAfricanVariant.getSetMutation());
-			int x1=rand.nextInt(list.size());
-			iv = list.get(x1);
+			if (SouthAfricanVariant.get_british_m())
+			{
+				mutation.add(new BritishVariant());
+			}
+			if (SouthAfricanVariant.get_chinese_m())
+			{
+				mutation.add(new ChineseVariant());
+			}
+			if (SouthAfricanVariant.get_southafrican_m())
+			{
+				mutation.add(new SouthAfricanVariant());
+			}
+			if(mutation.size()==0)
+			{
+				return new Healthy(this.getLocation(),this.getSettlement(),this.getAge());
+			}
+			int x1=rand.nextInt(mutation.size());
+			iv = mutation.get(x1);
 			s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
 			return s;
 		}
-		return s=new Sick(this.getLocation(),this.getSettlement(),this.getAge(),Clock.now(),iv);
+		return new Healthy(this.getLocation(),this.getSettlement(),this.getAge());
 	}
 	public String toString() 
 	{

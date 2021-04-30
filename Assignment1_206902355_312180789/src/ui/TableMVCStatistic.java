@@ -7,8 +7,11 @@ import javax.swing.table.*;
 import country.City;
 import country.Kibbutz;
 import country.Settlement;
+import population.Sick;
 import virus.BritishVariant;
+import virus.ChineseVariant;
 import virus.IVirus;
+import virus.SouthAfricanVariant;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -103,20 +106,30 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 
         @Override
         public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return columnIndex > 0;
+            return columnIndex >= 0;
         }
         public void setSick(int row) {
         	
-        	
+        	Random rand=new Random();
+        	IVirus virus=null;
         	Settlement settlement = data[row];
-        	IVirus virus=new BritishVariant();
+        	int x1=rand.nextInt();
+    		if(x1%3==0)
+    			virus=new BritishVariant();
+    		else if(x1%3==1)
+    			virus=new ChineseVariant();
+    		else
+    			virus=new SouthAfricanVariant();
     		double numContagion=settlement.getPopulation()*initialcontagion;;
     		for (int i=0;i<numContagion&&settlement.getPopulation()<settlement.getCapacity();i++)
     		{
-    			Random rand=new Random();
+    			
     			int x=rand.nextInt(settlement.gethealthy_people().size()-1);
-    			settlement.getsick_people().add(settlement.gethealthy_people().get(x).contagion(virus));
-    			settlement.gethealthy_people().remove(x);
+    			if (settlement.gethealthy_people().get(x).contagion(virus) instanceof Sick)
+    			{
+    				settlement.getsick_people().add(settlement.gethealthy_people().get(x).contagion(virus));
+        			settlement.gethealthy_people().remove(x);
+    			}
     		}
     		settlement.setRamzorColor(settlement.calculateramzorgrade());
 
@@ -178,7 +191,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public void setSick()
     {
-    	if(table.getSelectedRow()>0)
+    	if(table.getSelectedRow()>=0)
     	{
         	model.setSick(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()));
     	}
@@ -187,7 +200,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     }
     public void setDouse(int douses)
     {
-    	if(table.getSelectedRow()>0)
+    	if(table.getSelectedRow()>=0)
     		model.setdouses(table.getRowSorter().convertRowIndexToModel(table.getSelectedRow()),douses);
     }
     public void actionPerformed(ActionEvent e) {

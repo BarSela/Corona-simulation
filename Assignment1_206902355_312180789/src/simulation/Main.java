@@ -45,17 +45,20 @@ public class Main {
 					for (int i=0;i<world.getSettlement().length;i++)
 						world.getSettlement()[i].InitialSimulation();
 					initial_play=true;
-					play=true;
 				}
 
 				if(!pause && !stop && play)
 				{
+					
 					for (int i=0;i<world.getSettlement().length;i++)
+					{
 						world.getSettlement()[i].Simulation(world,window.getsleeptime());
+					}
+						
 				}
 				if(pause ||stop)
 				{
-					System.out.println("3");
+					System.out.println("4");
 					Thread.sleep(5000);
 				}
 

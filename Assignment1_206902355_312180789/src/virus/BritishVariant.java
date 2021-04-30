@@ -101,18 +101,6 @@ public class BritishVariant implements IVirus {
 		return true;
 		
 	}
-	public static void addMutation(IVirus v)
-	{
-		variants.add(v);
-	}
-	public static void removeMutation(IVirus v) 
-	{
-		variants.remove(v);
-	}
-	public static Set<IVirus> getSetMutation() 
-	{
-		return variants;
-	}
 	public static boolean get_british_m()
 	{
 		return british_m;
@@ -139,10 +127,6 @@ public class BritishVariant implements IVirus {
 	}
 
 	
-	private static Set<IVirus> variants=new HashSet<IVirus>();
-	static {
-		variants.add(new BritishVariant());
-	}
 	private static boolean british_m=true;
 	private static boolean chinese_m=false;
 	private static boolean southafrican_m=false;

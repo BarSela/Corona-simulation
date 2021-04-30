@@ -114,13 +114,35 @@ public class ChineseVariant implements IVirus
 		return true;
 		
 	}
-	public static void addMutation(IVirus v) 
+	public static void addMutation() 
 	{
-		variants.add(v);
+		if (get_british_m())
+		{
+			variants.add(new BritishVariant());
+		}
+		if (get_chinese_m())
+		{
+			variants.add(new ChineseVariant());
+		}
+		if (get_southafrican_m())
+		{
+			variants.add(new SouthAfricanVariant());
+		}
 	}
-	public static void removeMutation(IVirus v) 
+	public static void removeMutation() 
 	{
-		variants.remove(v);
+		if (!(get_british_m())&&variants.contains(new BritishVariant()))
+		{
+			variants.remove(new BritishVariant());
+		}
+		if (!(get_chinese_m())&&variants.contains(new ChineseVariant()))
+		{
+			variants.remove(new ChineseVariant());
+		}
+		if (!(get_southafrican_m())&&variants.contains(new SouthAfricanVariant()))
+		{
+			variants.remove(new SouthAfricanVariant());
+		}
 	}
 	public static Set<IVirus> getSetMutation() 
 	{

@@ -16,7 +16,9 @@ import population.Sick;
 import population.Vaccinated;
 import simulation.Clock;
 import virus.BritishVariant;
+import virus.ChineseVariant;
 import virus.IVirus;
+import virus.SouthAfricanVariant;
 
 /*
  * Settlement class
@@ -260,13 +262,24 @@ public abstract class Settlement {
 	
 	public void InitialSimulation() throws Exception 
 	{
-		IVirus virus=new BritishVariant();
+		Random rand = new Random();
+		IVirus virus=null;
+		int x1=rand.nextInt();
+		if(x1%3==0)
+			virus=new BritishVariant();
+		else if(x1%3==1)
+			virus=new ChineseVariant();
+		else
+			virus=new SouthAfricanVariant();
 		double numContagion=0;//array for number of people that contagion in step 2
 		numContagion=this.getPopulation()*initialcontagion;
 		for (int j=0;j<numContagion;j++)
 		{
-			this.getsick_people().add(this.gethealthy_people().get(0).contagion(virus));
-			this.gethealthy_people().remove(0);
+			if (this.gethealthy_people().get(0).contagion(virus) instanceof Sick)
+			{
+				this.getsick_people().add(this.gethealthy_people().get(0).contagion(virus));
+				this.gethealthy_people().remove(0);
+			}	
 		}
 		/**
 		 * step 3: Simulationstage: Crossing all settlements,
@@ -281,13 +294,15 @@ public abstract class Settlement {
 					for (int t=0;t<num_of_trys_to_initial_contagion;t++)
 					{
 						boolean flag=false;
-						Random rand=new Random();
 						int x=rand.nextInt(this.gethealthy_people().size()-1);
 						flag=virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
 						if (flag==true)
 						{
-							this.getsick_people().add(x,this.gethealthy_people().get(x).contagion(virus));;
-							this.gethealthy_people().remove(x);
+							if (this.gethealthy_people().get(x).contagion(virus) instanceof Sick)
+							{
+								this.getsick_people().add(x,this.gethealthy_people().get(x).contagion(virus));;
+								this.gethealthy_people().remove(x);
+							}
 						}
 					}
 				}
@@ -302,17 +317,23 @@ public abstract class Settlement {
 		for (int i=0;i<numSick;i++)
 		{
 			boolean flag=false;
-			int x=rand.nextInt(this.getsick_people().size()-1);
-			Sick s=(Sick)this.getsick_people().get(x);
-			IVirus virus=s.getVirus();
-			for (int j=0;j<num_of_trys_to_contagion;j++)
+			if(this.getsick_people().size()>1)
 			{
-				int y=rand.nextInt(this.gethealthy_people().size()-1);
-				flag=virus.tryToContagion(s,this.gethealthy_people().get(y));
-				if (flag)
+				int x=rand.nextInt(this.getsick_people().size()-1);
+				Sick s=(Sick)this.getsick_people().get(x);
+				IVirus virus=s.getVirus();
+				for (int j=0;j<num_of_trys_to_contagion;j++)
 				{
-					this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));
-					this.gethealthy_people().remove(y);
+					int y=rand.nextInt(this.gethealthy_people().size()-1);
+					flag=virus.tryToContagion(s,this.gethealthy_people().get(y));
+					if (flag)
+					{
+						if (this.gethealthy_people().get(y).contagion(virus) instanceof Sick)
+						{
+							this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));
+							this.gethealthy_people().remove(y);
+						}
+					}
 				}
 			}
 		}
