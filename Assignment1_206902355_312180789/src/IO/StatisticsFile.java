@@ -9,11 +9,19 @@ import java.io.*;
 import country.City;
 import country.Kibbutz;
 import country.Map;
-
+/**
+ * statistic file class
+ * the class responsible for saving the staistics in the file.
+ */
 public class StatisticsFile 
 {
 	public static void writeCsv(Map world ,File file)
 	{
+		/**
+		 * the function responsible to save all data
+		 * @param Map world- contain all data
+		 * @param file- saving all data inside 
+		 */
 		try  
 		{
 			PrintWriter writer = new PrintWriter(file);
