@@ -6,6 +6,7 @@ package ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -48,43 +49,34 @@ public class MapPanel extends JPanel {
 		Graphics2D gr = (Graphics2D) g;
 		gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		int dimension_x = this.getWidth() / max_x;
-		int dimension_y = this.getHeight() / max_y;
+		double dimension_x = (double)this.getWidth() / max_x;
+		double dimension_y = (double)this.getHeight() / max_y;
 
 		for (int i = 0; i < world.getSettlement().length; i++) {
 			g.setColor(Color.BLACK);
 			for (int j = 0; j < world.getSettlement()[i].getneighbors().size(); j++) {
-				int x1 = findCenterX(i);
-				int y1 = findCenterY(i);
-				int x2 = world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_x()
+				int center_x1 = findCenterX(i);
+				int center_y1 = findCenterY(i);
+				int center_x2 = world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_x()
+						+ world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getWidth() / 2;
+				int center_y2 = world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_y()
 						+ world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getHeight() / 2;
-				int y2 = world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_y()
-						+ world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getHeight() / 2;
-				g.drawLine(x1, y1, x2, y2);
-				
+				g.drawLine((int)(center_x1*dimension_x), (int)(center_y1*dimension_y), (int)(center_x2*dimension_x),(int) (center_y2*dimension_y));			
 			}
-			center = world.getSettlement()[i].getLocation().getsize().getWidth() / 2
-					+ world.getSettlement()[i].getLocation().getsize().getHeight() / 2;
-			g.drawRect(world.getSettlement()[i].getLocation().getPosition().getPoint_x(),
-					world.getSettlement()[i].getLocation().getPosition().getPoint_y(),
-					world.getSettlement()[i].getLocation().getsize().getWidth(),
-					world.getSettlement()[i].getLocation().getsize().getHeight());
-			g.setColor(world.getSettlement()[i].getRamzorColor().getColor());
-			g.fillRect(world.getSettlement()[i].getLocation().getPosition().getPoint_x(),
-					world.getSettlement()[i].getLocation().getPosition().getPoint_y(),
-					world.getSettlement()[i].getLocation().getsize().getWidth(),
-					world.getSettlement()[i].getLocation().getsize().getHeight());
-			g.setColor(Color.BLACK);
-			g.drawString(world.getSettlement()[i].getName(),
-					world.getSettlement()[i].getLocation().getPosition().getPoint_x(),
-					world.getSettlement()[i].getLocation().getPosition().getPoint_y() + 15);
 		}
-	}
-
-	@Override
-	public Dimension getPreferredSize() {
-		// selected according max x and y points
-		return new Dimension(1200, 400);
+		for (int i = 0; i < world.getSettlement().length; i++) {
+			g.setColor(Color.BLACK);
+			int x=world.getSettlement()[i].getLocation().getPosition().getPoint_x();
+			int y=world.getSettlement()[i].getLocation().getPosition().getPoint_y();
+			int height=world.getSettlement()[i].getLocation().getsize().getHeight();
+			int width=world.getSettlement()[i].getLocation().getsize().getWidth();
+			g.drawRect((int)(x*dimension_x),(int)(y*dimension_y),(int)(width*dimension_x),(int)(height*dimension_y));
+			g.setColor(world.getSettlement()[i].getRamzorColor().getColor());
+			g.fillRect((int)(x*dimension_x),(int)(y*dimension_y),(int)(width*dimension_x),(int)(height*dimension_y));
+			g.setColor(Color.BLACK);
+			g.drawString(world.getSettlement()[i].getName(),(int)(x*dimension_x),(int)((y+15)*dimension_y));
+			g.setFont(new Font("TimesRoman", Font.PLAIN,(int) (14*dimension_x))); 
+		}
 	}
 
 	public int findCenterX(int i) {
@@ -95,7 +87,7 @@ public class MapPanel extends JPanel {
 		 * @return the x center cordinate of the settlement
 		 */
 		return world.getSettlement()[i].getLocation().getPosition().getPoint_x()
-				+ world.getSettlement()[i].getLocation().getsize().getHeight() / 2;
+				+ world.getSettlement()[i].getLocation().getsize().getWidth() / 2;
 	}
 
 	public int findCenterY(int i) {
@@ -115,14 +107,24 @@ public class MapPanel extends JPanel {
 		max_x = max_y = 0;
 		if (world != null)
 			for (int i = 0; i < world.getSettlement().length; i++) {
-				if (world.getSettlement()[i].getLocation().getPosition().getPoint_x() > max_x) {
-					max_x = world.getSettlement()[i].getLocation().getPosition().getPoint_x();
+				if (world.getSettlement()[i].getLocation().getPosition().getPoint_x()+world.getSettlement()[i].getLocation().getsize().getWidth() > max_x) {
+					max_x = world.getSettlement()[i].getLocation().getPosition().getPoint_x()+world.getSettlement()[i].getLocation().getsize().getWidth();
 				}
-				if (world.getSettlement()[i].getLocation().getPosition().getPoint_y() > max_y) {
-					max_y = world.getSettlement()[i].getLocation().getPosition().getPoint_y();
+				if (world.getSettlement()[i].getLocation().getPosition().getPoint_y()+world.getSettlement()[i].getLocation().getsize().getHeight() > max_y) {
+					max_y = world.getSettlement()[i].getLocation().getPosition().getPoint_y()+world.getSettlement()[i].getLocation().getsize().getHeight();
 				}
 			}
+		max_x += 10;
+		max_y +=10;
 		this.repaint();
+	}
+	public double getDimentionX()
+	{
+		return (double)this.getWidth() / max_x;
+	}
+	public double getDimentionY()
+	{
+		return (double)this.getHeight() / max_y;
 	}
 
 }
