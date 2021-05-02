@@ -298,15 +298,17 @@ public abstract class Settlement {
 					if (this.getsick_people().get(k) instanceof Sick)
 						for (int t = 0; t < num_of_trys_to_initial_contagion; t++) {
 							boolean flag = false;
-							int x = rand.nextInt(this.gethealthy_people().size() - 1);
-							flag = virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
-							if (flag == true) {
-								if (this.gethealthy_people().get(x).contagion(virus) instanceof Sick) {
-									this.getsick_people().add(x, this.gethealthy_people().get(x).contagion(virus));
-									;
-									this.gethealthy_people().remove(x);
+							if(this.gethealthy_people().size()!=0)
+							{
+								int x = rand.nextInt(this.gethealthy_people().size() - 1);
+								flag = virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
+								if (flag == true) {
+									if (this.gethealthy_people().get(x).contagion(virus) instanceof Sick) {
+										this.getsick_people().add(x, this.gethealthy_people().get(x).contagion(virus));
+										this.gethealthy_people().remove(x);
+									}
 								}
-							}
+							}				
 						}
 			}
 			this.setRamzorColor(this.calculateramzorgrade());
@@ -324,14 +326,17 @@ public abstract class Settlement {
 				Sick s = (Sick) this.getsick_people().get(x);
 				IVirus virus = s.getVirus();
 				for (int j = 0; j < num_of_trys_to_contagion; j++) {
-					int y = rand.nextInt(this.gethealthy_people().size() - 1);
-					flag = virus.tryToContagion(s, this.gethealthy_people().get(y));
-					if (flag) {
-						if (this.gethealthy_people().get(y).contagion(virus) instanceof Sick) {
-							this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));
-							this.gethealthy_people().remove(y);
+					if(this.gethealthy_people().size()!=0)
+					{
+						int y = rand.nextInt(this.gethealthy_people().size() - 1);
+						flag = virus.tryToContagion(s, this.gethealthy_people().get(y));
+						if (flag) {
+							if (this.gethealthy_people().get(y).contagion(virus) instanceof Sick) {
+								this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));
+								this.gethealthy_people().remove(y);
+							}
 						}
-					}
+					}	
 				}
 			}
 		}

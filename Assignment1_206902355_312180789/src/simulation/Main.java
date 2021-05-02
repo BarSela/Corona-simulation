@@ -36,7 +36,8 @@ public class Main {
 		
 		while(true)
 		{
-			
+			if(stop)
+				world=null;
 			System.out.println("1");
 			if(world==null)
 			{
@@ -51,7 +52,7 @@ public class Main {
 					initial_play=true;
 				}
 
-				if(!pause && !stop && play)
+				if(!pause && !stop && play && initial_play)
 				{
 					
 					for (int i=0;i<world.getSettlement().length;i++)
@@ -108,6 +109,14 @@ public class Main {
 		 *@param b the current state of play putton 
 		 */
 		play=b;
+	}
+	public static void setInitialPlay(boolean b)
+	{
+		/**
+		 *play setter
+		 *@param b the current state of play putton 
+		 */
+		initial_play=b;
 	}
 
 

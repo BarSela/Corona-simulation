@@ -62,7 +62,7 @@ public class Main_window extends JFrame {
 		BorderLayout myBorderLayout = new BorderLayout();
 		getContentPane().setLayout(myBorderLayout);
 		setBounds(390, 170, 200, 300);
-		setPreferredSize(new Dimension(700, 700));
+		setPreferredSize(new Dimension(1000, 700));
 
 		// main window components
 		menuBar();
@@ -152,10 +152,11 @@ public class Main_window extends JFrame {
 					return;
 				for (int i = 0; i < world.getSettlement().length; i++) {
 
-					int x_settl = world.getSettlement()[i].getLocation().getPosition().getPoint_x();
-					int y_settl = world.getSettlement()[i].getLocation().getPosition().getPoint_y();
-					int h_settl = world.getSettlement()[i].getLocation().getsize().getHeight();
-					int w_settl = world.getSettlement()[i].getLocation().getsize().getWidth();
+					
+					int x_settl =(int)( world.getSettlement()[i].getLocation().getPosition().getPoint_x()*map_panel.getDimentionX());
+					int y_settl = (int)(world.getSettlement()[i].getLocation().getPosition().getPoint_y()*map_panel.getDimentionY());
+					int h_settl = (int)(world.getSettlement()[i].getLocation().getsize().getHeight()*map_panel.getDimentionY());
+					int w_settl = (int)(world.getSettlement()[i].getLocation().getsize().getWidth()*map_panel.getDimentionX());
 
 					if (x_settl <= e.getPoint().getX() && e.getPoint().getX() <= x_settl + w_settl
 							&& y_settl <= e.getPoint().getY() && e.getPoint().getY() <= y_settl + h_settl) {
@@ -325,6 +326,7 @@ public class Main_window extends JFrame {
 				Main.setPlay(false);
 				Main.setStop(true);
 				Main.setPause(false);
+				Main.setInitialPlay(false);
 				world = null;
 				map_panel.set_map(null);
 
