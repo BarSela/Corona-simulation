@@ -8,9 +8,11 @@ import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.File;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import country.Map;
 import ui.Main_window;
+import ui.StatisticWindow;
 
 
 /**
@@ -56,9 +58,12 @@ public class Main {
 					
 					for (int i=0;i<world.getSettlement().length;i++)
 					{
-						world.getSettlement()[i].Simulation(world,window.getsleeptime());
-					}
+						world.getSettlement()[i].Simulation(world);
 						
+					}
+					window.updateAll();
+					Clock.nextTick();
+					Thread.sleep(window.getsleeptime());			
 				}
 				if(pause ||stop)
 				{
@@ -111,5 +116,6 @@ public class Main {
 		 */
 		play=b;
 	}
+
 
 }

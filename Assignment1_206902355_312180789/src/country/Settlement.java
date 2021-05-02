@@ -310,7 +310,7 @@ public abstract class Settlement {
 		}
 		Clock.nextTick();
 	}
-	public void Simulation(Map world,int sleep_time) throws Exception
+	public void Simulation(Map world) throws Exception
 	{
 		double numSick=this.getsick_people().size()*sample_sickPeople;
 		Random rand = new Random();
@@ -373,8 +373,6 @@ public abstract class Settlement {
 		}
 		//update number of doses in the settlement
 		this.add_vaccine_doses(this.getVaccine_doses()-count_doses);
-		Clock.nextTick();
-		Thread.sleep(sleep_time);
 
 	}
 	

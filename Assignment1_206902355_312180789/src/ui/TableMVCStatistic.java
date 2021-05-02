@@ -69,7 +69,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
         }
 		
 	}
-    private static class StatisticModel extends AbstractTableModel 
+    public class StatisticModel extends AbstractTableModel 
     {
     	/**
     	 * this class provides default implementations for most of the methods in the TableModel interface
@@ -214,6 +214,10 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 
             fireTableCellUpdated(row, 5);
         }
+        public void updateTable()
+        {
+        	fireTableDataChanged();
+        }
     }
 
     //data members
@@ -264,12 +268,13 @@ public class TableMVCStatistic extends JPanel implements ActionListener
         
         this.setVisible(true);
     }
-    public StatisticModel getModel()
+    public void updateModel()
     {
     	/**
     	 * @return the model
     	 */
-    	return model;
+    	model.updateTable();
+    	newFilter();
     }
     public void setSick()
     {

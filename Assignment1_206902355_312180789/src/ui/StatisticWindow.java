@@ -30,7 +30,7 @@ public class StatisticWindow extends JDialog
 	
 	//data members
 	private Map world=null;
-	private TableMVCStatistic table;
+	private static TableMVCStatistic table_model;
 	
 	
 	public StatisticWindow(JFrame window,Map world,String row_name) 
@@ -52,7 +52,7 @@ public class StatisticWindow extends JDialog
     	
     	//table
     	Settlement[] settlements = world.getSettlement();
-        TableMVCStatistic table_model = new TableMVCStatistic(settlements,row_name);
+        table_model = new TableMVCStatistic(settlements,row_name);
         
         
         //bottom panel:
@@ -131,8 +131,16 @@ public class StatisticWindow extends JDialog
 		 * this fuction return the table from the table panel
 		 * @return  statistic table
 		 */
-    	return table.getTableFromPanel();
+    	return table_model.getTableFromPanel();
     }
+	public static void update_statistics()
+	{
+		if(table_model != null)
+		{
+			table_model.updateModel();
+		}
+		
+	}
 
 	       
 	
