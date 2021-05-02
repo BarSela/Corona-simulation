@@ -102,6 +102,10 @@ public class MapPanel extends JPanel {
 	}
 
 	public void set_map(Map world) {
+		/**
+		 * after load map set the map by the loaded file
+		 * @param world the map
+		 */
 		this.world = world;
 		// find max x and max y
 		max_x = max_y = 0;
@@ -120,10 +124,16 @@ public class MapPanel extends JPanel {
 	}
 	public double getDimentionX()
 	{
+		/**
+		 * resolution for point x
+		 */
 		return (double)this.getWidth() / max_x;
 	}
 	public double getDimentionY()
 	{
+		/**
+		 * resolution for point y
+		 */
 		return (double)this.getHeight() / max_y;
 	}
 

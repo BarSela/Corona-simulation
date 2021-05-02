@@ -209,7 +209,8 @@ public class MutationTable extends JDialog
 	public Dimension getPreferredSize() 
 	{
 		/**
-		 * selected according max x and y points 
+		 * selected according max x and y points
+		 * @return dimention 
 		 */
 		return new Dimension(700,125);
 	}

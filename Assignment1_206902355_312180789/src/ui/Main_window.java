@@ -141,7 +141,6 @@ public class Main_window extends JFrame {
 		map_panel = new MapPanel();
 		map_panel.setVisible(true);
 		map_panel.repaint();
-		System.out.println("loaded and repaint");
 
 		// identify click on spesific settlement. open statistic window with the row of
 		// the settlement
@@ -201,11 +200,14 @@ public class Main_window extends JFrame {
 		JMenu file = new JMenu("File");
 
 		// ICONS for the menu items
-		Image sIcon = new ImageIcon(getClass().getResource("/Statistics-icon.png")).getImage();
-		Image loadIcon = new ImageIcon(getClass().getResource("/load-icon.png")).getImage();
+		Image sIcon = new ImageIcon(getClass().getResource("/Statistic-icon.png")).getImage();
+		Image loadIcon = new ImageIcon(getClass().getResource("/load-o-icon.png")).getImage();
 		Image playIcon = new ImageIcon(getClass().getResource("/Play-icon.png")).getImage();
 		Image pauseIcon = new ImageIcon(getClass().getResource("/Pause-icon.png")).getImage();
 		Image stopIcon = new ImageIcon(getClass().getResource("/Stop-icon.png")).getImage();
+		Image exitIcon = new ImageIcon(getClass().getResource("/Exit-icon.png")).getImage();
+		Image virusIcon = new ImageIcon(getClass().getResource("/Virus-icon-s.png")).getImage();
+		Image tickIcon = new ImageIcon(getClass().getResource("/Clock-icon.png")).getImage();
 
 		// menu items
 		JMenuItem statistics = new JMenuItem("Statistics");
@@ -256,6 +258,7 @@ public class Main_window extends JFrame {
 
 		// edit mutations
 		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
+		edit_mutations.setIcon(new ImageIcon(virusIcon));
 		IVirus[] variants = { new BritishVariant(), new ChineseVariant(), new SouthAfricanVariant() };
 		MutationTable edit_mutations_d = new MutationTable(this, variants);
 
@@ -268,6 +271,7 @@ public class Main_window extends JFrame {
 
 		// exit
 		JMenuItem exit = new JMenuItem("Exit");
+		exit.setIcon(new ImageIcon(exitIcon));
 		exit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
@@ -335,6 +339,7 @@ public class Main_window extends JFrame {
 
 		// set tick
 		JMenuItem set_tick = new JMenuItem("Set tick per day");
+		set_tick.setIcon(new ImageIcon(tickIcon));
 		SpinnerModel tick_per_day = new SpinnerNumberModel(1, 1, 100, 1);
 		JSpinner spinner = new JSpinner(tick_per_day);
 		JPanel p_tick = new JPanel();
@@ -400,7 +405,7 @@ public class Main_window extends JFrame {
 				+ "--file: Load a new simulation, view statistics by choice, edit mutations (convert from one mutation to another during infection) and exit the program<br/>"
 				+ "--simulation: play (note: possible only when simulation is loaded), pause, stop and set tick per day - how many ticks are currently considered one day<br/>"
 				+ "Statistics window: You can filter the results of the statistics by column and key-words. In this window you can add sick people and vaccine doses to a selected locality<br/>"
-				+ "information about the creators of the program->Help->About<br/><br/>" + "Enjoy<html>");
+				+ "information about the creators of the program->Help->About<br/><br/>" + "Enjoy<br/><html>");
 
 		// add to help
 		help_p.add(corona_icon);

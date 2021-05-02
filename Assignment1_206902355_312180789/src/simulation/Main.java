@@ -41,7 +41,6 @@ public class Main {
 					world=null;
 					initial_play=false;
 				}
-			System.out.println("1");
 			if(world==null)
 			{
 				world=window.getmap();
@@ -49,7 +48,6 @@ public class Main {
 			try {
 				if(play && !initial_play)
 				{
-					System.out.println("2");
 					for (int i=0;i<world.getSettlement().length;i++)
 						world.getSettlement()[i].InitialSimulation();
 					initial_play=true;
@@ -117,8 +115,8 @@ public class Main {
 	public static void setInitialPlay(boolean b)
 	{
 		/**
-		 *play setter
-		 *@param b the current state of play putton 
+		 *initial play setter
+		 *@param b the current state of initial play
 		 */
 		initial_play=b;
 	}

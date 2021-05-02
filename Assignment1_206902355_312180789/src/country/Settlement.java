@@ -262,10 +262,13 @@ public abstract class Settlement {
 
 	// abstract
 	public abstract RamzorColor calculateramzorgrade();
-
 	public abstract boolean equals(Object o);
 
 	public void InitialSimulation() throws Exception {
+		/**
+		 * initial simulation
+		 * contage 0.01 drom population
+		 */
 		Random rand = new Random();
 		IVirus virus = null;
 		int x1 = rand.nextInt();
@@ -286,7 +289,7 @@ public abstract class Settlement {
 
 		}
 		/**
-		 * step 3: Simulationstage: Crossing all settlements, selection of each Sick
+		 * Simulationstage: Crossing all settlements, selection of each Sick
 		 * persons in the settlement, for which one pick a random selection of six
 		 * people over The same settelment and try to ifnect them. in total perform such
 		 * a simulation of everything 5 times.
@@ -317,6 +320,9 @@ public abstract class Settlement {
 	}
 
 	public void Simulation(Map world) throws Exception {
+		/**
+		 * simulation steps for one settlement
+		 */
 		double numSick = this.getsick_people().size() * sample_sickPeople;
 		Random rand = new Random();
 		for (int i = 0; i < numSick; i++) {

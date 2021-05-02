@@ -271,7 +271,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener
     public void updateModel()
     {
     	/**
-    	 * @return the model
+    	 *update data model 
     	 */
     	model.updateTable();
     	newFilter();

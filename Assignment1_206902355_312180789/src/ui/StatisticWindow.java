@@ -135,6 +135,9 @@ public class StatisticWindow extends JDialog
     }
 	public static void update_statistics()
 	{
+		/**
+		 * update statistic table
+		 */
 		if(table_model != null)
 		{
 			table_model.updateModel();
