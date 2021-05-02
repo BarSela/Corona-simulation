@@ -328,8 +328,12 @@ public abstract class Settlement {
 				for (int j = 0; j < num_of_trys_to_contagion; j++) {
 					if(this.gethealthy_people().size()!=0)
 					{
-						int y = rand.nextInt(this.gethealthy_people().size() - 1);
-						flag = virus.tryToContagion(s, this.gethealthy_people().get(y));
+						int y=0;
+						if(this.gethealthy_people().size()>0)
+						{
+							y = rand.nextInt(this.gethealthy_people().size());
+							flag = virus.tryToContagion(s, this.gethealthy_people().get(y));
+						}
 						if (flag) {
 							if (this.gethealthy_people().get(y).contagion(virus) instanceof Sick) {
 								this.getsick_people().add(this.gethealthy_people().get(y).contagion(virus));

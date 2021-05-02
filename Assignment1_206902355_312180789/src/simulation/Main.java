@@ -37,7 +37,10 @@ public class Main {
 		while(true)
 		{
 			if(stop)
-				world=null;
+				{
+					world=null;
+					initial_play=false;
+				}
 			System.out.println("1");
 			if(world==null)
 			{
