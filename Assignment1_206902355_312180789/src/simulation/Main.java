@@ -62,6 +62,7 @@ public class Main {
 					{
 						world.getSettlement()[i].Simulation(world);
 						
+						
 					}
 					window.updateAll();
 					Clock.nextTick();

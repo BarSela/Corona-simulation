@@ -298,9 +298,9 @@ public abstract class Settlement {
 					if (this.getsick_people().get(k) instanceof Sick)
 						for (int t = 0; t < num_of_trys_to_initial_contagion; t++) {
 							boolean flag = false;
-							if(this.gethealthy_people().size()!=0)
+							if(this.gethealthy_people().size()>0)
 							{
-								int x = rand.nextInt(this.gethealthy_people().size() - 1);
+								int x = rand.nextInt(this.gethealthy_people().size());
 								flag = virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
 								if (flag == true) {
 									if (this.gethealthy_people().get(x).contagion(virus) instanceof Sick) {
@@ -344,7 +344,9 @@ public abstract class Settlement {
 				}
 			}
 		}
-		for (int k = 0; k < this.getsick_people().size(); k++) {
+		
+		for (int k = 0; k < this.getsick_people().size(); k++) 
+		{
 			Sick s = (Sick) this.getsick_people().get(k);
 			if (Clock.CalcDays(s.getContagiousTime()) > 25) {
 				this.gethealthy_people().add(s.recover());
