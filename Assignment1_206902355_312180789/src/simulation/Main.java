@@ -41,7 +41,6 @@ public class Main {
 			System.out.println("1");
 			if(world==null)
 			{
-				Thread.sleep(5000);
 				world=window.getmap();
 			}
 			try {
@@ -64,11 +63,6 @@ public class Main {
 					window.updateAll();
 					Clock.nextTick();
 					Thread.sleep(window.getsleeptime());			
-				}
-				if(pause ||stop)
-				{
-					System.out.println("4");
-					Thread.sleep(5000);
 				}
 
 			} catch (Exception e1) {

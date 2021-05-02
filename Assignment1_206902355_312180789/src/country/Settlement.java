@@ -224,6 +224,14 @@ public abstract class Settlement {
 		 */
 		this.vaccine_doses += douses;
 	}
+	public void reduce_vaccine_doses(int douses) {
+		/**
+		 * add vaccine doses to the settlement
+		 * 
+		 * @param douses number of douses to add
+		 */
+		this.vaccine_doses -= douses;
+	}
 
 	private boolean transferPropabillity(double p1, double p2) {
 		/**
@@ -356,7 +364,8 @@ public abstract class Settlement {
 			}
 		}
 		// update number of doses in the settlement
-		this.add_vaccine_doses(this.getVaccine_doses() - count_doses);
+		this.reduce_vaccine_doses(count_doses);
+		this.setRamzorColor(this.calculateramzorgrade());
 
 	}
 
