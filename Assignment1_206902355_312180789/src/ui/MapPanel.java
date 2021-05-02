@@ -5,7 +5,7 @@
 package ui;
 
 import java.awt.Color;
-import java.awt.Dimension;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -40,7 +40,7 @@ public class MapPanel extends JPanel {
 		 * 
 		 * @param g the Graphics object
 		 */
-		int center = 0;
+		
 
 		super.paintComponent(g);
 		if (world == null) {

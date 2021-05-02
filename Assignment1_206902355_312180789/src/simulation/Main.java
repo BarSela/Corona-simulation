@@ -8,11 +8,10 @@ import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.File;
 import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
 
 import country.Map;
 import ui.Main_window;
-import ui.StatisticWindow;
+
 
 
 /**
