@@ -36,6 +36,7 @@ public class Main {
 		
 		while(true)
 		{
+			System.out.println(".");
 			if(stop)
 				{
 					world=null;
@@ -44,6 +45,7 @@ public class Main {
 			if(world==null)
 			{
 				world=window.getmap();
+				
 			}
 			try {
 				if(play && !initial_play)
@@ -71,7 +73,7 @@ public class Main {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println(window.getsleeptime());		
+					
 		}
 		
 	}

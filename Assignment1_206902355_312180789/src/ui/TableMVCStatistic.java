@@ -214,6 +214,17 @@ public class TableMVCStatistic extends JPanel implements ActionListener
 
             fireTableCellUpdated(row, 5);
         }
+        @Override
+        public void fireTableDataChanged() {
+        	/**
+        	 * update all data
+        	 */
+            fireTableChanged(new TableModelEvent(this, //tableModel
+                0, //firstRow
+                getRowCount() - 1, //lastRow 
+                TableModelEvent.ALL_COLUMNS, //column 
+                TableModelEvent.UPDATE)); //changeType
+        }
         public void updateTable()
         {
         	fireTableDataChanged();
