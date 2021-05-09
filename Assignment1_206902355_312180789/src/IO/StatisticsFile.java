@@ -4,11 +4,17 @@
  */
 package IO;
 
+import java.awt.FileDialog;
+import java.awt.Frame;
 import java.io.*;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import country.City;
 import country.Kibbutz;
 import country.Map;
+import country.Settlement;
 /**
  * statistic file class
  * the class responsible for saving the staistics in the file.
@@ -66,7 +72,41 @@ public class StatisticsFile
 		      System.out.println(e.getMessage());
 		}
 	}
-	
+	public static void writeLog(Map world,String file)
+	{
+		Logger logger = Logger.getLogger("MyLog");  
+	    FileHandler fh;  
+
+	    try {  
+	        // This block configure the logger with handler and formatter  
+	        fh = new FileHandler(file); 
+	        logger.addHandler(fh);
+	        SimpleFormatter formatter = new SimpleFormatter();  
+	        fh.setFormatter(formatter);  
+	        // the following statement is used to log any messages  
+	        for (int i=0;i<world.getSettlement().length;i++)
+	        {
+	        	logger.info(world.getSettlement()[i].getdead()+"\n");  
+	        }
+
+	    } catch (SecurityException e) {  
+	        e.printStackTrace();  
+	    } catch (IOException e) {  
+	        e.printStackTrace();  
+	    }  
+	}
+	public static String loadFileFunc() 
+	{
+		/**
+		 * load new file
+		 * @return file
+		 */
+        FileDialog fd = new FileDialog((Frame) null, "Please choose a file:", FileDialog.LOAD);
+        fd.setVisible(true);
+        if (fd.getFile() == null)
+            return null;
+        return fd.getFile();
+	}
 }
 
 

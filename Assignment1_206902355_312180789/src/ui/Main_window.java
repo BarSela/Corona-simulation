@@ -26,6 +26,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import IO.SimulationFile;
+import IO.StatisticsFile;
 import country.Map;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
@@ -220,7 +221,7 @@ public class Main_window extends JFrame {
 		pause.setIcon(new ImageIcon(pauseIcon));
 		JMenuItem stop = new JMenuItem("Stop");
 		stop.setIcon(new ImageIcon(stopIcon));
-
+		JMenuItem log = new JMenuItem("save log file");
 		// load
 		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
@@ -231,6 +232,7 @@ public class Main_window extends JFrame {
 
 				load.setEnabled(false);
 				play.setEnabled(true);
+				log.setEnabled(true);
 				statistics.setEnabled(true);
 				File file = Main.loadFileFunc();
 				SimulationFile simulationFile = new SimulationFile();
@@ -269,6 +271,17 @@ public class Main_window extends JFrame {
 			}
 		});
 
+		//log file
+		log.setSelected(true);
+		log.setEnabled(false);
+		log.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/**
+				 * Upload Step: Get the location of the upload file and load the entire map.
+				 */
+				StatisticsFile.writeLog(world,StatisticsFile.loadFileFunc());
+			}
+		});
 		// exit
 		JMenuItem exit = new JMenuItem("Exit");
 		exit.setIcon(new ImageIcon(exitIcon));
@@ -284,6 +297,8 @@ public class Main_window extends JFrame {
 		file.add(statistics);
 		file.addSeparator();
 		file.add(edit_mutations);
+		file.addSeparator();
+		file.add(log);
 		file.addSeparator();
 		file.add(exit);
 		menuBar.add(file);
