@@ -69,7 +69,7 @@ public class BritishVariant implements IVirus {
 		 * @param s  sick person
 		 * @return true if the person will be killed by the virus,else false
 		 */
-		long time=s.getContagiousTime()-Clock.now();
+		long time=Math.abs(s.getContagiousTime()-Clock.now());
 
 		//if the age of the person is under 18, else will change properly
 		double result=Math.max(0,death_0_18-0.01*death_0_18*Math.pow(time-15,2));

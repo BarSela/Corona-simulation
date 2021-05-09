@@ -180,7 +180,12 @@ public abstract class Settlement {
 		 */
 		return this.dead;
 	}
-
+	public void addDead() {
+		/**
+		 * @return amount of dead people in the settlemnet
+		 */
+		this.dead++;
+	}
 	public List<Person> gethealthy_people() {
 		/**
 		 * @return the list of the healthy people in the settlement
@@ -314,6 +319,17 @@ public abstract class Settlement {
 							}				
 						}
 			}
+			/*
+			 * try to kill
+			for (int k = 0; k < this.getsick_people().size(); k++) 
+			{
+				Sick s = (Sick) this.getsick_people().get(k);
+				if (s.tryTODie()) {
+					this.getsick_people().remove(s);
+					this.addDead();
+				}
+			}
+			*/
 			this.setRamzorColor(this.calculateramzorgrade());
 		}
 		Clock.nextTick();
@@ -350,7 +366,16 @@ public abstract class Settlement {
 				}
 			}
 		}
-		
+		//try to kill
+		for (int k = 0; k < this.getsick_people().size(); k++) 
+		{
+			Sick s = (Sick) this.getsick_people().get(k);
+			if (s.tryTODie()) {
+				this.getsick_people().remove(s);
+				this.addDead();
+			}
+		}
+		//try to recover
 		for (int k = 0; k < this.getsick_people().size(); k++) 
 		{
 			Sick s = (Sick) this.getsick_people().get(k);
@@ -359,6 +384,7 @@ public abstract class Settlement {
 				this.getsick_people().remove(k);
 			}
 		}
+		//try to transfer
 		for (int transfer = 0; transfer < this.getPopulation() * 0.03; transfer++) {
 			List<Person> population = new ArrayList<Person>(this.getPopulation());
 			population.addAll(this.gethealthy_people());
@@ -369,6 +395,7 @@ public abstract class Settlement {
 				settl = rand.nextInt(world.getSettlement().length);
 			this.transferPerson(population.get(people), world.getSettlement()[settl]);
 		}
+		//try to vaccine
 		int count_doses = 0;
 		for (int vaccine_doses = 0; vaccine_doses < this.getVaccine_doses(); vaccine_doses++) {
 			for (int healthy = 0; healthy < this.gethealthy_people().size(); healthy++) {
