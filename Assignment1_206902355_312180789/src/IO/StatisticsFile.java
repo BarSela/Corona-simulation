@@ -21,6 +21,7 @@ import country.Settlement;
  */
 public class StatisticsFile 
 {
+	public static String path=null;
 	public static void writeCsv(Map world ,File file)
 	{
 		/**
@@ -72,7 +73,7 @@ public class StatisticsFile
 		      System.out.println(e.getMessage());
 		}
 	}
-	public static void writeLog(Map world,String file)
+	public static void writeLog(Settlement s,String file)
 	{
 		Logger logger = Logger.getLogger("MyLog");  
 	    FileHandler fh;  
@@ -84,10 +85,7 @@ public class StatisticsFile
 	        SimpleFormatter formatter = new SimpleFormatter();  
 	        fh.setFormatter(formatter);  
 	        // the following statement is used to log any messages  
-	        for (int i=0;i<world.getSettlement().length;i++)
-	        {
-	        	logger.info(world.getSettlement()[i].getdead()+"\n");  
-	        }
+	        logger.info(s.getName()+" Population: "+s.getPopulation()+" Number of dead: "+s.getdead()+"\n");
 
 	    } catch (SecurityException e) {  
 	        e.printStackTrace();  
@@ -95,7 +93,7 @@ public class StatisticsFile
 	        e.printStackTrace();  
 	    }  
 	}
-	public static String loadFileFunc() 
+	public static void loadFileFunc() 
 	{
 		/**
 		 * load new file
@@ -104,8 +102,8 @@ public class StatisticsFile
         FileDialog fd = new FileDialog((Frame) null, "Please choose a file:", FileDialog.LOAD);
         fd.setVisible(true);
         if (fd.getFile() == null)
-            return null;
-        return fd.getFile();
+            return ;
+        path=fd.getFile();
 	}
 }
 

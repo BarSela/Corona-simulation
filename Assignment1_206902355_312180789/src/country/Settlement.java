@@ -7,6 +7,8 @@ package country;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import IO.StatisticsFile;
 import location.Location;
 import location.Point;
 import population.Convalescent;
@@ -373,6 +375,10 @@ public abstract class Settlement {
 			if (s.tryTODie()) {
 				this.getsick_people().remove(s);
 				this.addDead();
+			}
+			if(this.getdead()>=this.getPopulation()*0.01&&StatisticsFile.path!=null)
+			{
+				StatisticsFile.writeLog(this, StatisticsFile.path);
 			}
 		}
 		//try to recover

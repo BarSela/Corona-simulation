@@ -222,6 +222,7 @@ public class Main_window extends JFrame {
 		JMenuItem stop = new JMenuItem("Stop");
 		stop.setIcon(new ImageIcon(stopIcon));
 		JMenuItem log = new JMenuItem("save log file");
+		log.setIcon(new ImageIcon(loadIcon));
 		// load
 		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
@@ -232,7 +233,6 @@ public class Main_window extends JFrame {
 
 				load.setEnabled(false);
 				play.setEnabled(true);
-				log.setEnabled(true);
 				statistics.setEnabled(true);
 				File file = Main.loadFileFunc();
 				SimulationFile simulationFile = new SimulationFile();
@@ -273,13 +273,12 @@ public class Main_window extends JFrame {
 
 		//log file
 		log.setSelected(true);
-		log.setEnabled(false);
 		log.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/**
 				 * Upload Step: Get the location of the upload file and load the entire map.
 				 */
-				StatisticsFile.writeLog(world,StatisticsFile.loadFileFunc());
+				StatisticsFile.loadFileFunc();
 			}
 		});
 		// exit
