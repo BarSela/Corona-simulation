@@ -335,10 +335,10 @@ public abstract class Settlement {
 				this.getsick_people().remove(s);
 				this.addDead();
 			}
-			if(this.getdead()>=this.getPopulation()*0.01&&StatisticsFile.path!=null)
-			{
-				StatisticsFile.writeLog(this, StatisticsFile.path);
-			}
+		}
+		if(this.getdead()>=this.getPopulation()*0.01&&StatisticsFile.path!=null)
+		{
+			StatisticsFile.writeLog(this, StatisticsFile.path);
 		}
 		//try to recover
 		for (int k = 0; k < this.getsick_people().size(); k++) 
