@@ -75,7 +75,7 @@ public class StatisticsFile
 	}
 	public static void writeLog(Settlement s,String file)
 	{
-		Logger logger = Logger.getLogger("MyLog");  
+		Logger logger = Logger.getLogger(file);  
 	    FileHandler fh;  
 
 	    try {  
