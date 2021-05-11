@@ -184,7 +184,7 @@ public abstract class Settlement {
 	}
 	public void addDead() {
 		/**
-		 * @return amount of dead people in the settlemnet
+		 * add one dead
 		 */
 		this.dead++;
 	}
@@ -233,9 +233,9 @@ public abstract class Settlement {
 	}
 	public void reduce_vaccine_doses(int douses) {
 		/**
-		 * add vaccine doses to the settlement
+		 * reduce vaccine doses to the settlement
 		 * 
-		 * @param douses number of douses to add
+		 * @param douses number of douses to reduce
 		 */
 		this.vaccine_doses -= douses;
 	}
@@ -293,48 +293,7 @@ public abstract class Settlement {
 					this.getsick_people().add(this.gethealthy_people().get(0).contagion(virus));
 					this.gethealthy_people().remove(0);
 				}
-
 		}
-		/**
-		 * Simulationstage: Crossing all settlements, selection of each Sick
-		 * persons in the settlement, for which one pick a random selection of six
-		 * people over The same settelment and try to ifnect them. in total perform such
-		 * a simulation of everything 5 times.
-		 */
-		for (int i = 0; i < numOfSimulation; i++)// five simulation
-		{
-			for (int k = 0; k < numContagion; k++) {
-				if (this.getsick_people().size() != 0)
-					if (this.getsick_people().get(k) instanceof Sick)
-						for (int t = 0; t < num_of_trys_to_initial_contagion; t++) {
-							boolean flag = false;
-							if(this.gethealthy_people().size()>0)
-							{
-								int x = rand.nextInt(this.gethealthy_people().size());
-								flag = virus.tryToContagion(this.getsick_people().get(k), this.gethealthy_people().get(x));
-								if (flag == true) {
-									if (this.gethealthy_people().get(x).contagion(virus) instanceof Sick) {
-										this.getsick_people().add(x, this.gethealthy_people().get(x).contagion(virus));
-										this.gethealthy_people().remove(x);
-									}
-								}
-							}				
-						}
-			}
-			/*
-			 * try to kill
-			for (int k = 0; k < this.getsick_people().size(); k++) 
-			{
-				Sick s = (Sick) this.getsick_people().get(k);
-				if (s.tryTODie()) {
-					this.getsick_people().remove(s);
-					this.addDead();
-				}
-			}
-			*/
-			this.setRamzorColor(this.calculateramzorgrade());
-		}
-		Clock.nextTick();
 	}
 
 	public void Simulation(Map world) throws Exception {
@@ -429,10 +388,8 @@ public abstract class Settlement {
 	private int vaccine_doses = 0;
 	private int dead = 0;
 	private List<Settlement> neighbors;
-	private static final int numOfSimulation = 5;
 	private static final double initialcontagion = 0.01;
 	private static final double sample_sickPeople = 0.2;
-	private static final int num_of_trys_to_initial_contagion = 6;
 	private static final int num_of_trys_to_contagion = 3;
 
 }
