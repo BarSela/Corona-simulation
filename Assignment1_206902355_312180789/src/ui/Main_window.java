@@ -36,6 +36,8 @@ import javax.swing.SwingUtilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.CyclicBarrier;
+
 import simulation.Clock;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -238,7 +240,25 @@ public class Main_window extends JFrame {
 				SimulationFile simulationFile = new SimulationFile();
 				try {
 					world = simulationFile.loadMap(file);
+					for(int i=0;i<world.getSettlement().length;i++)
+					{
+						world.getSettlement()[i].setMapPointer(world);
+					}
 					map_panel.set_map(world);
+					world.cycle=new CyclicBarrier(world.getSettlement().length, new Runnable() {			
+						@Override
+						public void run() {
+							// TODO Auto-generated method stub
+							Clock.nextTick();
+							updateAll();
+							try {
+								Thread.sleep(sleep_time);
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+						}
+					});
+					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -312,9 +332,9 @@ public class Main_window extends JFrame {
 				play.setEnabled(false);
 				pause.setEnabled(true);
 				stop.setEnabled(true);
-				Main.setPlay(true);
 				Main.setPause(false);
 				Main.setStop(false);
+				world.start_thread();
 
 			}
 		});
@@ -326,7 +346,6 @@ public class Main_window extends JFrame {
 				pause.setEnabled(false);
 				play.setEnabled(true);
 				stop.setEnabled(true);
-				Main.setPlay(false);
 				Main.setPause(true);
 				Main.setStop(false);
 			}
@@ -341,10 +360,8 @@ public class Main_window extends JFrame {
 				stop.setEnabled(false);
 				load.setEnabled(true);
 				statistics.setEnabled(false);
-				Main.setPlay(false);
 				Main.setStop(true);
 				Main.setPause(false);
-				Main.setInitialPlay(false);
 				world = null;
 				map_panel.set_map(null);
 

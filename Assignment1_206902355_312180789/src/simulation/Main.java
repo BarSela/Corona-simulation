@@ -29,53 +29,9 @@ public class Main {
 	public static void main(String[] args) throws Exception 
 	{ 
 		Main_window window = new Main_window();
-		Map world=window.getmap();
-
 		
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		while(true)
-		{
-			System.out.println(".");
-			if(stop)
-				{
-					world=null;
-					initial_play=false;
-				}
-			if(world==null)
-			{
-				world=window.getmap();
-				
-			}
-			try {
-				if(play && !initial_play)
-				{
-					for (int i=0;i<world.getSettlement().length;i++)
-						world.getSettlement()[i].InitialSimulation();
-					initial_play=true;
-				}
 
-				if(!pause && !stop && play && initial_play)
-				{
-					
-					for (int i=0;i<world.getSettlement().length;i++)
-					{
-						world.getSettlement()[i].Simulation(world);
-						
-						
-					}
-					window.updateAll();
-					Clock.nextTick();
-					Thread.sleep(window.getsleeptime());			
-				}
-
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-					
-		}
-		
 	}
 	public static File loadFileFunc() 
 	{
@@ -98,6 +54,14 @@ public class Main {
 		 */
 		pause=b;
 	}
+	public static boolean getPause()
+	{
+		/**
+		 *pause getter
+		 *@return pause value
+		 */
+		return pause;
+	}
 	public static void setStop(boolean b)
 	{
 		/**
@@ -106,21 +70,13 @@ public class Main {
 		 */
 		stop=b;
 	}
-	public static void setPlay(boolean b)
+	public static boolean getStop()
 	{
 		/**
-		 *play setter
-		 *@param b the current state of play putton 
+		 *stop getter
+		 *@return stop value
 		 */
-		play=b;
-	}
-	public static void setInitialPlay(boolean b)
-	{
-		/**
-		 *initial play setter
-		 *@param b the current state of initial play
-		 */
-		initial_play=b;
+		return stop;
 	}
 
 

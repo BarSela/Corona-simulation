@@ -3,6 +3,11 @@
  * @author Betsalel Koginsky   312180789
  */
 package country;
+
+import java.util.concurrent.CyclicBarrier;
+
+import simulation.Main;
+
 /*
  * Map class
  */
@@ -65,8 +70,25 @@ public class Map {
 		 */
 		return this.settlements;
 	} 
-	
+	public boolean isPause()
+	{
+		return Main.getPause();
+		
+	}
+	public boolean isStop()
+	{
+		return Main.getStop();
+		
+	}
+	public void start_thread()
+	{
+		for(int i=0;i<settlements.length;i++)
+		{
+			new Thread(getSettlement()[i]).start();
+		}
+	}
 	//data members
 	private Settlement settlements[];
+	public CyclicBarrier cycle;
 	private static int size=0;
 }

@@ -19,6 +19,7 @@ public class City extends Settlement {
 	{
 		/**
 		 * consturctor
+		 * @param map pointer to map
 		 * @param name          the name of the settlement
 		 * @param location      position and size
 		 * @param population    amount of peole in the city
