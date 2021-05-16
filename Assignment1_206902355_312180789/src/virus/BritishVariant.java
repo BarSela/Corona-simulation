@@ -42,7 +42,7 @@ public class BritishVariant implements IVirus {
 		 * @return truth if the second person got infected by the sick person,else false
 		 * @throws Exception 
 		 */
-		if(p_sick instanceof Sick )
+		if(p_sick instanceof Sick)
 		{
 			Sick p_s =(Sick)p_sick;
 			long contagiousTime=p_s.getContagiousTime();
@@ -53,7 +53,7 @@ public class BritishVariant implements IVirus {
 				return false;
 			}
 		}
-		if(p_check instanceof Sick )
+		if(p_check instanceof Sick)
 		{
 			throw new Exception("Both person's are sick! A sick person cannot get sick again");
 		}

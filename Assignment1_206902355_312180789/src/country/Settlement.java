@@ -231,7 +231,7 @@ public abstract class Settlement implements Runnable {
 		return vaccine_doses;
 	}
 
-	public void add_vaccine_doses(int douses) {
+	public synchronized void add_vaccine_doses(int douses) {
 		/**
 		 * add vaccine doses to the settlement
 		 * 
@@ -341,10 +341,88 @@ public abstract class Settlement implements Runnable {
 			}
 		}
 	}
-
-	public void Simulation(Map world) throws Exception {
+	public void tryTotransfer() 
+	{
 		/**
-		 * simulation steps for one settlement
+		 * try to transfer person to another settlment
+		 *///synchronized
+		//int hash=System.identityHashCode(this);
+		Random rand = new Random();
+		for (int transfer = 0; transfer < this.getPopulation() * 0.03; transfer++) {
+			if(this.getneighbors().size()==0)
+				break;
+			List<Person> population = new ArrayList<Person>(this.getPopulation());
+			population.addAll(this.gethealthy_people());
+			population.addAll(this.getsick_people());
+			int people = rand.nextInt(population.size()-1);
+			int settl = rand.nextInt(this.getneighbors().size());
+			this.transferPerson(population.get(people), this.getneighbors().get(settl));
+		}
+		
+	}
+	public void tryToRecover()
+	{
+		/**
+		 * try to recover
+		 */
+		for (int k = 0; k < this.getsick_people().size(); k++) {
+			Sick s = (Sick) this.getsick_people().get(k);
+			if (s!=null)
+			{
+				if (Clock.CalcDays(s.getContagiousTime()) > 25) {
+					this.gethealthy_people().add(s.recover());
+					this.getsick_people().remove(k);
+				}
+			}
+		}
+	}
+	public void tryTokill()
+	{
+		/**
+		 * try to kill
+		 */
+		if( this.getsick_people().size() != 0)
+		{
+			for (int k = 0; k < this.getsick_people().size(); k++) {
+				Sick s = (Sick) this.getsick_people().get(k);
+				if(s != null)
+				{
+					if (s.tryTODie()) {
+						this.getsick_people().remove(s);
+						this.addDead();
+					}
+				}
+				
+			}
+		}
+
+		if (this.getdead() >= this.getPopulation() * 0.01 && StatisticsFile.path != null) {
+			StatisticsFile.writeLog(this, StatisticsFile.path);
+		}
+	}
+	public void tryToVacinate()
+	{
+		/**
+		 * try to vaccinated
+		 */
+		int count_doses = 0;
+		for (int vaccine_doses = 0; vaccine_doses < this.getVaccine_doses(); vaccine_doses++) {
+			for (int healthy = 0; healthy < this.gethealthy_people().size(); healthy++) {
+				if (this.gethealthy_people().get(healthy) instanceof Healthy) {
+					Healthy h = (Healthy) this.gethealthy_people().get(healthy);
+					this.gethealthy_people().set(healthy, h.vaccinate());
+					count_doses++;
+					break;
+				}
+			}
+		}
+		// update number of doses in the settlement
+		this.reduce_vaccine_doses(count_doses);
+	}
+	public void simulationContagion() throws Exception
+	{
+		/**
+		 * simulation contage population
 		 */
 		double numSick = this.getsick_people().size() * sample_sickPeople;
 		Random rand = new Random();
@@ -375,62 +453,28 @@ public abstract class Settlement implements Runnable {
 
 			}
 		}
+	}
+	public void Simulation(Map world) throws Exception {
+		/**
+		 * simulation steps for one settlement
+		 */
+		this.simulationContagion();
 		// try to kill
-		if( this.getsick_people().size() != 0)
-		{
-			for (int k = 0; k < this.getsick_people().size(); k++) {
-				Sick s = (Sick) this.getsick_people().get(k);
-				if(s != null)
-				{
-					if (s.tryTODie()) {
-						this.getsick_people().remove(s);
-						this.addDead();
-					}
-				}
-				
-			}
-		}
-
-		if (this.getdead() >= this.getPopulation() * 0.01 && StatisticsFile.path != null) {
-			StatisticsFile.writeLog(this, StatisticsFile.path);
-		}
+		this.tryTokill();
 		// try to recover
-		for (int k = 0; k < this.getsick_people().size(); k++) {
-			Sick s = (Sick) this.getsick_people().get(k);
-			if (Clock.CalcDays(s.getContagiousTime()) > 25) {
-				this.gethealthy_people().add(s.recover());
-				this.getsick_people().remove(k);
-			}
-		}
+		this.tryToRecover();
 		// try to transfer
-		for (int transfer = 0; transfer < this.getPopulation() * 0.03; transfer++) {
-			List<Person> population = new ArrayList<Person>(this.getPopulation());
-			population.addAll(this.gethealthy_people());
-			population.addAll(this.getsick_people());
-			int people = rand.nextInt(population.size());
-			int settl = rand.nextInt(world.getSettlement().length);
-			while (world.getSettlement()[settl].getName().equals(this.getName()))
-				settl = rand.nextInt(world.getSettlement().length);
-			this.transferPerson(population.get(people), world.getSettlement()[settl]);
-		}
+		this.tryTotransfer();
 		// try to vaccine
-		int count_doses = 0;
-		for (int vaccine_doses = 0; vaccine_doses < this.getVaccine_doses(); vaccine_doses++) {
-			for (int healthy = 0; healthy < this.gethealthy_people().size(); healthy++) {
-				if (this.gethealthy_people().get(healthy) instanceof Healthy) {
-					Healthy h = (Healthy) this.gethealthy_people().get(healthy);
-					this.gethealthy_people().set(healthy, h.vaccinate());
-					count_doses++;
-					break;
-				}
-			}
-		}
-		// update number of doses in the settlement
-		this.reduce_vaccine_doses(count_doses);
+		this.tryToVacinate();
 		this.setRamzorColor(this.calculateramzorgrade());
 
 	}
-
+	public synchronized void addSick(IVirus virus,int x)
+	{
+		this.getsick_people().add(this.gethealthy_people().get(x).contagion(virus));
+		this.gethealthy_people().remove(x);
+	}
 	// data members
 	private Map map;
 	private String name;
@@ -444,6 +488,6 @@ public abstract class Settlement implements Runnable {
 	private List<Settlement> neighbors;
 	private static final double initialcontagion = 0.01;
 	private static final double sample_sickPeople = 0.2;
-	private static final int num_of_trys_to_contagion = 3;
+	private static final int num_of_trys_to_contagion = 3; 
 
 }

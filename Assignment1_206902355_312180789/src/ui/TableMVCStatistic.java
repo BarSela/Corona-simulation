@@ -190,8 +190,7 @@ public class TableMVCStatistic extends JPanel implements ActionListener {
 
 				int x = rand.nextInt(settlement.gethealthy_people().size());
 				if (settlement.gethealthy_people().get(x).contagion(virus) instanceof Sick) {
-					settlement.getsick_people().add(settlement.gethealthy_people().get(x).contagion(virus));
-					settlement.gethealthy_people().remove(x);
+					settlement.addSick(virus,x);
 				}
 			}
 			settlement.setRamzorColor(settlement.calculateramzorgrade());
