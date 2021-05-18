@@ -416,7 +416,7 @@ public abstract class Settlement implements Runnable {
 		}
 
 		if (this.getdead() >= this.getPopulation() * 0.01 && StatisticsFile.path != null) {
-			StatisticsFile.writeLog(this, StatisticsFile.path);
+			StatisticsFile.writeLog(this);
 		}
 	}
 	private synchronized void tryToVacinate()

@@ -22,6 +22,7 @@ import country.Settlement;
 public class StatisticsFile 
 {
 	public static String path=null;
+	public static FileHandler fh=null;
 	public static void writeCsv(Map world ,File file)
 	{
 		/**
@@ -73,19 +74,20 @@ public class StatisticsFile
 		      System.out.println(e.getMessage());
 		}
 	}
-	public static void writeLog(Settlement s,String file)
+	public static void writeLog(Settlement s)
 	{
-		Logger logger = Logger.getLogger(file);  
-	    FileHandler fh;  
+		Logger logger = Logger.getLogger("");  
+	     
 
 	    try {  
 	        // This block configure the logger with handler and formatter  
-	        fh = new FileHandler(file); 
+	        fh = new FileHandler(path); 
 	        logger.addHandler(fh);
 	        SimpleFormatter formatter = new SimpleFormatter();  
 	        fh.setFormatter(formatter);  
 	        // the following statement is used to log any messages  
-	        logger.info(s.getName()+" Population: "+s.getPopulation()+" Number of dead: "+s.getdead()+"\n");
+	        logger.info(s.getName()+" Number of sick: "+s.getsick_people().size()+" Number of dead: "+s.getdead()+"\n");
+	        fh.close();
 
 	    } catch (SecurityException e) {  
 	        e.printStackTrace();  
