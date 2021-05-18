@@ -19,6 +19,7 @@ public class Moshav extends Settlement {
 		 * @param name          the name of the settlement
 		 * @param location      position and size
 		 * @param population    amount of peole in the moshav
+		 * @param capacity of the settlment
 		 */
 		super(name, location,population,capacity);
 	}

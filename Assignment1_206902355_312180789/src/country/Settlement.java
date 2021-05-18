@@ -35,10 +35,10 @@ public abstract class Settlement implements Runnable {
 	public Settlement(String name, Location location, int population, int capacity) {
 		/**
 		 * consturctor
-		 * @param map pointer to map
 		 * @param name       the name of the settlement
 		 * @param location   position and size
 		 * @param population amount of peole in the settlement
+		 * @param capacity of the settlment
 		 */
 		this.map=null;
 		this.name = name;
@@ -51,6 +51,10 @@ public abstract class Settlement implements Runnable {
 	}
 	public void setMapPointer(Map world)
 	{
+		/**
+		 * set map pointer
+		 * @param the map
+		 */
 		this.map=world;
 	}
 
@@ -304,14 +308,15 @@ public abstract class Settlement implements Runnable {
 				}
 		}
 	}
-
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		/**
+		 * run the simmulation for one settlment
+		 */
 		try {
 			this.InitialSimulation();
 		} catch (Exception e2) {
-			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}	
 		while (!map.isStop()) {
@@ -320,7 +325,6 @@ public abstract class Settlement implements Runnable {
 					try {
 						map.wait();
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -345,22 +349,38 @@ public abstract class Settlement implements Runnable {
 	{
 		/**
 		 * try to transfer person to another settlment
-		 *///synchronized
-		//int hash=System.identityHashCode(this);
+		 */
 		Random rand = new Random();
+		Person p=null;
+		Object o1,o2; 
+		int hash1=System.identityHashCode(this);
+		
 		for (int transfer = 0; transfer < this.getPopulation() * 0.03; transfer++) {
-			if(this.getneighbors().size()==0)
-				break;
-			List<Person> population = new ArrayList<Person>(this.getPopulation());
-			population.addAll(this.gethealthy_people());
-			population.addAll(this.getsick_people());
-			int people = rand.nextInt(population.size()-1);
-			int settl = rand.nextInt(this.getneighbors().size());
-			this.transferPerson(population.get(people), this.getneighbors().get(settl));
+			p=this.getPerson();
+			if(p!=null)
+			{
+				int settl = rand.nextInt(this.getneighbors().size());
+				int hash2=System.identityHashCode(this.getneighbors().get(settl));
+				if(Math.max(hash1,hash2)==hash1)
+				{
+					o1=this;
+					o2=this.getneighbors().get(settl);
+				}
+				else
+				{
+					o2=this;
+					o1=this.getneighbors().get(settl);
+				}
+				synchronized(o1) {
+					synchronized(o2) {
+						this.transferPerson(p, this.getneighbors().get(settl));
+					}
+				}
+			}
 		}
 		
 	}
-	public void tryToRecover()
+	public synchronized void tryToRecover()
 	{
 		/**
 		 * try to recover
@@ -376,7 +396,7 @@ public abstract class Settlement implements Runnable {
 			}
 		}
 	}
-	public void tryTokill()
+	public synchronized void tryTokill()
 	{
 		/**
 		 * try to kill
@@ -400,7 +420,7 @@ public abstract class Settlement implements Runnable {
 			StatisticsFile.writeLog(this, StatisticsFile.path);
 		}
 	}
-	public void tryToVacinate()
+	public synchronized void tryToVacinate()
 	{
 		/**
 		 * try to vaccinated
@@ -419,7 +439,7 @@ public abstract class Settlement implements Runnable {
 		// update number of doses in the settlement
 		this.reduce_vaccine_doses(count_doses);
 	}
-	public void simulationContagion() throws Exception
+	public synchronized void simulationContagion() throws Exception
 	{
 		/**
 		 * simulation contage population
@@ -472,8 +492,25 @@ public abstract class Settlement implements Runnable {
 	}
 	public synchronized void addSick(IVirus virus,int x)
 	{
+		/**
+		 * @param virus- the virus that countaige the 0.01 
+		 * @param x a random person 
+		 */
 		this.getsick_people().add(this.gethealthy_people().get(x).contagion(virus));
 		this.gethealthy_people().remove(x);
+	}
+	private synchronized Person getPerson() {
+		/**
+		 * @return a random person from the settlment 
+		 */
+		Random rand = new Random();
+		if(this.getneighbors().size()==0)
+			return null;
+		List<Person> population = new ArrayList<Person>(this.getPopulation());
+		population.addAll(this.gethealthy_people());
+		population.addAll(this.getsick_people());
+		int people = rand.nextInt(population.size()-1);
+		return population.get(people); 
 	}
 	// data members
 	private Map map;
