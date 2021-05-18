@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.BrokenBarrierException;
-
 import IO.StatisticsFile;
 import location.Location;
 import location.Point;

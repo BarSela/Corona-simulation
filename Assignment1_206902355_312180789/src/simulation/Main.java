@@ -8,8 +8,6 @@ import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.File;
 import javax.swing.JFrame;
-
-import country.Map;
 import ui.Main_window;
 
 
@@ -21,8 +19,6 @@ public class Main {
 	
 	//data members
 	private static boolean pause=false;
-	private static boolean play=false;
-	private static boolean initial_play=false;
 	private static boolean stop=false;
 	
 	

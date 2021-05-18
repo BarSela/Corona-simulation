@@ -107,6 +107,7 @@ public class Main_window extends JFrame {
 		JSlider simulation_speed = new JSlider();
 		simulation_speed.setMajorTickSpacing(5);
 		simulation_speed.setMinorTickSpacing(1);
+		simulation_speed.setMinimum(5);
 		simulation_speed.setMaximum(50);
 		simulation_speed.setValue(30);
 		simulation_speed.setToolTipText("<= go faster || go slower =>");
@@ -211,6 +212,7 @@ public class Main_window extends JFrame {
 		Image exitIcon = new ImageIcon(getClass().getResource("/Exit-icon.png")).getImage();
 		Image virusIcon = new ImageIcon(getClass().getResource("/Virus-icon-s.png")).getImage();
 		Image tickIcon = new ImageIcon(getClass().getResource("/Clock-icon.png")).getImage();
+		Image logIcon = new ImageIcon(getClass().getResource("/text-x-log-icon.png")).getImage();
 
 		// menu items
 		JMenuItem statistics = new JMenuItem("Statistics");
@@ -224,7 +226,7 @@ public class Main_window extends JFrame {
 		JMenuItem stop = new JMenuItem("Stop");
 		stop.setIcon(new ImageIcon(stopIcon));
 		JMenuItem log = new JMenuItem("save log file");
-		log.setIcon(new ImageIcon(loadIcon));
+		log.setIcon(new ImageIcon(logIcon));
 		// load
 		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
