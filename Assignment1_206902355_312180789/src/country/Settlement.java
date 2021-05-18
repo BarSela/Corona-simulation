@@ -284,7 +284,7 @@ public abstract class Settlement implements Runnable {
 
 	public abstract boolean equals(Object o);
 
-	public void InitialSimulation() throws Exception {
+	private void InitialSimulation() throws Exception {
 		/**
 		 * initial simulation contage 0.01 drom population
 		 */
@@ -344,7 +344,7 @@ public abstract class Settlement implements Runnable {
 			}
 		}
 	}
-	public void tryTotransfer() 
+	private void tryTotransfer() 
 	{
 		/**
 		 * try to transfer person to another settlment
@@ -379,7 +379,7 @@ public abstract class Settlement implements Runnable {
 		}
 		
 	}
-	public synchronized void tryToRecover()
+	private synchronized void tryToRecover()
 	{
 		/**
 		 * try to recover
@@ -395,7 +395,7 @@ public abstract class Settlement implements Runnable {
 			}
 		}
 	}
-	public synchronized void tryTokill()
+	private synchronized void tryTokill()
 	{
 		/**
 		 * try to kill
@@ -419,7 +419,7 @@ public abstract class Settlement implements Runnable {
 			StatisticsFile.writeLog(this, StatisticsFile.path);
 		}
 	}
-	public synchronized void tryToVacinate()
+	private synchronized void tryToVacinate()
 	{
 		/**
 		 * try to vaccinated
@@ -438,7 +438,7 @@ public abstract class Settlement implements Runnable {
 		// update number of doses in the settlement
 		this.reduce_vaccine_doses(count_doses);
 	}
-	public synchronized void simulationContagion() throws Exception
+	private synchronized void simulationContagion() throws Exception
 	{
 		/**
 		 * simulation contage population
@@ -473,7 +473,7 @@ public abstract class Settlement implements Runnable {
 			}
 		}
 	}
-	public void Simulation(Map world) throws Exception {
+	private void Simulation(Map world) throws Exception {
 		/**
 		 * simulation steps for one settlement
 		 */
