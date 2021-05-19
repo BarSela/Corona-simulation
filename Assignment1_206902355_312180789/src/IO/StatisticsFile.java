@@ -23,6 +23,8 @@ public class StatisticsFile
 {
 	public static String path=null;
 	public static FileHandler fh=null;
+	public static Logger logger=null;
+	private static boolean load_log_file=false;
 	public static void writeCsv(Map world ,File file)
 	{
 		/**
@@ -75,26 +77,26 @@ public class StatisticsFile
 		}
 	}
 	public static void writeLog(Settlement s)
-	{
-		Logger logger = Logger.getLogger("");  
-	     
-
-	    try {  
+	{ 
+		
+		logger = Logger.getLogger("");   
+	  
+		try {  
 	        // This block configure the logger with handler and formatter  
-	        fh = new FileHandler(path); 
-	        logger.addHandler(fh);
+			fh = new FileHandler(path);
+			logger.addHandler(fh);
 	        SimpleFormatter formatter = new SimpleFormatter();  
 	        fh.setFormatter(formatter);  
 	        // the following statement is used to log any messages  
 	        logger.info(s.getName()+" Number of sick: "+s.getsick_people().size()+" Number of dead: "+s.getdead()+"\n");
-	        fh.close();
 	        s.set_num_of_dead_percent();
 
 	    } catch (SecurityException e) {  
 	        e.printStackTrace();  
-	    } catch (IOException e) {  
-	        e.printStackTrace();  
-	    }  
+	    } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public static void loadFileFunc() 
 	{
@@ -107,6 +109,18 @@ public class StatisticsFile
         if (fd.getFile() == null)
             return ;
         path=fd.getFile();
+	}
+	private static void startFile() 
+	{
+		logger = Logger.getLogger("");   
+	    try {
+			fh = new FileHandler(path);
+			
+		} catch (SecurityException | IOException e) {
+			
+			e.printStackTrace();
+		}
+		 
 	}
 }
 

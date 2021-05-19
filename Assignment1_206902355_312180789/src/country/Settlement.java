@@ -331,9 +331,6 @@ public abstract class Settlement implements Runnable {
 			}
 			try {
 				this.Simulation(map);
-				if (this.getdead() >= this.getPopulation() * num_of_dead_percent&&StatisticsFile.path != null) {
-					StatisticsFile.writeLog(this);
-				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -416,6 +413,9 @@ public abstract class Settlement implements Runnable {
 				}
 				
 			}
+		}
+		if (this.getdead() >= this.getPopulation() * num_of_dead_percent&&StatisticsFile.path != null) {
+			StatisticsFile.writeLog(this);
 		}
 	}
 	private synchronized void tryToVacinate()
