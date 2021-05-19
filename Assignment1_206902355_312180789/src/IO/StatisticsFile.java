@@ -88,6 +88,7 @@ public class StatisticsFile
 	        // the following statement is used to log any messages  
 	        logger.info(s.getName()+" Number of sick: "+s.getsick_people().size()+" Number of dead: "+s.getdead()+"\n");
 	        fh.close();
+	        s.set_num_of_dead_percent();
 
 	    } catch (SecurityException e) {  
 	        e.printStackTrace();  

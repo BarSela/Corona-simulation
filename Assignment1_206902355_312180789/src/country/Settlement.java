@@ -331,6 +331,9 @@ public abstract class Settlement implements Runnable {
 			}
 			try {
 				this.Simulation(map);
+				if (this.getdead() >= this.getPopulation() * num_of_dead_percent&&StatisticsFile.path != null) {
+					StatisticsFile.writeLog(this);
+				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -413,10 +416,6 @@ public abstract class Settlement implements Runnable {
 				}
 				
 			}
-		}
-
-		if (this.getdead() >= this.getPopulation() * 0.01 && StatisticsFile.path != null) {
-			StatisticsFile.writeLog(this);
 		}
 	}
 	private synchronized void tryToVacinate()
@@ -511,6 +510,9 @@ public abstract class Settlement implements Runnable {
 		int people = rand.nextInt(population.size()-1);
 		return population.get(people); 
 	}
+	public void set_num_of_dead_percent() {
+		num_of_dead_percent+=0.01;
+	}
 	// data members
 	private Map map;
 	private String name;
@@ -525,5 +527,6 @@ public abstract class Settlement implements Runnable {
 	private static final double initialcontagion = 0.01;
 	private static final double sample_sickPeople = 0.2;
 	private static final int num_of_trys_to_contagion = 3; 
+	private static double num_of_dead_percent = 0.01;
 
 }
