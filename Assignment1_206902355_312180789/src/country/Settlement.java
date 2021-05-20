@@ -414,7 +414,7 @@ public abstract class Settlement implements Runnable {
 				
 			}
 		}
-		if (this.getdead() >= this.getPopulation() * num_of_dead_percent&&StatisticsFile.path != null) {
+		if (this.getdead() >=this.getPopulation()* num_of_dead_percent) {
 			StatisticsFile.writeLog(this);
 		}
 	}
