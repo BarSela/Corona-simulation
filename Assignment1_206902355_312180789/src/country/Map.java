@@ -72,21 +72,32 @@ public class Map {
 	} 
 	public boolean isPause()
 	{
+		/**
+		 * @return if simulation is paused or not
+		 */
 		return Main.getPause();
 		
 	}
 	public boolean isStop()
 	{
+		/**
+		 * @return if simulation is stoped or not
+		 */
 		return Main.getStop();
 		
 	}
 	public void start_thread()
 	{
+		/**
+		 * start all threades
+		 */
 		for(int i=0;i<settlements.length;i++)
 		{
 			new Thread(getSettlement()[i]).start();
 		}
 	}
+	
+
 	//data members
 	private Settlement settlements[];
 	public CyclicBarrier cycle;
