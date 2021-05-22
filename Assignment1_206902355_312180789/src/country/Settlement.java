@@ -508,13 +508,10 @@ public abstract class Settlement implements Runnable {
 		int people = rand.nextInt(population.size() - 1);
 		return population.get(people);
 	}
-<<<<<<< HEAD
 	public void set_num_of_dead_percent() {
 		num_of_dead_percent+=0.01;
 	}
-=======
 
->>>>>>> branch 'master' of https://github.com/BarSela/Corona-simulation.git
 	// data members
 	private Map map;
 	private String name;
@@ -528,11 +525,7 @@ public abstract class Settlement implements Runnable {
 	private List<Settlement> neighbors;
 	private static final double initialcontagion = 0.01;
 	private static final double sample_sickPeople = 0.2;
-<<<<<<< HEAD
 	private static final int num_of_trys_to_contagion = 3; 
 	private static double num_of_dead_percent = 0.01;
-=======
-	private static final int num_of_trys_to_contagion = 3;
->>>>>>> branch 'master' of https://github.com/BarSela/Corona-simulation.git
 
 }

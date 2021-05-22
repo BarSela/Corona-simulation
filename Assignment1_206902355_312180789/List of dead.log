@@ -1,242 +1,1395 @@
-<<<<<<< HEAD
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 206 Number of dead: 14
+מאי 22, 2021 10:06:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Shtulim Number of sick: 28 Number of dead: 26
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 206 Number of dead: 14
+מאי 22, 2021 10:07:18 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 207 Number of dead: 26
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 206 Number of dead: 14
+מאי 22, 2021 10:07:18 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 207 Number of dead: 26
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 131 Number of dead: 10
+מאי 22, 2021 10:07:23 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 207 Number of dead: 33
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 131 Number of dead: 10
+מאי 22, 2021 10:07:23 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 207 Number of dead: 33
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 131 Number of dead: 10
+מאי 22, 2021 10:07:23 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 207 Number of dead: 33
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ashdod Number of sick: 117 Number of dead: 16
+מאי 22, 2021 10:07:28 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 50
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ashdod Number of sick: 117 Number of dead: 16
+מאי 22, 2021 10:07:28 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 50
 
-מאי 20, 2021 1:11:11 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ashdod Number of sick: 117 Number of dead: 16
+מאי 22, 2021 10:07:28 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 50
 
-מאי 20, 2021 1:11:26 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 174 Number of dead: 48
+מאי 22, 2021 10:07:28 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 50
 
-מאי 20, 2021 1:11:26 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 174 Number of dead: 48
+מאי 22, 2021 10:07:33 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 60
 
-מאי 20, 2021 1:11:26 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 174 Number of dead: 48
+מאי 22, 2021 10:07:33 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 60
 
-מאי 20, 2021 1:11:26 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 174 Number of dead: 48
+מאי 22, 2021 10:07:33 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 60
 
-מאי 20, 2021 1:11:31 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 161 Number of dead: 62
+מאי 22, 2021 10:07:33 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 60
 
-מאי 20, 2021 1:11:31 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 161 Number of dead: 62
+מאי 22, 2021 10:07:33 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 60
 
-מאי 20, 2021 1:11:31 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 161 Number of dead: 62
+מאי 22, 2021 10:07:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 72
 
-מאי 20, 2021 1:11:31 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 161 Number of dead: 62
+מאי 22, 2021 10:07:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 72
 
-מאי 20, 2021 1:11:31 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 161 Number of dead: 62
+מאי 22, 2021 10:07:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 72
 
-מאי 20, 2021 1:11:36 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 156 Number of dead: 68
+מאי 22, 2021 10:07:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 72
 
-מאי 20, 2021 1:11:36 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 156 Number of dead: 68
+מאי 22, 2021 10:07:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 72
 
-מאי 20, 2021 1:11:36 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 156 Number of dead: 68
+מאי 22, 2021 10:07:38 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 72
 
-מאי 20, 2021 1:11:36 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 156 Number of dead: 68
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:36 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 156 Number of dead: 68
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:36 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 156 Number of dead: 68
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:43 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 208 Number of dead: 86
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:46 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 144 Number of dead: 83
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:48 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 103
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:11:51 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 135 Number of dead: 92
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:53 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 215 Number of dead: 111
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Beer-Sheva Number of sick: 122 Number of dead: 106
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:07:58 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 216 Number of dead: 120
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 137 Number of dead: 90
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 133
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 20, 2021 1:12:01 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 1440 Number of dead: 610
-=======
-מאי 19, 2021 1:39:54 אחה״צ IO.StatisticsFile writeLog
-INFO:  Kiryat-Shmona Number of sick: 687 Number of dead: 29
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:39:54 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 5954 Number of dead: 840
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:39:59 אחה״צ IO.StatisticsFile writeLog
-INFO:  Kiryat-Shmona Number of sick: 666 Number of dead: 54
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:39:59 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 5724 Number of dead: 1149
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:04 אחה״צ IO.StatisticsFile writeLog
-INFO:  Kiryat-Shmona Number of sick: 634 Number of dead: 87
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:04 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 5485 Number of dead: 1468
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:09 אחה״צ IO.StatisticsFile writeLog
-INFO:  Kiryat-Shmona Number of sick: 609 Number of dead: 118
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:09 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 5206 Number of dead: 1794
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:14 אחה״צ IO.StatisticsFile writeLog
-INFO:  Ramot Number of sick: 11 Number of dead: 10
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:14 אחה״צ IO.StatisticsFile writeLog
-INFO:  Eilat Number of sick: 4908 Number of dead: 2092
+מאי 22, 2021 10:08:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 142
 
-מאי 19, 2021 1:40:14 אחה״צ IO.StatisticsFile writeLog
-INFO:  Kiryat-Shmona Number of sick: 584 Number of dead: 149
->>>>>>> branch 'master' of https://github.com/BarSela/Corona-simulation.git
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:14 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 211 Number of dead: 153
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:19 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 212 Number of dead: 160
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:24 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 213 Number of dead: 171
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 214 Number of dead: 180
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:34 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 218 Number of dead: 188
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:39 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 220 Number of dead: 198
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 224 Number of dead: 200
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 227 Number of dead: 202
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 144 Number of dead: 205
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:08:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 103 Number of dead: 210
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 82 Number of dead: 211
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:29 אחה״צ IO.StatisticsFile writeLog
+INFO:  Ramot Number of sick: 64 Number of dead: 220
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:44 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1092 Number of dead: 1681
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:49 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 1028 Number of dead: 1742
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:54 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 966 Number of dead: 1796
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:09:59 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 912 Number of dead: 1847
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:04 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 859 Number of dead: 1896
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
+
+מאי 22, 2021 10:10:09 אחה״צ IO.StatisticsFile writeLog
+INFO:  Rehovot Number of sick: 818 Number of dead: 1933
 
