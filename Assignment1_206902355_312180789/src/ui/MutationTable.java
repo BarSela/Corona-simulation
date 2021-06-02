@@ -14,6 +14,8 @@ import virus.BritishVariant;
 import virus.ChineseVariant;
 import virus.IVirus;
 import virus.SouthAfricanVariant;
+import virus.VirusManager;
+import virus.Viruses;
 
 public class MutationTable extends JDialog 
 {
@@ -30,20 +32,8 @@ public class MutationTable extends JDialog
     	 */
     	
     	//data members
-        private IVirus[] data;
+        private int row_length=Viruses.values().length;
         private final String[] columnNames ={"British Mutation","Chinese Mutation","SouthAfrican Mutation"};
-
-        public MutationModel(IVirus[] data) 
-        {
-        	/**
-        	 * Constructor
-        	 * @param data contain all the variant types
-        	 */
-        	data[0]=new BritishVariant();
-        	data[1]=new ChineseVariant();
-        	data[2]=new SouthAfricanVariant();
-            this.data = data;
-        }
 
         @Override
         public int getRowCount() 
@@ -52,7 +42,7 @@ public class MutationTable extends JDialog
         	 * getter to number of rows
         	 * @return the number of rows 
         	 */
-            return data.length;
+            return row_length;
         }
 
         @Override
@@ -74,38 +64,7 @@ public class MutationTable extends JDialog
         	 * @param columnIndex col index
         	 * return the value at the cell 
         	 */
-        	IVirus virus = data[rowIndex];
-           if(rowIndex == 0)//british
-           {
-        	   switch (columnIndex) {
-               case 0: 
-            	   return BritishVariant.get_british_m();
-               case 1:
-   	    			return BritishVariant.get_chinese_m();
-               case 2: return BritishVariant.get_southafrican_m();
-        	   }
-           }
-           if(rowIndex == 1)//chinese
-           {
-        	   switch (columnIndex) {
-               case 0: 
-            	   return  ChineseVariant.get_british_m();
-               case 1:
-   	    			return  ChineseVariant.get_chinese_m();
-               case 2: return  ChineseVariant.get_southafrican_m();
-        	   }
-           }
-           if(rowIndex == 2)//southafrican
-           {
-        	   switch (columnIndex) {
-               case 0: 
-            	   return  SouthAfricanVariant.get_british_m();
-               case 1:
-   	    			return  SouthAfricanVariant.get_chinese_m();
-               case 2: return  SouthAfricanVariant.get_southafrican_m();
-        	   }
-           }
-           return null;
+        	return VirusManager.getValue(rowIndex, columnIndex);
             
         }
 
@@ -149,39 +108,13 @@ public class MutationTable extends JDialog
         	 * @param row row index
         	 * @param col column index
         	 */
-        	boolean bl=(Boolean) aValue;
-            if(row == 0)
-            {
-            	if(col==0)
-            		BritishVariant.set_british_m(bl);
-            	if(col==1)
-            		BritishVariant.set_chinese_m(bl);
-            	if(col==2)
-            		BritishVariant.set_southafrican_m(bl);
-            }
-            if(row == 1)
-            {
-            	if(col==0)
-            		ChineseVariant.set_british_m(bl);
-            	if(col==1)
-            		ChineseVariant.set_chinese_m(bl);
-            	if(col==2)
-            		ChineseVariant.set_southafrican_m(bl);
-            }
-            if(row == 2)
-            {
-            	if(col==0)
-            		SouthAfricanVariant.set_british_m(bl);
-            	if(col==1)
-            		SouthAfricanVariant.set_chinese_m(bl);
-            	if(col==2)
-            		SouthAfricanVariant.set_southafrican_m(bl);
-            }
+        	VirusManager.toogle(row, col);
+            
             fireTableCellUpdated(row, col);
         }
     }
 
-    public MutationTable(JFrame window,IVirus[] data) 
+    public MutationTable(JFrame window) 
     {
     	/**
     	 * Constructor
@@ -189,7 +122,7 @@ public class MutationTable extends JDialog
     	 * @param data contain all the variant types 
     	 */
         super(window, "Edit Mutation ",true);
-        MutationModel model = new MutationModel(data);
+        MutationModel model = new MutationModel();
         
         //table
         JTable table = new JTable(model);

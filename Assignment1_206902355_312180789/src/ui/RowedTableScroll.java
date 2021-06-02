@@ -45,7 +45,7 @@ public class RowedTableScroll extends JScrollPane
 				return rowHeaders[index];
 			}
 		});
-		rowHeader.setFixedCellWidth(50);
+		rowHeader.setFixedCellWidth(120);
 		rowHeader.setFixedCellHeight(table.getRowHeight());
 		rowHeader.setCellRenderer(new RowHeaderRenderer(table));
 		this.setRowHeaderView(rowHeader);

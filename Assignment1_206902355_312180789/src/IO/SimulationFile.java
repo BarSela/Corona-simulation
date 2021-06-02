@@ -154,25 +154,9 @@ public class SimulationFile
 		int numpeople=Integer.parseInt(line[6].replace(" ", ""));
 		Location location=new Location(p,s1);
 		
-		
-		//Settlement type
-		if (line[0].contentEquals("City"))
-		{
+		SettlementFactory sf=new SettlementFactory();
+		return sf.getSettlementinstance(line[0],line[1], location, numpeople, (int)(capacity*numpeople));
 
-			City c=new City(line[1],location,numpeople,(int) (capcity*numpeople));
-			return c;
-		}
-		else if (line[0].contentEquals("Kibbutz"))
-		{
-			Kibbutz k= new Kibbutz(line[1],location,numpeople,(int) (capcity*numpeople)); 
-			return k;
-		}
-		else if (line[0].contentEquals("Moshav"))
-		{
-			Moshav m= new Moshav(line[1],location,numpeople,(int) (capcity*numpeople));
-			return m;
-		}	
-		return null;
 	}
 	private static int randomAge()
 	{
@@ -195,7 +179,7 @@ public class SimulationFile
 	}
 	
 	//data members
-	private final static double capcity=1.3;
+	private final static double capacity=1.3;
 	private final static int standardDeviation=6;
 	private final static int expectation=9;
 }

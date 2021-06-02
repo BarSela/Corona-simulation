@@ -283,8 +283,7 @@ public class Main_window extends JFrame {
 		// edit mutations
 		JMenuItem edit_mutations = new JMenuItem("Edit Mutations");
 		edit_mutations.setIcon(new ImageIcon(virusIcon));
-		IVirus[] variants = { new BritishVariant(), new ChineseVariant(), new SouthAfricanVariant() };
-		MutationTable edit_mutations_d = new MutationTable(this, variants);
+		MutationTable edit_mutations_d = new MutationTable(this);
 
 		// open edit mutation window
 		edit_mutations.addActionListener(new ActionListener() {

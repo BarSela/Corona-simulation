@@ -4,6 +4,7 @@
  */
 package country;
 
+import java.util.Iterator;
 import java.util.concurrent.CyclicBarrier;
 
 import simulation.Main;
@@ -11,7 +12,7 @@ import simulation.Main;
 /*
  * Map class
  */
-public class Map {
+public class Map implements Iterator<Settlement>{
 	/**
 	 * this class represent the map of Settlements
 	 */
@@ -96,10 +97,23 @@ public class Map {
 			new Thread(getSettlement()[i]).start();
 		}
 	}
+	@Override
+	public boolean hasNext() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public Settlement next() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-
 	//data members
 	private Settlement settlements[];
 	public CyclicBarrier cycle;
 	private static int size=0;
+
+
+
+ 
 }
