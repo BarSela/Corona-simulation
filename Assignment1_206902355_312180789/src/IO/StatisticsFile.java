@@ -24,6 +24,10 @@ public class StatisticsFile
 	public static String path=null;
 	public static FileHandler fh=null;
 	public static Logger logger=null;
+	public static Originator originator = new Originator();   
+	public static Memento memento;
+	public static Caretaker caretaker = new Caretaker();
+	public static int index=-1; 
 	public static void writeCsv(Map world ,File file)
 	{
 		/**
@@ -107,6 +111,10 @@ public class StatisticsFile
         if (fd.getFile() == null)
             return ;
         path=fd.getFile();
+        originator.setState(path);
+        memento = originator.createMemento(); 
+        caretaker.addMemento(memento);
+        index++;
         try {
 			fh = new FileHandler(path);
 		} catch (SecurityException | IOException e) {

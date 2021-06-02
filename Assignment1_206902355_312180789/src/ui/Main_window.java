@@ -37,6 +37,7 @@ import javax.swing.SwingUtilities;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.logging.FileHandler;
 
 import simulation.Clock;
 import java.awt.Font;
@@ -227,6 +228,7 @@ public class Main_window extends JFrame {
 		stop.setIcon(new ImageIcon(stopIcon));
 		JMenuItem log = new JMenuItem("save log file");
 		log.setIcon(new ImageIcon(logIcon));
+		JMenuItem relog = new JMenuItem("restore log file");
 		// load
 		load.setEnabled(true);
 		load.addActionListener(new ActionListener() {
@@ -299,7 +301,31 @@ public class Main_window extends JFrame {
 				/**
 				 * Upload Step: Get the location of the upload file and load the entire map.
 				 */
+				if(StatisticsFile.index>0)
+					StatisticsFile.fh.close();
 				StatisticsFile.loadFileFunc();
+			}
+		});
+		//log file
+		relog.setSelected(true);
+		relog.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/**
+				 * Upload Step: Get the location of the upload file and load the entire map.
+				 */
+				if(StatisticsFile.index>0)
+				{
+					StatisticsFile.fh.close();
+					StatisticsFile.index--;
+					StatisticsFile.memento = StatisticsFile.caretaker.getMemento(StatisticsFile.index);    
+					StatisticsFile.originator.setMemento(StatisticsFile.memento);
+					try {
+						StatisticsFile.fh = new FileHandler(StatisticsFile.originator.getState());
+					} catch (SecurityException | IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
 			}
 		});
 		// exit
@@ -319,6 +345,8 @@ public class Main_window extends JFrame {
 		file.add(edit_mutations);
 		file.addSeparator();
 		file.add(log);
+		file.addSeparator();
+		file.add(relog);
 		file.addSeparator();
 		file.add(exit);
 		menuBar.add(file);
