@@ -248,12 +248,14 @@ public class Main_window extends JFrame {
 				SimulationFile simulationFile = new SimulationFile();
 				try {
 					world = simulationFile.loadMap(file);
-					for(int i=0;i<world.getSettlement().length;i++)
+					Iterator<Settlement> iter = world.iterator();
+					while (iter.hasNext())
 					{
-						world.getSettlement()[i].setMapPointer(world);
+						Settlement s= iter.next();
+						s.setMapPointer(world);
 					}
 					map_panel.set_map(world);
-					world.cycle=new CyclicBarrier(world.getSettlement().length, new Runnable() {			
+					world.setcycle(new CyclicBarrier(world.getSettlement().length, new Runnable() {			
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
@@ -265,7 +267,7 @@ public class Main_window extends JFrame {
 								e1.printStackTrace();
 							}
 						}
-					});
+					}));
 					
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block

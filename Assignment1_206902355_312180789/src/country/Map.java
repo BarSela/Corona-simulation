@@ -104,9 +104,17 @@ public class Map implements Iterable<Settlement>{
 		// TODO Auto-generated method stub
 		return Arrays.stream(this.getSettlement()).iterator() ;
 	}
+	public void setcycle(CyclicBarrier cycle) 
+	{
+		this.cycle=cycle;
+	}
+	public CyclicBarrier getcycle() 
+	{
+		return cycle;
+	}
 	//data members
 	private Settlement settlements[];
-	public CyclicBarrier cycle;
+	private CyclicBarrier cycle;
 	private static int size=0;
 	
 

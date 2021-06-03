@@ -339,7 +339,7 @@ public abstract class Settlement implements Runnable {
 			}
 
 			try {
-				map.cycle.await();
+				map.getcycle().await();
 			} catch (InterruptedException | BrokenBarrierException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
