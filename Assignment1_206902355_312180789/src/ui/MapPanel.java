@@ -10,9 +10,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.Iterator;
+
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import country.Map;
+import country.Settlement;
 
 public class MapPanel extends JPanel {
 	/**
@@ -52,53 +55,63 @@ public class MapPanel extends JPanel {
 		double dimension_x = (double)this.getWidth() / max_x;
 		double dimension_y = (double)this.getHeight() / max_y;
 
-		for (int i = 0; i < world.getSettlement().length; i++) {
-			g.setColor(Color.BLACK);
-			for (int j = 0; j < world.getSettlement()[i].getneighbors().size(); j++) {
-				int center_x1 = findCenterX(i);
-				int center_y1 = findCenterY(i);
-				int center_x2 = world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_x()
-						+ world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getWidth() / 2;
-				int center_y2 = world.getSettlement()[i].getneighbors().get(j).getLocation().getPosition().getPoint_y()
-						+ world.getSettlement()[i].getneighbors().get(j).getLocation().getsize().getHeight() / 2;
+		Iterator<Settlement> iter = world.iterator();
+		while(iter.hasNext()) {
+			Settlement s=iter.next();
+			
+			for (int j = 0; j < s.getneighbors().size(); j++) {
+				
+				int center_x1 = findCenterX(s);
+				int center_y1 = findCenterY(s);
+				int center_x2 = s.getneighbors().get(j).getLocation().getPosition().getPoint_x()
+						+ s.getneighbors().get(j).getLocation().getsize().getWidth() / 2;
+				int center_y2 = s.getneighbors().get(j).getLocation().getPosition().getPoint_y()
+						+ s.getneighbors().get(j).getLocation().getsize().getHeight() / 2;
+				NeighborLineDecorator n1= new NeighborLineDecorator(s,s.getneighbors().get(j));
+				n1.SetColor(g);
 				g.drawLine((int)(center_x1*dimension_x), (int)(center_y1*dimension_y), (int)(center_x2*dimension_x),(int) (center_y2*dimension_y));			
 			}
 		}
-		for (int i = 0; i < world.getSettlement().length; i++) {
+		iter=world.iterator();
+		
+		
+		
+		while(iter.hasNext()) {
+			Settlement s=iter.next();
 			g.setColor(Color.BLACK);
-			int x=world.getSettlement()[i].getLocation().getPosition().getPoint_x();
-			int y=world.getSettlement()[i].getLocation().getPosition().getPoint_y();
-			int height=world.getSettlement()[i].getLocation().getsize().getHeight();
-			int width=world.getSettlement()[i].getLocation().getsize().getWidth();
+			int x=s.getLocation().getPosition().getPoint_x();
+			int y=s.getLocation().getPosition().getPoint_y();
+			int height=s.getLocation().getsize().getHeight();
+			int width=s.getLocation().getsize().getWidth();
 			g.drawRect((int)(x*dimension_x),(int)(y*dimension_y),(int)(width*dimension_x),(int)(height*dimension_y));
-			g.setColor(world.getSettlement()[i].getRamzorColor().getColor());
+			g.setColor(s.getRamzorColor().getColor());
 			g.fillRect((int)(x*dimension_x),(int)(y*dimension_y),(int)(width*dimension_x),(int)(height*dimension_y));
 			g.setColor(Color.BLACK);
-			g.drawString(world.getSettlement()[i].getName(),(int)(x*dimension_x),(int)((y+15)*dimension_y));
-			g.setFont(new Font("TimesRoman", Font.PLAIN,(int) (14*dimension_x))); 
+			g.drawString(s.getName(),(int)(x*dimension_x),(int)((y+15)*dimension_y));
+			g.setFont(new Font("TimesRoman", Font.PLAIN,(int) (14*dimension_x)));
 		}
 	}
 
-	public int findCenterX(int i) {
+	public int findCenterX(Settlement s) {
 		/**
 		 * calc the x cordinate center of the settlement
 		 * 
 		 * @param i index of the settlement
 		 * @return the x center cordinate of the settlement
 		 */
-		return world.getSettlement()[i].getLocation().getPosition().getPoint_x()
-				+ world.getSettlement()[i].getLocation().getsize().getWidth() / 2;
+		return s.getLocation().getPosition().getPoint_x()
+				+ s.getLocation().getsize().getWidth() / 2;
 	}
 
-	public int findCenterY(int i) {
+	public int findCenterY(Settlement s) {
 		/**
 		 * calc the y cordinate center of the settlement
 		 * 
 		 * @param i index of the settlement
 		 * @return the y center cordinate of the settlement
 		 */
-		return world.getSettlement()[i].getLocation().getPosition().getPoint_y()
-				+ world.getSettlement()[i].getLocation().getsize().getHeight() / 2;
+		return s.getLocation().getPosition().getPoint_y()
+				+ s.getLocation().getsize().getHeight() / 2;
 	}
 
 	public void set_map(Map world) {

@@ -28,6 +28,8 @@ import javax.swing.JPanel;
 import IO.SimulationFile;
 import IO.StatisticsFile;
 import country.Map;
+import country.Settlement;
+
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerModel;
@@ -36,6 +38,7 @@ import javax.swing.SwingUtilities;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.concurrent.CyclicBarrier;
 import java.util.logging.FileHandler;
 
@@ -154,18 +157,19 @@ public class Main_window extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				if(world==null)
 					return;
-				for (int i = 0; i < world.getSettlement().length; i++) {
+				Iterator<Settlement> iter = world.iterator();
+				while (iter.hasNext()) {
 
-					
-					int x_settl =(int)( world.getSettlement()[i].getLocation().getPosition().getPoint_x()*map_panel.getDimentionX());
-					int y_settl = (int)(world.getSettlement()[i].getLocation().getPosition().getPoint_y()*map_panel.getDimentionY());
-					int h_settl = (int)(world.getSettlement()[i].getLocation().getsize().getHeight()*map_panel.getDimentionY());
-					int w_settl = (int)(world.getSettlement()[i].getLocation().getsize().getWidth()*map_panel.getDimentionX());
+					Settlement s= iter.next();
+					int x_settl =(int)( s.getLocation().getPosition().getPoint_x()*map_panel.getDimentionX());
+					int y_settl = (int)(s.getLocation().getPosition().getPoint_y()*map_panel.getDimentionY());
+					int h_settl = (int)(s.getLocation().getsize().getHeight()*map_panel.getDimentionY());
+					int w_settl = (int)(s.getLocation().getsize().getWidth()*map_panel.getDimentionX());
 
 					if (x_settl <= e.getPoint().getX() && e.getPoint().getX() <= x_settl + w_settl
 							&& y_settl <= e.getPoint().getY() && e.getPoint().getY() <= y_settl + h_settl) {
-						System.out.println(world.getSettlement()[i].getName());
-						StatisticWindow statistic_d = statisticWindow(world, world.getSettlement()[i].getName());
+						System.out.println(s.getName());
+						StatisticWindow statistic_d = statisticWindow(world, s.getName());
 						statistic_d.setVisible(true);
 						break;
 					}

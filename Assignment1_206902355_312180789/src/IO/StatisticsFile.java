@@ -7,6 +7,7 @@ package IO;
 import java.awt.FileDialog;
 import java.awt.Frame;
 import java.io.*;
+import java.util.Iterator;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -51,24 +52,26 @@ public class StatisticsFile
 		    sb.append(',');
 		    sb.append("Vaccine doses");
 		    sb.append('\n');
-		    for (int i=0;i<world.getSettlement().length;i++)
+		    Iterator<Settlement> iter = world.iterator();
+		    while (iter.hasNext())
 			{
-		    	sb.append(world.getSettlement()[i].getName());
+		    	Settlement s= iter.next();
+		    	sb.append(s.getName());
 		    	sb.append(',');
-	    		if(world.getSettlement()[i] instanceof City)
+	    		if(s instanceof City)
 	    			sb.append("City");
-	    		else if(world.getSettlement()[i] instanceof Kibbutz)
+	    		else if(s instanceof Kibbutz)
 	    			sb.append("Kibbutz");
 	    		else
 	    			sb.append("Moshav");
 	    		sb.append(',');
-	    		sb.append(world.getSettlement()[i].getPopulation());
+	    		sb.append(s.getPopulation());
 	    		sb.append(',');
-	    		sb.append(world.getSettlement()[i].getRamzorColor());
+	    		sb.append(s.getRamzorColor());
 	    		sb.append(',');
-	    		sb.append(((double)world.getSettlement()[i].getsick_people().size()/world.getSettlement()[i].getPopulation())*100+"%");
+	    		sb.append(((double)s.getsick_people().size()/s.getPopulation())*100+"%");
 	    		sb.append(',');
-	    		sb.append(world.getSettlement()[i].getVaccine_doses());
+	    		sb.append(s.getVaccine_doses());
 	    		sb.append('\n');
 			}
 		    writer.write(sb.toString());
