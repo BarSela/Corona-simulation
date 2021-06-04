@@ -23,6 +23,7 @@ public class Caretaker {
 		/**
 		 * get a memento from the list 
 		 * @param index for get the last memento.
+		 * @return the curent memento
 		 */
 		return statesList.get(index);
 	} 

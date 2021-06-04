@@ -9,11 +9,22 @@ import country.Kibbutz;
 import country.Moshav;
 import country.Settlement;
 import location.Location;
-
+/**
+ * SettlementFactory class
+ * the class responsible to create the settelment
+ */
 public class SettlementFactory 
 {
 	public Settlement getSettlementinstance(String settlType,String name,Location location,int population,int capacity )
 	{
+		/**
+		 * create the settelment 
+		 * @param settel type 
+		 * @param name of settel
+		 * @paramlocation of the settel 
+		 * @param num of population 
+		 * @param max population
+		 */
 		if (settlType.contentEquals("City"))
 		{
 

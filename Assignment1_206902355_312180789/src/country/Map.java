@@ -101,15 +101,24 @@ public class Map implements Iterable<Settlement>{
 	}
 	@Override
 	public Iterator<Settlement> iterator() {
-		// TODO Auto-generated method stub
+		/**
+		 * @return the iterator behavior  
+		 */
 		return Arrays.stream(this.getSettlement()).iterator() ;
 	}
 	public void setcycle(CyclicBarrier cycle) 
 	{
+		/**
+		 * set cycle
+		 * @param cycle 
+		 */
 		this.cycle=cycle;
 	}
 	public CyclicBarrier getcycle() 
 	{
+		/**
+		 * @return the cycle
+		 */
 		return cycle;
 	}
 	//data members

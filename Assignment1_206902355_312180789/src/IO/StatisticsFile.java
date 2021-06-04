@@ -83,7 +83,11 @@ public class StatisticsFile
 		}
 	}
 	public static void writeLog(Settlement s)
-	{ 
+	{
+		/**
+		 * the function responsible to wrte all date of dead 
+		 * @param Settlement s- contain all data
+		 */
 		logger = Logger.getLogger("");
 		if (path != null)
 		{

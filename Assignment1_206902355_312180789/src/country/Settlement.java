@@ -508,7 +508,11 @@ public abstract class Settlement implements Runnable {
 		int people = rand.nextInt(population.size() - 1);
 		return population.get(people);
 	}
-	public void set_num_of_dead_percent() {
+	public void set_num_of_dead_percent() 
+	{
+		/**
+		 * set the percent of dead peopole
+		 */
 		num_of_dead_percent+=0.01;
 	}
 
