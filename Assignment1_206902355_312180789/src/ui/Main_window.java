@@ -307,7 +307,7 @@ public class Main_window extends JFrame {
 				/**
 				 * Upload Step: Get the location of the upload file and load the entire map.
 				 */
-				if(StatisticsFile.index>0)
+				if(StatisticsFile.index>=0)
 					StatisticsFile.fh.close();
 				StatisticsFile.loadFileFunc();
 			}
